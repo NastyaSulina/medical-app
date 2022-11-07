@@ -1,13 +1,14 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Button from './src/components/Button/Button';
+import TextInput from './src/components/Input/Input'
 
 export default function App() {
     return (
         <View style={styles.container}>
+            <TextInput placeholderText="Введите логин" />
+            <TextInput placeholderText="Введите пароль"/>
             <Button text="Войти" type="primary" size="L" textColor="white" />
-            <Button text="Принять" type="primary" size="M" textColor="black" />
-            <Button text="Принять" type="checked" size="M" textColor="green" />
         </View>
     );
 }
@@ -20,6 +21,6 @@ const styles = StyleSheet.create({
         gap: '15px',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '400px',
+        width: '310px',
     },
 });
