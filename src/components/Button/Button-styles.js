@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../styles/globalStyles';
 
 const styles = StyleSheet.create({
     button: {
@@ -6,13 +7,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     blackTextColor: {
-        color: '#03314B',
+        color: COLORS.black,
     },
     greenTextColor: {
-        color: '#1CBE8E',
+        color: COLORS.green,
     },
     whiteTextColor: {
-        color: '#FFFFFF',
+        color: COLORS.white,
     },
     medium: {
         width: 116,
@@ -27,11 +28,11 @@ const styles = StyleSheet.create({
         padding: 16,
     },
     primary: {
-        backgroundColor: '#1CBE8E',
+        backgroundColor: COLORS.green,
     },
     checked: {
         backgroundColor: 'transparent',
-        border: '1px solid #1CBE8E',
+        border: `1px solid ${COLORS.green}`,
     },
 });
 
