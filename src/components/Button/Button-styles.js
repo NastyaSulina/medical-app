@@ -6,15 +6,6 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         alignItems: 'center',
     },
-    blackTextColor: {
-        color: COLORS.black,
-    },
-    greenTextColor: {
-        color: COLORS.green,
-    },
-    whiteTextColor: {
-        color: COLORS.white,
-    },
     medium: {
         width: 116,
         paddingTop: 12,

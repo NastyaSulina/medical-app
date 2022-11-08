@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextInput } from 'react-native';
 import styles from './Input-styles';
+import { COLORS } from '../../styles/globalStyles';
 
 function Input({ placeholderText }) {
     const [text, onChangeText] = React.useState(undefined);
@@ -11,7 +12,7 @@ function Input({ placeholderText }) {
             onChangeText={onChangeText}
             value={text}
             placeholder={placeholderText}
-            placeholderTextColor="#9FAABB"
+            placeholderTextColor={COLORS.gray}
         />
     );
 }
