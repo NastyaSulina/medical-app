@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     button: {
-        borderRadius: '12px',
+        borderRadius: 12,
         alignItems: 'center',
     },
     blackTextColor: {
@@ -15,16 +15,16 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
     },
     medium: {
-        width: '116px',
-        paddingTop: '12px',
-        paddingBottom: '12px',
-        paddingLeft: '24px',
-        paddingRight: '24px',
+        width: 116,
+        paddingTop: 12,
+        paddingBottom: 12,
+        paddingLeft: 24,
+        paddingRight: 24,
     },
     large: {
         width: '100%',
-        minWidth: '310px',
-        padding: '16px',
+        minWidth: 310,
+        padding: 16,
     },
     primary: {
         backgroundColor: '#1CBE8E',
