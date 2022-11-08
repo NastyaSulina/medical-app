@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     mainContainer: {
@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F5F7FB',
-        height: '100vh'
+        height: '100vh',
     },
     container: {
         backgroundColor: '#fff',
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         maxWidth: 350,
         padding: 20,
-        borderRadius: 16
+        borderRadius: 16,
     },
     logo: {
         width: 110,
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     },
     eye: {
         width: 24,
-        height: 24
-    }
+        height: 24,
+    },
 });
 
 export default styles;
