@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         display: 'flex',
         flexDirection: 'column',
-        gap: '15px',
+        gap: 15,
         justifyContent: 'center',
         alignItems: 'center',
-        width: '310px',
+        width: 310,
     },
 });
