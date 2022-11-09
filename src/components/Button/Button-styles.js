@@ -8,10 +8,8 @@ const styles = StyleSheet.create({
     },
     medium: {
         width: 116,
-        paddingTop: 12,
-        paddingBottom: 12,
-        paddingLeft: 24,
-        paddingRight: 24,
+        paddingVertical: 12,
+        paddingHorizontal: 24
     },
     large: {
         width: '100%',
@@ -23,7 +21,8 @@ const styles = StyleSheet.create({
     },
     checked: {
         backgroundColor: 'transparent',
-        border: `1px solid ${COLORS.green}`,
+        borderWidth: 1,
+        borderColor: COLORS.green
     },
 });
 

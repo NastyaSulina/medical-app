@@ -35,4 +35,10 @@ export const globalStyles = StyleSheet.create({
     grayTextColor: {
         color: COLORS.gray,
     },
+    root: {
+        backgroundColor: '#F5F7FB',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 });
