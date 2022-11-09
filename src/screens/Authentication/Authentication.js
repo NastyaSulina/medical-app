@@ -25,7 +25,7 @@ export default function Authentication() {
                         source={Logo} 
                         resizeMode="contain" 
                     />
-                    <Text>Вход в 120/80</Text>
+                    <Text style={styles.text}>Вход в 120/80</Text>
 
                     <Input
                         placeholderText="Введите логин"

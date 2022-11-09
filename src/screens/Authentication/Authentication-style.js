@@ -1,17 +1,16 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../styles/globalStyles';
 
 const styles = StyleSheet.create({
     mainContainer: {
-        display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5F7FB',
-        height: '100vh'
+        flex: 1,
+        height: '100%',
+        paddingVertical: 179
     },
     container: {
-        backgroundColor: '#fff',
-        display: 'flex',
-        flexDirection: 'column',
+        backgroundColor: COLORS.white,
         justifyContent: 'center',
         alignItems: 'center',
         maxWidth: 350,
@@ -21,6 +20,7 @@ const styles = StyleSheet.create({
     logo: {
         width: 110,
         height: 34,
+        marginBottom: 20
     },
     eyeButton: {
         position: 'absolute',
@@ -32,7 +32,13 @@ const styles = StyleSheet.create({
         height: 24
     },
     passwordInput: {
-           width: '100%'
+        width: '100%'
+    },
+    text: {
+        color: COLORS.black,
+        fontSize: 20,
+        marginBottom: 32,
+        fontWeight: 600
     }
 });
 
