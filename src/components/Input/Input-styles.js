@@ -6,8 +6,7 @@ const styles = StyleSheet.create({
         borderColor: '#D6DEED',
         borderRadius: 12,
         padding: 16,
-        width: '100%',
-        marginBottom: 16
+        minWidth: '100%',
     },
 });
 

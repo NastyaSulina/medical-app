@@ -39,6 +39,6 @@ export const globalStyles = StyleSheet.create({
         backgroundColor: '#F5F7FB',
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
-    }
+        alignItems: 'center',
+    },
 });

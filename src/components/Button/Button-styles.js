@@ -9,20 +9,24 @@ const styles = StyleSheet.create({
     medium: {
         width: 116,
         paddingVertical: 12,
-        paddingHorizontal: 24
+        paddingHorizontal: 24,
     },
     large: {
         width: '100%',
         minWidth: 310,
         padding: 16,
     },
+    defaultSize: {},
     primary: {
         backgroundColor: COLORS.green,
     },
     checked: {
         backgroundColor: 'transparent',
         borderWidth: 1,
-        borderColor: COLORS.green
+        borderColor: COLORS.green,
+    },
+    link: {
+        backgroundColor: 'transparent',
     },
 });
 
