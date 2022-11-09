@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Image, ScrollView, Text, View, TouchableOpacity } from 'react-native';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import styles from './Authentication-style';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
-import Logo from '../../../assets/logo.svg'
-import EyeImage from '../../../assets/auth-assets/eye.svg'
+import Logo from '../../../assets/logo.png';
+import EyeImage from '../../../assets/auth-assets/eye.png';
 
 export default function Authentication() {
     const [username, setUsername] = useState('');
@@ -17,59 +17,43 @@ export default function Authentication() {
     };
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={styles.mainContainer}>
-                <View style={styles.container}>
-                    <Image 
-                        style={styles.logo} 
-                        source={Logo} 
-                        resizeMode="contain" 
-                    />
-                    <Text style={styles.text}>Вход в 120/80</Text>
+        <ScrollView centerContent={true} contentContainerStyle={styles.container}>
+            <Image style={styles.logo} source={Logo} resizeMode="contain" />
+            <Text style={styles.text}>Вход в 120/80</Text>
 
-                    <Input
-                        placeholderText="Введите логин"
-                        value={username}
-                        setValue={setUsername}
-                    />
-                    <View style={styles.passwordInput}>
-                        <Input
-                            placeholderText="Введите пароль"
-                            value={password}
-                            setValue={setPassword}
-                            secureTextEntry={true}
-                        />
-                        <TouchableOpacity style={styles.eyeButton}>
-                            <Image
-                                style={styles.eyeImage}
-                                source={EyeImage}
-                                resizeMode="contain" 
-                            />
-                        </TouchableOpacity>
-                    </View>
-
-                    <Button
-                        text="Забыли пароль?"
-                        type="primary"
-                        size="L"
-                        textColor="white"
-                        onPress={onForgotPasswordPress}
-                    />
-                    <Button
-                        text="Нет аккаунта? Зарегистрируйтесь!"
-                        type="primary"
-                        size="L"
-                        textColor="white"
-                    />
-                    <Button
-                        text="Войти"
-                        type="primary"
-                        size="L"
-                        textColor="white"
-                        onPress={onSignInPressed}
-                    />
-                </View>
+            <Input placeholderText="Введите логин" value={username} setValue={setUsername} />
+            <View style={styles.passwordInput}>
+                <Input
+                    placeholderText="Введите пароль"
+                    value={password}
+                    setValue={setPassword}
+                    secureTextEntry={true}
+                />
+                <TouchableOpacity style={styles.eyeButton}>
+                    <Image style={styles.eyeImage} source={EyeImage} resizeMode="contain" />
+                </TouchableOpacity>
             </View>
+
+            <Button
+                text="Забыли пароль?"
+                type="link"
+                textColor="gray"
+                outerStyles={styles.forgotPasswordButton}
+                onPress={onForgotPasswordPress}
+            />
+            <Button
+                text="Нет аккаунта? Зарегистрируйтесь!"
+                type="link"
+                textColor="gray"
+                outerStyles={styles.registrationButton}
+            />
+            <Button
+                text="Войти"
+                type="primary"
+                size="L"
+                textColor="white"
+                onPress={onSignInPressed}
+            />
         </ScrollView>
     );
 }
