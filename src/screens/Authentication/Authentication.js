@@ -31,7 +31,10 @@ export default function Authentication() {
                     setValue={setPassword}
                     secureTextEntry={passwordVisible}
                 />
-                <TouchableOpacity style={styles.eyeButton} onPress={() => setPasswordVisible(!passwordVisible)}>
+                <TouchableOpacity
+                    style={styles.eyeButton}
+                    onPress={() => setPasswordVisible(!passwordVisible)}
+                >
                     <Image style={styles.eyeImage} source={EyeImage} resizeMode="contain" />
                 </TouchableOpacity>
             </View>
