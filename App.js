@@ -1,11 +1,11 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import Authentication from './src/screens/Authentication/Authentication';
-import styles from './src/styles/rootStyles';
+import { globalStyles } from './src/styles/globalStyles';
 
 export default function App() {
     return (
-        <SafeAreaView style={styles.root}>
+        <SafeAreaView style={globalStyles.root}>
             <Authentication />
         </SafeAreaView>
     );

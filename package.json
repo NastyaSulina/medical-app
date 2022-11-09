@@ -7,8 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "prettier": "prettier --write src/**/*.{js,jsx} App.jsx",
-    "lint": "eslint src/**/*.{js,jsx} App.jsx"
+    "prettier": "prettier --write src/**/*.js App.js",
+    "lint": "eslint src/**/*.js App.js"
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.0",
