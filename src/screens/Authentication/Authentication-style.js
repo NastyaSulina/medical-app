@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     },
     passwordInput: {
         width: '100%',
-        paddingVertical: 10,
+        marginVertical: 10,
     },
     text: {
         color: COLORS.black,

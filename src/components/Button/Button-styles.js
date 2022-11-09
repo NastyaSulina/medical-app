@@ -4,7 +4,6 @@ import { COLORS } from '../../styles/globalStyles';
 const styles = StyleSheet.create({
     button: {
         borderRadius: 12,
-        alignItems: 'center',
     },
     medium: {
         width: 116,
@@ -19,11 +18,13 @@ const styles = StyleSheet.create({
     defaultSize: {},
     primary: {
         backgroundColor: COLORS.green,
+        alignItems: 'center',
     },
     checked: {
         backgroundColor: 'transparent',
         borderWidth: 1,
         borderColor: COLORS.green,
+        alignItems: 'center',
     },
     link: {
         backgroundColor: 'transparent',
