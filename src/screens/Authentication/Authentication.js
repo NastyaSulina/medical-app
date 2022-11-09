@@ -9,6 +9,8 @@ import EyeImage from '../../../assets/auth-assets/eye.png';
 export default function Authentication() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordVisible, setPasswordVisible] = useState(true);
+
     const onSignInPressed = () => {
         console.warn('Sign in!');
     };
@@ -27,9 +29,12 @@ export default function Authentication() {
                     placeholderText="Введите пароль"
                     value={password}
                     setValue={setPassword}
-                    secureTextEntry={true}
+                    secureTextEntry={passwordVisible}
                 />
-                <TouchableOpacity style={styles.eyeButton}>
+                <TouchableOpacity
+                    style={styles.eyeButton}
+                    onPress={() => setPasswordVisible(!passwordVisible)}
+                >
                     <Image style={styles.eyeImage} source={EyeImage} resizeMode="contain" />
                 </TouchableOpacity>
             </View>
