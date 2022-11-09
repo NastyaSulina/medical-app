@@ -6,13 +6,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F5F7FB',
-        height: '100vh',
+        height: '100vh'
     },
     container: {
         backgroundColor: '#fff',
         display: 'flex',
         flexDirection: 'column',
-        gap: 15,
         justifyContent: 'center',
         alignItems: 'center',
         maxWidth: 350,
@@ -26,8 +25,7 @@ const styles = StyleSheet.create({
     eyeButton: {
         position: 'absolute',
         right: 16,
-        top: '50%',
-        transform: 'translateY(-50%)'
+        top: 14
     },
     eyeImage: {
         width: 24,

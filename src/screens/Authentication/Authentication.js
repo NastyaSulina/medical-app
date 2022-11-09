@@ -3,8 +3,8 @@ import { Image, ScrollView, Text, View, TouchableOpacity } from 'react-native';
 import styles from './Authentication-style';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
-import Logo from '../../assets/logo.svg'
-import EyeImage from '../../assets/auth-assets/eye.svg'
+import Logo from '../../../assets/logo.svg'
+import EyeImage from '../../../assets/auth-assets/eye.svg'
 
 export default function Authentication() {
     const [username, setUsername] = useState('');
