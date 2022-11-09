@@ -23,10 +23,19 @@ const styles = StyleSheet.create({
         width: 110,
         height: 34,
     },
-    eye: {
-        width: 24,
-        height: 24,
+    eyeButton: {
+        position: 'absolute',
+        right: 16,
+        top: '50%',
+        transform: 'translateY(-50%)'
     },
+    eyeImage: {
+        width: 24,
+        height: 24
+    },
+    passwordInput: {
+           width: '100%'
+    }
 });
 
 export default styles;

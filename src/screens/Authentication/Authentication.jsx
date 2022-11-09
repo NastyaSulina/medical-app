@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Image, ScrollView, Text, View } from 'react-native';
+import { Image, ScrollView, Text, View, TouchableOpacity } from 'react-native';
 import styles from './Authentication-style';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
+import Logo from '../../assets/logo.svg'
+import EyeImage from '../../assets/auth-assets/eye.svg'
 
 export default function Authentication() {
     const [username, setUsername] = useState('');
@@ -18,7 +20,11 @@ export default function Authentication() {
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.mainContainer}>
                 <View style={styles.container}>
-                    <Image style={styles.logo} source={require('../../assets/logo.svg')} />
+                    <Image 
+                        style={styles.logo} 
+                        source={Logo} 
+                        resizeMode="contain" 
+                    />
                     <Text>Вход в 120/80</Text>
 
                     <Input
@@ -26,16 +32,21 @@ export default function Authentication() {
                         value={username}
                         setValue={setUsername}
                     />
-                    <Input
-                        placeholderText="Введите пароль"
-                        value={password}
-                        setValue={setPassword}
-                        secureTextEntry={true}
-                    />
-                    <Image
-                        style={styles.eye}
-                        source={require('../../assets/auth-assets/eye.svg')}
-                    />
+                    <View style={styles.passwordInput}>
+                        <Input
+                            placeholderText="Введите пароль"
+                            value={password}
+                            setValue={setPassword}
+                            secureTextEntry={true}
+                        />
+                        <TouchableOpacity style={styles.eyeButton}>
+                            <Image
+                                style={styles.eyeImage}
+                                source={EyeImage}
+                                resizeMode="contain" 
+                            />
+                        </TouchableOpacity>
+                    </View>
 
                     <Button
                         text="Забыли пароль?"
