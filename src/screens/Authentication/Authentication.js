@@ -1,39 +1,50 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-import { SafeAreaView } from 'react-native';
-import { globalStyles } from '../../styles/globalStyles';
-import styles from './Authentication-style';
+import { useForm } from 'react-hook-form';
+import { Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Logo from '../../../assets/logo.png';
 import EyeImage from '../../../assets/auth-assets/eye.png';
+import { globalStyles } from '../../styles/globalStyles';
+import styles from './Authentication-style';
 
 export default function Authentication() {
-    const navigation = useNavigation();
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(true);
+    const navigation = useNavigation();
+    const { control, handleSubmit } = useForm();
 
-    const onSignInPressed = () => {
-        navigation.navigate("Registration");
+    const onSignInPressed = (data) => {
+        console.log(data);
     };
-    const onForgotPasswordPress = () => {
-        console.warn('Нам очень жаль!');
+    const onForgotPasswordPressed = () => {
+        console.log('Нам очень жаль!');
+    };
+    const onRegistrationPressed = () => {
+        navigation.navigate('Registration');
     };
 
     return (
         <SafeAreaView style={globalStyles.root}>
-            <ScrollView centerContent={true} contentContainerStyle={styles.container}>
+            <ScrollView centerContent contentContainerStyle={styles.container}>
                 <Image style={styles.logo} source={Logo} resizeMode="contain" />
                 <Text style={styles.text}>Вход в 120/80</Text>
 
-                <Input placeholderText="Введите логин" value={username} setValue={setUsername} />
+                <Input
+                    name="username"
+                    control={control}
+                    rules={{ required: 'required' }}
+                    placeholderText="Введите логин"
+                />
                 <View style={styles.passwordInput}>
                     <Input
+                        name="password"
+                        control={control}
+                        rules={{
+                            required: 'required',
+                            minLength: { value: 8, message: 'minimum 8 characters' },
+                        }}
                         placeholderText="Введите пароль"
-                        value={password}
-                        setValue={setPassword}
                         secureTextEntry={passwordVisible}
                     />
                     <TouchableOpacity
@@ -49,20 +60,21 @@ export default function Authentication() {
                     type="link"
                     textColor="gray"
                     outerStyles={styles.forgotPasswordButton}
-                    onPress={onForgotPasswordPress}
+                    onPress={onForgotPasswordPressed}
                 />
                 <Button
                     text="Нет аккаунта? Зарегистрируйтесь!"
                     type="link"
                     textColor="gray"
                     outerStyles={styles.registrationButton}
+                    onPress={onRegistrationPressed}
                 />
                 <Button
                     text="Войти"
                     type="primary"
                     size="L"
                     textColor="white"
-                    onPress={onSignInPressed}
+                    onPress={handleSubmit(onSignInPressed)}
                 />
             </ScrollView>
         </SafeAreaView>

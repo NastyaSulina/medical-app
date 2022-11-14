@@ -35,6 +35,9 @@ export const globalStyles = StyleSheet.create({
     grayTextColor: {
         color: COLORS.gray,
     },
+    redTextColor: {
+        color: COLORS.red,
+    },
     root: {
         backgroundColor: '#F5F7FB',
         flex: 1,
