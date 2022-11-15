@@ -14,11 +14,9 @@ export default function Authentication() {
     const navigation = useNavigation();
     const { control, handleSubmit } = useForm();
 
-    const onSignInPressed = (data) => {
-        console.log(data);
+    const onSignInPressed = () => {
     };
     const onForgotPasswordPressed = () => {
-        console.log('Нам очень жаль!');
     };
     const onRegistrationPressed = () => {
         navigation.navigate('Registration');

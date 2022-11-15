@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import Button from '../../components/Button/Button';
@@ -12,8 +12,7 @@ export default function Registration() {
 
     const password = watch('password');
 
-    const onNextPressed = (data) => {
-        console.log(data);
+    const onNextPressed = () => {
     };
     const onAuthenticationPressed = () => {
         navigation.navigate('Authentication');
