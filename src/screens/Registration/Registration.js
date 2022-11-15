@@ -27,22 +27,22 @@ export default function Registration() {
                     placeholderText="Введите логин"
                     name="username"
                     control={control}
-                    rules={{ required: 'required' }}
+                    rules={{ required: 'заполните поле' }}
                 />
                 <Input
                     placeholderText="Введите пароль"
                     name="password"
                     control={control}
                     rules={{
-                        required: 'required',
-                        minLength: { value: 8, message: 'minimum 8 characters' },
+                        required: 'заполните поле',
+                        minLength: { value: 8, message: 'пароль должен состоять из минимум 8 символов' },
                     }}
                 />
                 <Input
                     placeholderText="Повторите пароль"
                     name="passwordRepeat"
                     control={control}
-                    rules={{ validate: (value) => value === password || 'do not match' }}
+                    rules={{ validate: (value) => value === password || 'пароли не совпадают' }}
                 />
                 <Button
                     text="Уже есть аккаунт? Войти"

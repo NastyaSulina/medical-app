@@ -33,7 +33,7 @@ export default function Authentication() {
                 <Input
                     name="username"
                     control={control}
-                    rules={{ required: 'required' }}
+                    rules={{ required: 'необходимо заполнить поле' }}
                     placeholderText="Введите логин"
                 />
                 <View style={styles.passwordInput}>
@@ -41,8 +41,8 @@ export default function Authentication() {
                         name="password"
                         control={control}
                         rules={{
-                            required: 'required',
-                            minLength: { value: 8, message: 'minimum 8 characters' },
+                            required: 'необходимо заполнить поле',
+                            minLength: { value: 8, message: 'пароль должен состоять из минимум 8 символов' },
                         }}
                         placeholderText="Введите пароль"
                         secureTextEntry={passwordVisible}
