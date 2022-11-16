@@ -1,5 +1,6 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import Button from '../../components/Button/Button';

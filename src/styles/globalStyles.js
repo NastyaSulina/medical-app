@@ -23,25 +23,25 @@ export const TEXT_COLOR_STYLES = {
 };
 
 export const globalStyles = StyleSheet.create({
-    // blackTextColor: {
-    //     color: COLORS.black,
-    // },
-    // greenTextColor: {
-    //     color: COLORS.green,
-    // },
-    // whiteTextColor: {
-    //     color: COLORS.white,
-    // },
-    // grayTextColor: {
-    //     color: COLORS.gray,
-    // },
-    // redTextColor: {
-    //     color: COLORS.red,
-    // },
-    // root: {
-    //     backgroundColor: '#F5F7FB',
-    //     flex: 1,
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    // },
+    blackTextColor: {
+        color: COLORS.black,
+    },
+    greenTextColor: {
+        color: COLORS.green,
+    },
+    whiteTextColor: {
+        color: COLORS.white,
+    },
+    grayTextColor: {
+        color: COLORS.gray,
+    },
+    redTextColor: {
+        color: COLORS.red,
+    },
+    root: {
+        backgroundColor: '#F5F7FB',
+        flexGrow: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });
