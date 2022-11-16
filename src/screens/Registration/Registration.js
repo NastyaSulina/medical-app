@@ -21,7 +21,8 @@ export default function Registration() {
 
     return (
         <SafeAreaView style={globalStyles.root}>
-            <ScrollView centerContent>
+            <ScrollView centerContent contentContainerStyle={{flexGrow: 1,
+                justifyContent: 'center'}}>
                 <Text>Регистрация</Text>
                 <>
                     <Input
