@@ -3,6 +3,10 @@ import { COLORS } from '../../styles/globalStyles';
 
 const styles = StyleSheet.create({
     container: {
+        flexGrow: 1,
+        justifyContent: 'center'
+    },
+    content: {
         backgroundColor: COLORS.white,
         maxWidth: 350,
         padding: 20,
@@ -32,7 +36,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 32,
         textAlign: 'center',
-        fontWeight: 600,
     },
     forgotPasswordButton: {
         paddingTop: 2,

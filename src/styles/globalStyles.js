@@ -40,7 +40,7 @@ export const globalStyles = StyleSheet.create({
     },
     root: {
         backgroundColor: '#F5F7FB',
-        flex: 1,
+        flexGrow: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
