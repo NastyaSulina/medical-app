@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableOpacity, View, KeyboardAvoidingView, Platform} from 'react-native';
 import Input from '../../components/Input/Input';
 import styles from "../Authentication/Authentication-style";
 import EyeImage from "../../../assets/auth-assets/eye.png";
@@ -9,7 +9,7 @@ export default function FormMain({ control, watch }) {
     const password = watch('password');
     const [passwordVisible, setPasswordVisible] = useState(true);
     return (
-        <>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <Text>1/2</Text>
             <Input
                 placeholderText="Введите почту"
@@ -63,7 +63,7 @@ export default function FormMain({ control, watch }) {
                 >
                     <Image style={styles.eyeImage} source={passwordVisible ? EyeImageClosed : EyeImage} resizeMode="contain" />
                 </TouchableOpacity>
-        </View>
-        </>
+            </View>
+        </KeyboardAvoidingView>
     );
 }

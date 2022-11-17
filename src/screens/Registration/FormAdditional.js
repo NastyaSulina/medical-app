@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
+import {KeyboardAvoidingView, Platform, Text} from 'react-native';
 import Input from '../../components/Input/Input';
 
 export default function FormAdditional({ control }) {
     return (
-        <>
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <Text>2/2</Text>
             <Input
                 placeholderText="Рост"
@@ -28,6 +28,6 @@ export default function FormAdditional({ control }) {
                 name="chronicIllnesses"
                 control={control}
             />
-        </>
+        </KeyboardAvoidingView>
     );
 }
