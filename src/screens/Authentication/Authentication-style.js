@@ -4,7 +4,7 @@ import { COLORS } from '../../styles/globalStyles';
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     content: {
         backgroundColor: COLORS.white,

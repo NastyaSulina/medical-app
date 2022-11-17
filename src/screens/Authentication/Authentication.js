@@ -15,10 +15,10 @@ export default function Authentication() {
     const navigation = useNavigation();
     const { control, handleSubmit } = useForm();
 
-    const onSignInPressed = () => {
+    const onSignInPressed = (data) => {
+        console.log(data);
     };
-    const onForgotPasswordPressed = () => {
-    };
+    const onForgotPasswordPressed = () => {};
     const onRegistrationPressed = () => {
         navigation.navigate('Registration');
     };
@@ -42,7 +42,10 @@ export default function Authentication() {
                             control={control}
                             rules={{
                                 required: 'необходимо заполнить поле',
-                                minLength: { value: 8, message: 'пароль должен состоять из минимум 8 символов' },
+                                minLength: {
+                                    value: 8,
+                                    message: 'пароль должен состоять из минимум 8 символов',
+                                },
                             }}
                             placeholderText="Введите пароль"
                             secureTextEntry={passwordVisible}
