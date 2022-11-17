@@ -4,7 +4,7 @@ import { Controller } from 'react-hook-form';
 import { COLORS } from '../../styles/globalStyles';
 import styles from './Input-styles';
 
-function Input({ control, name, rules = {}, placeholderText, secureTextEntry }) {
+function Input({ control, name, rules = {}, placeholderText, secureTextEntry, outerStyles }) {
     return (
         <Controller
             control={control}
@@ -13,7 +13,7 @@ function Input({ control, name, rules = {}, placeholderText, secureTextEntry }) 
             render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
                 <>
                     <TextInput
-                        style={[styles.input, styles[`input${error ? 'Error' : 'Default'}Border`]]}
+                        style={[styles.input, styles[`input${error ? 'Error' : 'Default'}Border`], outerStyles]}
                         onChangeText={onChange}
                         value={value || ''}
                         onBlur={onBlur}

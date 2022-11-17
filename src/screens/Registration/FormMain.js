@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import {Image, Text, TouchableOpacity, View, KeyboardAvoidingView, Platform} from 'react-native';
 import Input from '../../components/Input/Input';
-import styles from "../Authentication/Authentication-style";
 import EyeImage from "../../../assets/auth-assets/eye.png";
-import EyeImageClosed from "../../../assets/auth-assets/eye_closed.png"
+import EyeImageClosed from "../../../assets/auth-assets/eye_closed.png";
+import styles from "./Registration-styles";
 
 export default function FormMain({ control, watch }) {
     const password = watch('password');
     const [passwordVisible, setPasswordVisible] = useState(true);
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
-            <Text>1/2</Text>
+            <Text style={styles.formNumberText}>1/2</Text>
             <Input
                 placeholderText="Введите почту"
                 name="email"
                 control={control}
                 rules={{
                     required: 'Это поле обязательно для заполнения',
-                    pattern: { value: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/, message: 'неправильный формат email' },
+                    pattern: { value: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/, message: 'Неправильный формат email' },
                 }}
             />
             <Input
@@ -25,6 +25,7 @@ export default function FormMain({ control, watch }) {
                 name="username"
                 control={control}
                 rules={{ required: 'Это поле обязательно для заполнения' }}
+                outerStyles={styles.usernameInput}
             />
             <View style={styles.passwordInput}>
                 <Input
