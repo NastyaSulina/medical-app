@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Logo from '../../../assets/logo.png';
 import EyeImage from '../../../assets/auth-assets/eye.png';
+import EyeImageClosed from '../../../assets/auth-assets/eye_closed.png'
 import { globalStyles } from '../../styles/globalStyles';
 import styles from './Authentication-style';
 
@@ -54,7 +55,7 @@ export default function Authentication() {
                             style={styles.eyeButton}
                             onPress={() => setPasswordVisible(!passwordVisible)}
                         >
-                            <Image style={styles.eyeImage} source={EyeImage} resizeMode="contain" />
+                            <Image style={styles.eyeImage} source={passwordVisible ? EyeImage : EyeImageClosed} resizeMode="contain" />
                         </TouchableOpacity>
                     </View>
 

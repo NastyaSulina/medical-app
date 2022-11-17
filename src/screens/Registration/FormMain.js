@@ -1,10 +1,13 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React, { useState } from 'react';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Input from '../../components/Input/Input';
+import styles from "../Authentication/Authentication-style";
+import EyeImage from "../../../assets/auth-assets/eye.png";
+import EyeImageClosed from "../../../assets/auth-assets/eye_closed.png"
 
 export default function FormMain({ control, watch }) {
     const password = watch('password');
-
+    const [passwordVisible, setPasswordVisible] = useState(true);
     return (
         <>
             <Text>1/2</Text>
@@ -20,18 +23,27 @@ export default function FormMain({ control, watch }) {
                 control={control}
                 rules={{ required: 'Это поле обязательно для заполнения' }}
             />
-            <Input
-                placeholderText="Введите пароль"
-                name="password"
-                control={control}
-                rules={{
-                    required: 'Это поле обязательно для заполнения',
-                    minLength: {
-                        value: 8,
-                        message: 'Пароль должен состоять из минимум 8 символов',
-                    },
-                }}
-            />
+            <View style={styles.passwordInput}>
+                <Input
+                    placeholderText="Введите пароль"
+                    name="password"
+                    control={control}
+                    rules={{
+                        required: 'Это поле обязательно для заполнения',
+                        minLength: {
+                            value: 8,
+                            message: 'Пароль должен состоять из минимум 8 символов',
+                        },
+                    }}
+                    secureTextEntry={passwordVisible}
+                />
+                <TouchableOpacity
+                    style={styles.eyeButton}
+                    onPress={() => setPasswordVisible(!passwordVisible)}
+                >
+                    <Image style={styles.eyeImage} source={passwordVisible ? EyeImageClosed : EyeImage} resizeMode="contain" />
+                </TouchableOpacity>
+            </View>
             <Input
                 placeholderText="Повторите пароль"
                 name="passwordRepeat"
