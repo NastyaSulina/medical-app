@@ -41,6 +41,13 @@ const styles = StyleSheet.create({
         paddingTop: 2,
         paddingBottom: 16,
     },
+    registrationInvite: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    registrationText: {
+        color: COLORS.gray,
+    },
     registrationButton: {
         paddingBottom: 8,
         alignItems: 'center',
