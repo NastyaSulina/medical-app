@@ -15,7 +15,10 @@ export default function FormMain({ control, watch }) {
                 placeholderText="Введите почту"
                 name="email"
                 control={control}
-                rules={{ required: 'Это поле обязательно для заполнения' }}
+                rules={{
+                    required: 'Это поле обязательно для заполнения',
+                    pattern: { value: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/, message: 'неправильный формат email' },
+                }}
             />
             <Input
                 placeholderText="Введите логин"
