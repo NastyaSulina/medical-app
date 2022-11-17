@@ -1,9 +1,11 @@
 import React from 'react';
+import { Text } from 'react-native';
 import Input from '../../components/Input/Input';
 
 export default function FormAdditional({ control }) {
     return (
         <>
+            <Text>2/2</Text>
             <Input
                 placeholderText="Рост"
                 name="height"

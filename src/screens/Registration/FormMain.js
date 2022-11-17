@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import Input from '../../components/Input/Input';
 
 export default function FormMain({ control, watch }) {
@@ -6,6 +7,7 @@ export default function FormMain({ control, watch }) {
 
     return (
         <>
+            <Text>1/2</Text>
             <Input
                 placeholderText="Введите почту"
                 name="email"
