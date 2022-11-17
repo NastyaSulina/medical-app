@@ -43,16 +43,27 @@ export default function FormMain({ control, watch }) {
                 <TouchableOpacity
                     style={styles.eyeButton}
                     onPress={() => setPasswordVisible(!passwordVisible)}
+                    activeOpacity = {1.}
                 >
                     <Image style={styles.eyeImage} source={passwordVisible ? EyeImageClosed : EyeImage} resizeMode="contain" />
                 </TouchableOpacity>
             </View>
-            <Input
-                placeholderText="Повторите пароль"
-                name="passwordRepeat"
-                control={control}
-                rules={{ validate: (value) => value === password || 'Пароли не совпадают' }}
-            />
+            <View style={styles.passwordInput}>
+                <Input
+                    placeholderText="Повторите пароль"
+                    name="passwordRepeat"
+                    control={control}
+                    secureTextEntry={passwordVisible}
+                    rules={{ validate: (value) => value === password || 'Пароли не совпадают' }}
+                />
+                <TouchableOpacity
+                    style={styles.eyeButton}
+                    onPress={() => setPasswordVisible(!passwordVisible)}
+                    activeOpacity = {1.}
+                >
+                    <Image style={styles.eyeImage} source={passwordVisible ? EyeImageClosed : EyeImage} resizeMode="contain" />
+                </TouchableOpacity>
+        </View>
         </>
     );
 }

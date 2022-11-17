@@ -53,6 +53,7 @@ export default function Authentication() {
                         />
                         <TouchableOpacity
                             style={styles.eyeButton}
+                            activeOpacity = {1.}
                             onPress={() => setPasswordVisible(!passwordVisible)}
                         >
                             <Image style={styles.eyeImage} source={passwordVisible ? EyeImage : EyeImageClosed} resizeMode="contain" />
