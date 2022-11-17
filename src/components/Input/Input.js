@@ -13,7 +13,11 @@ function Input({ control, name, rules = {}, placeholderText, secureTextEntry, ou
             render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
                 <>
                     <TextInput
-                        style={[styles.input, styles[`input${error ? 'Error' : 'Default'}Border`], outerStyles]}
+                        style={[
+                            styles.input,
+                            styles[`input${error ? 'Error' : 'Default'}Border`],
+                            outerStyles,
+                        ]}
                         onChangeText={onChange}
                         value={value || ''}
                         onBlur={onBlur}

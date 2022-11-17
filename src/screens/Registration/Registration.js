@@ -34,8 +34,8 @@ export default function Registration() {
     return (
         <SafeAreaView style={globalStyles.root}>
             <ScrollView centerContent contentContainerStyle={styles.container}>
-                <View style={[styles.content, {minHeight: useWindowDimensions().height * 0.9}]}>
-                    <Text style={styles.text} >Регистрация</Text>
+                <View style={[styles.content, { minHeight: useWindowDimensions().height * 0.9 }]}>
+                    <Text style={styles.text}>Регистрация</Text>
 
                     {getContent()}
 

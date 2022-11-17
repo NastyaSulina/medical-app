@@ -1,11 +1,11 @@
 import React from 'react';
-import {KeyboardAvoidingView, Platform, Text} from 'react-native';
+import { KeyboardAvoidingView, Platform, Text } from 'react-native';
 import Input from '../../components/Input/Input';
 import styles from './Registration-styles';
 
 export default function FormAdditional({ control }) {
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <Text style={styles.formNumberText}>2/2</Text>
             <Input
                 placeholderText="Рост"
@@ -24,7 +24,12 @@ export default function FormAdditional({ control }) {
                 }}
                 outerStyles={styles.additionalInput}
             />
-            <Input placeholderText="Аллергии" name="allergies" control={control} outerStyles={styles.additionalInput} />
+            <Input
+                placeholderText="Аллергии"
+                name="allergies"
+                control={control}
+                outerStyles={styles.additionalInput}
+            />
             <Input
                 placeholderText="Хронические заболевания"
                 name="chronicIllnesses"

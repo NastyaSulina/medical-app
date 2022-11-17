@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import {Image, Text, TouchableOpacity, View, KeyboardAvoidingView, Platform} from 'react-native';
+import { Image, Text, TouchableOpacity, View, KeyboardAvoidingView, Platform } from 'react-native';
 import Input from '../../components/Input/Input';
-import EyeImage from "../../../assets/auth-assets/eye.png";
-import EyeImageClosed from "../../../assets/auth-assets/eye_closed.png";
-import styles from "./Registration-styles";
+import EyeImage from '../../../assets/auth-assets/eye.png';
+import EyeImageClosed from '../../../assets/auth-assets/eye_closed.png';
+import styles from './Registration-styles';
 
 export default function FormMain({ control, watch }) {
     const password = watch('password');
     const [passwordVisible, setPasswordVisible] = useState(true);
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <Text style={styles.formNumberText}>1/2</Text>
             <Input
                 placeholderText="Введите почту"
@@ -17,7 +17,10 @@ export default function FormMain({ control, watch }) {
                 control={control}
                 rules={{
                     required: 'Это поле обязательно для заполнения',
-                    pattern: { value: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/, message: 'Неправильный формат email' },
+                    pattern: {
+                        value: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/,
+                        message: 'Неправильный формат email',
+                    },
                 }}
             />
             <Input
@@ -44,9 +47,13 @@ export default function FormMain({ control, watch }) {
                 <TouchableOpacity
                     style={styles.eyeButton}
                     onPress={() => setPasswordVisible(!passwordVisible)}
-                    activeOpacity = {1.}
+                    activeOpacity={1}
                 >
-                    <Image style={styles.eyeImage} source={passwordVisible ? EyeImageClosed : EyeImage} resizeMode="contain" />
+                    <Image
+                        style={styles.eyeImage}
+                        source={passwordVisible ? EyeImageClosed : EyeImage}
+                        resizeMode="contain"
+                    />
                 </TouchableOpacity>
             </View>
             <View style={styles.passwordInput}>
@@ -60,9 +67,13 @@ export default function FormMain({ control, watch }) {
                 <TouchableOpacity
                     style={styles.eyeButton}
                     onPress={() => setPasswordVisible(!passwordVisible)}
-                    activeOpacity = {1.}
+                    activeOpacity={1}
                 >
-                    <Image style={styles.eyeImage} source={passwordVisible ? EyeImageClosed : EyeImage} resizeMode="contain" />
+                    <Image
+                        style={styles.eyeImage}
+                        source={passwordVisible ? EyeImageClosed : EyeImage}
+                        resizeMode="contain"
+                    />
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>
