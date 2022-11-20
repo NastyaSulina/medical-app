@@ -5,10 +5,11 @@ const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
         justifyContent: 'center',
+        alignItems: 'center'
     },
     content: {
         backgroundColor: COLORS.white,
-        maxWidth: 350,
+        maxWidth: '90%',
         padding: 20,
         borderRadius: 16,
     },
