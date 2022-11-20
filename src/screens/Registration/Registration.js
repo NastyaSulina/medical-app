@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import { ScrollView, Text, useWindowDimensions, View } from 'react-native';
+import {
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    Text,
+    useWindowDimensions,
+    View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
@@ -33,36 +40,40 @@ export default function Registration() {
 
     return (
         <SafeAreaView style={globalStyles.root}>
-            <ScrollView centerContent contentContainerStyle={styles.container}>
-                <View style={[styles.content, { minHeight: useWindowDimensions().height * 0.9 }]}>
-                    <Text style={styles.text}>Регистрация</Text>
+            <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+                <ScrollView centerContent contentContainerStyle={styles.container}>
+                    <View
+                        style={[styles.content, { minHeight: useWindowDimensions().height * 0.8 }]}
+                    >
+                        <Text style={styles.text}>Регистрация</Text>
 
-                    {getContent()}
+                        {getContent()}
 
-                    <View style={styles.authenticationInvite}>
-                        <Text style={styles.authenticationText}>Уже есть аккаунт? </Text>
+                        <View style={styles.authenticationInvite}>
+                            <Text style={styles.authenticationText}>Уже есть аккаунт? </Text>
+                            <Button
+                                text="Войти!"
+                                type="link"
+                                textColor="green"
+                                outerStyles={styles.registrationButton}
+                                onPress={onAuthenticationPressed}
+                            />
+                        </View>
+
                         <Button
-                            text="Войти!"
-                            type="link"
-                            textColor="green"
-                            outerStyles={styles.registrationButton}
-                            onPress={onAuthenticationPressed}
+                            text={isFirstFormFilled ? 'Готово!' : 'Далее'}
+                            type="primary"
+                            size="L"
+                            textColor="white"
+                            onPress={handleSubmit((data) => {
+                                if (isFirstFormFilled) {
+                                    sendData(data);
+                                } else setFirstFormFilled(true);
+                            })}
                         />
                     </View>
-
-                    <Button
-                        text={isFirstFormFilled ? 'Готово!' : 'Далее'}
-                        type="primary"
-                        size="L"
-                        textColor="white"
-                        onPress={handleSubmit((data) => {
-                            if (isFirstFormFilled) {
-                                sendData(data);
-                            } else setFirstFormFilled(true);
-                        })}
-                    />
-                </View>
-            </ScrollView>
+                </ScrollView>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     );
 }

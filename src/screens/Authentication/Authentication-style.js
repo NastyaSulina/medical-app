@@ -20,8 +20,10 @@ const styles = StyleSheet.create({
     },
     eyeButton: {
         position: 'absolute',
-        right: 16,
+        right: 5,
         top: 14,
+        width: 35,
+        height: 35,
     },
     eyeImage: {
         width: 24,
