@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     },
     large: {
         width: '100%',
-        minWidth: 310,
         padding: 16,
     },
     defaultSize: {},

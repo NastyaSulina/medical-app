@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         borderColor: '#D6DEED',
     },
     errorMessage: {
+        fontSize: 13,
         paddingTop: 5,
     },
 });

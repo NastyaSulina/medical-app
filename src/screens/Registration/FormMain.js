@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, Text, TouchableOpacity, View, KeyboardAvoidingView, Platform } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import Input from '../../components/Input/Input';
 import EyeImage from '../../../assets/auth-assets/eye.png';
 import EyeImageClosed from '../../../assets/auth-assets/eye_closed.png';
@@ -9,17 +9,17 @@ export default function FormMain({ control, watch }) {
     const password = watch('password');
     const [passwordVisible, setPasswordVisible] = useState(true);
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <>
             <Text style={styles.formNumberText}>1/2</Text>
             <Input
                 placeholderText="Введите почту"
                 name="email"
                 control={control}
                 rules={{
-                    required: 'Это поле обязательно для заполнения',
+                    required: 'Это поле обязательно для заполнения!',
                     pattern: {
                         value: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/,
-                        message: 'Неправильный формат email',
+                        message: 'Неправильный формат email!',
                     },
                 }}
             />
@@ -27,7 +27,7 @@ export default function FormMain({ control, watch }) {
                 placeholderText="Введите логин"
                 name="username"
                 control={control}
-                rules={{ required: 'Это поле обязательно для заполнения' }}
+                rules={{ required: 'Это поле обязательно для заполнения!' }}
                 outerStyles={styles.usernameInput}
             />
             <View style={styles.passwordInput}>
@@ -36,10 +36,10 @@ export default function FormMain({ control, watch }) {
                     name="password"
                     control={control}
                     rules={{
-                        required: 'Это поле обязательно для заполнения',
+                        required: 'Это поле обязательно для заполнения!',
                         minLength: {
                             value: 8,
-                            message: 'Пароль должен состоять из минимум 8 символов',
+                            message: 'Длина пароля должна быть не менее 8 символов!',
                         },
                     }}
                     secureTextEntry={passwordVisible}
@@ -62,7 +62,7 @@ export default function FormMain({ control, watch }) {
                     name="passwordRepeat"
                     control={control}
                     secureTextEntry={passwordVisible}
-                    rules={{ validate: (value) => value === password || 'Пароли не совпадают' }}
+                    rules={{ validate: (value) => value === password || 'Пароли не совпадают!' }}
                 />
                 <TouchableOpacity
                     style={styles.eyeButton}
@@ -76,6 +76,6 @@ export default function FormMain({ control, watch }) {
                     />
                 </TouchableOpacity>
             </View>
-        </KeyboardAvoidingView>
+        </>
     );
 }
