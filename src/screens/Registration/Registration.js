@@ -64,7 +64,6 @@ export default function Registration() {
                             text={isFirstFormFilled ? 'Готово!' : 'Далее'}
                             type="primary"
                             size="L"
-                            textColor="white"
                             onPress={handleSubmit((data) => {
                                 if (isFirstFormFilled) {
                                     sendData(data);

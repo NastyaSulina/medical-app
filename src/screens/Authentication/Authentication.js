@@ -101,7 +101,6 @@ export default function Authentication() {
                             text="Войти"
                             type="primary"
                             size="L"
-                            textColor="white"
                             onPress={handleSubmit(onSignInPressed)}
                         />
                     </View>
