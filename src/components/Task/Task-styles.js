@@ -4,12 +4,12 @@ import { COLORS } from '../../styles/globalStyles';
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        borderRadius: 16,
         paddingVertical: 16,
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 20,
         minWidth: '100%',
+        backgroundColor: COLORS.white,
     },
     taskInfo: {
         flexDirection: 'column',

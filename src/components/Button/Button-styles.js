@@ -6,9 +6,8 @@ const styles = StyleSheet.create({
         borderRadius: 12,
     },
     medium: {
-        maxWidth: 120,
+        minWidth: 116,
         paddingVertical: 12,
-        paddingHorizontal: 24,
     },
     large: {
         width: '100%',

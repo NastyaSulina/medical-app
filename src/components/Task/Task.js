@@ -15,9 +15,9 @@ const TASK_TEXT = {
     },
 };
 
-function Task({ taskName, type, isChecked, time }) {
+function Task({ taskName, type, isChecked, time, outerStyles }) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, outerStyles]}>
             <View style={styles.taskInfo}>
                 <Text>{taskName}</Text>
                 <View style={styles.timeInfo}>
