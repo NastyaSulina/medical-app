@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './TaskList-styles';
 import Task from '../Task/Task';
 
-function TaskList({ tasks, type }) {
+function TaskList({ tasks, type, date }) {
     return (
         <>
             {tasks
@@ -11,6 +11,8 @@ function TaskList({ tasks, type }) {
                     <Task
                         key={task.id}
                         type={type}
+                        id={task.id}
+                        date={date}
                         taskName={task.name}
                         isChecked={task.status}
                         time={task.time}

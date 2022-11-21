@@ -7,6 +7,6 @@ export default function App() {
     return (
         <Provider store={Store}>
             <Navigation />
-        </Provider>)
-        ;
+        </Provider>
+    );
 }

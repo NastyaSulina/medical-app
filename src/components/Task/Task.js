@@ -1,21 +1,15 @@
 import React from 'react';
 import { Image, View, Text } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { changeStatus } from '../../redux/actions';
 import Button from '../Button/Button';
+import TASK_TEXT from './Task-const';
 import ClockImage from '../../../assets/main-assets/clock.png';
 import styles from './Task-styles';
 
-const TASK_TEXT = {
-    symptom: {
-        true: 'Отмечено',
-        false: 'Отметить',
-    },
-    medicine: {
-        true: 'Принято',
-        false: 'Принять',
-    },
-};
+function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
+    const dispatch = useDispatch();
 
-function Task({ taskName, type, isChecked, time, outerStyles }) {
     return (
         <View style={[styles.container, outerStyles]}>
             <View style={styles.taskInfo}>
@@ -29,6 +23,7 @@ function Task({ taskName, type, isChecked, time, outerStyles }) {
                 text={TASK_TEXT[type][isChecked]}
                 type={isChecked ? 'checked' : 'primary'}
                 size="M"
+                onPress={() => dispatch(changeStatus({ id: id, date: date }))}
             />
         </View>
     );

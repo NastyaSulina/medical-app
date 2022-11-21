@@ -1,8 +1,11 @@
-export const SET_USER_EMAIL = 'SET_USER_EMAIL';
+export const CHANGE_TASK_STATUS = 'CHANGE_TASK_STATUS';
 
-export const setEmail = email => dispatch => {
-    dispatch({
-        type: SET_USER_EMAIL,
-        payload: email,
-    })
-}
+export const changeStatus = (data) => {
+    return {
+        type: CHANGE_TASK_STATUS,
+        payload: {
+            id: data.id,
+            date: data.date,
+        },
+    };
+};
