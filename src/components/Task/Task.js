@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, View, Text } from 'react-native';
 import Button from '../Button/Button';
-import ClockImage from '../../../assets/clock.png';
+import ClockImage from '../../../assets/main-assets/clock.png';
 import styles from './Task-styles';
 
 const TASK_TEXT = {
