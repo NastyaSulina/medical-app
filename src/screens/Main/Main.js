@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import styles from '../Main/Main-styles';
 import TaskList from '../../components/TaskList/TaskList';
 import Menu from '../../components/Menu/Menu';
+import CustomDatePicker from '../../components/CustomDatePicker/CustomDatePicker';
 
 function Main() {
     const { tasks, email } = useSelector((state) => state.userReducer);
@@ -14,6 +15,7 @@ function Main() {
     return (
         <SafeAreaView style={globalStyles.root}>
             <ScrollView centerContent contentContainerStyle={styles.container}>
+                <CustomDatePicker />
                 <View style={styles.content}>
                     <Text>{email}</Text>
                     <TaskList tasks={tasks[currDate]} type="medicine" date={currDate} />

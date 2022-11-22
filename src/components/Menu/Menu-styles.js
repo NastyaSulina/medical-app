@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: COLORS.gray,
-    }
+    },
 });
 
 export default styles;
