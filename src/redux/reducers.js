@@ -1,4 +1,4 @@
-import { CHANGE_TASK_STATUS } from './actions';
+import { CHANGE_TASK_STATUS, SET_USER_EMAIL } from './actions';
 
 const initialState = {
     tasks: {
@@ -17,14 +17,23 @@ const initialState = {
                 status: true,
                 time: '14:00',
             },
+            {
+                id: 3,
+                type: 'symptom',
+                name: 'Настроение',
+                status: false,
+                time: '15:00',
+            },
         ],
     },
 };
 
+const getNewState = (state) => JSON.parse(JSON.stringify(state));
+
 function userReducer(state = initialState, action) {
     switch (action.type) {
-        case CHANGE_TASK_STATUS:
-            const newState = JSON.parse(JSON.stringify(state));
+        case CHANGE_TASK_STATUS: {
+            const newState = getNewState(state);
 
             newState.tasks[action.payload.date].forEach((task) => {
                 if (task.id === action.payload.id) {
@@ -32,6 +41,13 @@ function userReducer(state = initialState, action) {
                 }
             });
             return newState;
+        }
+        case SET_USER_EMAIL: {
+            const newState = getNewState(state);
+
+            newState['email'] = action.payload;
+            return newState;
+        }
         default:
             return state;
     }
