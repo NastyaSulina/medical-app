@@ -21,8 +21,8 @@ function Main() {
                     <TaskList tasks={tasks[currDate]} type="medicine" date={currDate} />
                     <TaskList tasks={tasks[currDate]} type="symptom" date={currDate} />
                 </View>
-                <Menu />
             </ScrollView>
+            <Menu />
         </SafeAreaView>
     );
 }
