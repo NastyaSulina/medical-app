@@ -9,7 +9,20 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         minWidth: '100%',
         marginTop: 12,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
     },
+    icon: {
+        width: 28,
+        height: 28,
+    },
+    button: {
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: COLORS.gray,
+    }
 });
 
 export default styles;
