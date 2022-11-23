@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 32,
         textAlign: 'center',
+        fontFamily: 'interSemiBold',
     },
     forgotPasswordButton: {
         paddingTop: 2,
