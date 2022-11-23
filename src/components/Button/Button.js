@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import styles from './Button-styles';
-import { BUTTON_SIZE, TEXT_COLOR_STYLES, globalStyles } from '../../styles/globalStyles';
+import { BUTTON_SIZE, TEXT_COLOR_STYLES, TEXT_FONT, globalStyles } from '../../styles/globalStyles';
 
-function Button({ text, type, size, textColor, onPress, outerStyles }) {
+function Button({ text, type, size, textColor, textFont, onPress, outerStyles }) {
     return (
         <View>
             <TouchableOpacity
@@ -20,6 +20,7 @@ function Button({ text, type, size, textColor, onPress, outerStyles }) {
                         style={[
                             styles[`${type}TextColor`],
                             globalStyles[TEXT_COLOR_STYLES[textColor]],
+                            globalStyles[TEXT_FONT[textFont]],
                         ]}
                     >
                         {text}

@@ -13,7 +13,7 @@ function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
     return (
         <View style={[styles.container, outerStyles]}>
             <View style={styles.taskInfo}>
-                <Text>{taskName}</Text>
+                <Text style={styles.taskTitle}>{taskName}</Text>
                 <View style={styles.timeInfo}>
                     <Image style={styles.clockImage} source={ClockImage} resizeMode="contain" />
                     <Text style={styles.timeText}>{time}</Text>
@@ -23,6 +23,7 @@ function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
                 text={TASK_TEXT[type][isChecked]}
                 type={isChecked ? 'checked' : 'primary'}
                 size="M"
+                textFont="semiBold"
                 onPress={() => dispatch(changeStatus({ id: id, date: date }))}
             />
         </View>

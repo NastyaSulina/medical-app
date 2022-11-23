@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS } from '../../styles/globalStyles';
+import {COLORS} from '../../styles/globalStyles';
 
 const styles = StyleSheet.create({
     container: {
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     },
     registrationText: {
         color: COLORS.gray,
+        fontFamily: 'interMedium',
     },
     registrationButton: {
         paddingBottom: 8,

@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: COLORS.gray,
+        fontFamily: 'interMedium',
     },
 });
 

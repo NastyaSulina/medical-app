@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         padding: 16,
         paddingRight: 45,
         minWidth: '100%',
+        fontFamily: 'interRegular',
     },
     inputErrorBorder: {
         borderColor: COLORS.red,
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
     errorMessage: {
         fontSize: 13,
         paddingTop: 5,
+        fontFamily: 'interRegular',
     },
 });
 
