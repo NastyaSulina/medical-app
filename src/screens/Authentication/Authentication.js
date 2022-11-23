@@ -10,6 +10,8 @@ import {
     View,
     KeyboardAvoidingView,
 } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { setEmail } from '../../redux/actions';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
@@ -22,10 +24,12 @@ import styles from './Authentication-style';
 export default function Authentication() {
     const [passwordVisible, setPasswordVisible] = useState(true);
     const navigation = useNavigation();
+    const dispatch = useDispatch();
     const { control, handleSubmit } = useForm();
 
     const onSignInPressed = (data) => {
-        console.log(data);
+        dispatch(setEmail(data.email)); // temp
+        navigation.navigate('Main');
     };
     const onForgotPasswordPressed = () => {};
     const onRegistrationPressed = () => {
@@ -101,7 +105,6 @@ export default function Authentication() {
                             text="Войти"
                             type="primary"
                             size="L"
-                            textColor="white"
                             onPress={handleSubmit(onSignInPressed)}
                         />
                     </View>

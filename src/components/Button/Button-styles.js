@@ -6,9 +6,8 @@ const styles = StyleSheet.create({
         borderRadius: 12,
     },
     medium: {
-        width: 116,
+        minWidth: 116,
         paddingVertical: 12,
-        paddingHorizontal: 24,
     },
     large: {
         width: '100%',
@@ -19,11 +18,17 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.green,
         alignItems: 'center',
     },
+    primaryTextColor: {
+        color: COLORS.white,
+    },
     checked: {
         backgroundColor: 'transparent',
         borderWidth: 1,
         borderColor: COLORS.green,
         alignItems: 'center',
+    },
+    checkedTextColor: {
+        color: COLORS.green,
     },
     link: {
         backgroundColor: 'transparent',

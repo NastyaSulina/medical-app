@@ -1,0 +1,40 @@
+import { StyleSheet } from 'react-native';
+import { COLORS } from '../../styles/globalStyles';
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        borderRadius: 16,
+        paddingVertical: 16,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+        backgroundColor: COLORS.white,
+        minWidth: '100%',
+        shadowColor: '#212121',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.04,
+        shadowRadius: 3,
+    },
+    taskInfo: {
+        flexDirection: 'column',
+    },
+    timeText: {
+        color: COLORS.gray,
+        marginLeft: 6,
+    },
+    timeInfo: {
+        flexDirection: 'row',
+        marginTop: 12,
+        alignItems: 'center',
+    },
+    clockImage: {
+        width: 20,
+        height: 20,
+    },
+});
+
+export default styles;

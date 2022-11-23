@@ -16,7 +16,14 @@ function Button({ text, type, size, textColor, onPress, outerStyles }) {
                 ]}
             >
                 {Boolean(text) && (
-                    <Text style={globalStyles[TEXT_COLOR_STYLES[textColor]]}>{text}</Text>
+                    <Text
+                        style={[
+                            styles[`${type}TextColor`],
+                            globalStyles[TEXT_COLOR_STYLES[textColor]],
+                        ]}
+                    >
+                        {text}
+                    </Text>
                 )}
             </TouchableOpacity>
         </View>
