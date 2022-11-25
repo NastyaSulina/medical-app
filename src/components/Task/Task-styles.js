@@ -22,9 +22,13 @@ const styles = StyleSheet.create({
     taskInfo: {
         flexDirection: 'column',
     },
+    taskTitle: {
+        fontFamily: 'interMedium',
+    },
     timeText: {
         color: COLORS.gray,
         marginLeft: 6,
+        fontFamily: 'interMedium',
     },
     timeInfo: {
         flexDirection: 'row',

@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
         marginBottom: 13,
         marginTop: 43,
         textAlign: 'center',
+        fontFamily: 'interSemiBold',
     },
     authenticationInvite: {
         flexDirection: 'row',
@@ -55,6 +56,7 @@ const styles = StyleSheet.create({
     },
     authenticationText: {
         color: COLORS.gray,
+        fontFamily: 'interMedium',
     },
 });
 

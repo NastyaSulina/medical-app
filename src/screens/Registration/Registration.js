@@ -55,6 +55,7 @@ export default function Registration() {
                                 text="Войти!"
                                 type="link"
                                 textColor="green"
+                                textFont="semiBold"
                                 outerStyles={styles.registrationButton}
                                 onPress={onAuthenticationPressed}
                             />
@@ -64,6 +65,7 @@ export default function Registration() {
                             text={isFirstFormFilled ? 'Готово!' : 'Далее'}
                             type="primary"
                             size="L"
+                            textFont="semiBold"
                             onPress={handleSubmit((data) => {
                                 if (isFirstFormFilled) {
                                     sendData(data);

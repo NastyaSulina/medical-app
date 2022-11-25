@@ -22,6 +22,13 @@ export const TEXT_COLOR_STYLES = {
     gray: 'grayTextColor',
 };
 
+export const TEXT_FONT = {
+    regular: 'regularFontWeight',
+    medium: 'mediumFontWeight',
+    semiBold: 'semiBoldFontWeight',
+    extraBold: 'extraBoldFontWeight',
+};
+
 export const globalStyles = StyleSheet.create({
     blackTextColor: {
         color: COLORS.black,
@@ -37,6 +44,18 @@ export const globalStyles = StyleSheet.create({
     },
     redTextColor: {
         color: COLORS.red,
+    },
+    regularFontWeight: {
+        fontFamily: 'interRegular',
+    },
+    mediumFontWeight: {
+        fontFamily: 'interMedium',
+    },
+    semiBoldFontWeight: {
+        fontFamily: 'interSemiBold',
+    },
+    extraBoldFontWeight: {
+        fontFamily: 'interExtraBold',
     },
     root: {
         backgroundColor: '#F5F7FB',

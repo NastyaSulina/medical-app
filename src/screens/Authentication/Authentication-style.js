@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 32,
         textAlign: 'center',
+        fontFamily: 'interSemiBold',
     },
     forgotPasswordButton: {
         paddingTop: 2,
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
     },
     registrationText: {
         color: COLORS.gray,
+        fontFamily: 'interMedium',
     },
     registrationButton: {
         paddingBottom: 8,

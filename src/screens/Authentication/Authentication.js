@@ -87,6 +87,7 @@ export default function Authentication() {
                             text="Забыли пароль?"
                             type="link"
                             textColor="gray"
+                            textFont="medium"
                             outerStyles={styles.forgotPasswordButton}
                             onPress={onForgotPasswordPressed}
                         />
@@ -95,6 +96,7 @@ export default function Authentication() {
                             <Button
                                 text="Зарегистрируйтесь!"
                                 type="link"
+                                textFont="semiBold"
                                 textColor="green"
                                 outerStyles={styles.registrationButton}
                                 onPress={onRegistrationPressed}
@@ -104,6 +106,7 @@ export default function Authentication() {
                         <Button
                             text="Войти"
                             type="primary"
+                            textFont="semiBold"
                             size="L"
                             onPress={handleSubmit(onSignInPressed)}
                         />

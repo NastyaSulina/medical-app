@@ -17,6 +17,9 @@ function CustomDatePicker() {
                 textDayFontSize: 14,
                 textMonthFontSize: 14,
                 textDayHeaderFontSize: 14,
+                textDayFontFamily: 'interMedium',
+                textMonthFontFamily: 'interMedium',
+                textDayHeaderFontFamily: 'interMedium',
             }}
         />
     );
