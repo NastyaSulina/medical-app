@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     taskTitle: {
-      fontFamily: 'interMedium',
+        fontFamily: 'interMedium',
     },
     timeText: {
         color: COLORS.gray,
