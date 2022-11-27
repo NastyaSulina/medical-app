@@ -6,13 +6,18 @@ import styles from './Container-styles';
 function Container({ fields }) {
     return (
         <View style={styles.container}>
-            {fields.map((field) => (
+            {fields.map((field, index) => (
                 <ContainerField
                     key={field.id}
                     id={field.id}
                     type={field.type}
                     name={field.name}
                     property={field.property}
+                    outerStyles={[
+                        index !== fields.length - 1 ? styles.borderBottom : null,
+                        styles.field,
+                        field.type === 'input' ? styles.flexStart : styles.spaceBetween,
+                    ]}
                 />
             ))}
         </View>

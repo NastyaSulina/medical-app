@@ -11,6 +11,20 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginBottom: 24,
     },
+    field: {
+        paddingVertical: 20,
+        flexDirection: 'row',
+    },
+    borderBottom: {
+        borderBottomColor: COLORS.lightGray,
+        borderBottomWidth: 0.5,
+    },
+    flexStart: {
+        justifyContent: 'flex-start',
+    },
+    spaceBetween: {
+        justifyContent: 'space-between',
+    },
 });
 
 export default styles;

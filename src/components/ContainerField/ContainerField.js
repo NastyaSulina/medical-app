@@ -6,15 +6,9 @@ import SmallArrow from '../../../assets/profile-assets/smallArrow.png';
 import Switcher from '../../../assets/profile-assets/Switch.png';
 import Button from '../Button/Button';
 
-function ContainerField({ type, name, property, id }) {
+function ContainerField({ type, name, property, outerStyles }) {
     return (
-        <View
-            style={[
-                styles.field,
-                id === 3 || id === 7 || id === 8 ? null : styles.borderBottom,
-                type !== 'input' ? styles.spaceBetween : styles.flexStart,
-            ]}
-        >
+        <View style={outerStyles}>
             <Text style={type === 'input' ? styles.grayText : styles.blackText}>{name}</Text>
             {Boolean(property) && <Text style={styles.blackText}>{property}</Text>}
             {type !== 'input' && (

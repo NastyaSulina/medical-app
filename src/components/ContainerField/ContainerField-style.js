@@ -2,20 +2,6 @@ import { StyleSheet } from 'react-native';
 import { COLORS } from '../../styles/globalStyles';
 
 const styles = StyleSheet.create({
-    field: {
-        paddingVertical: 20,
-        flexDirection: 'row',
-    },
-    borderBottom: {
-        borderBottomColor: COLORS.lightGray,
-        borderBottomWidth: 0.5,
-    },
-    flexStart: {
-        justifyContent: 'flex-start',
-    },
-    spaceBetween: {
-        justifyContent: 'space-between',
-    },
     grayText: {
         color: COLORS.gray,
         fontFamily: 'interMedium',
