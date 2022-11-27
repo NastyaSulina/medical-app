@@ -4,19 +4,19 @@ const ProfileFields = {
             id: 1,
             type: 'input',
             name: 'Почта',
-            property: 'sonelex123@gmail.com'
+            property: 'sonelex123@gmail.com',
         },
         {
             id: 2,
             type: 'input',
             name: 'Рост',
-            property: '165'
+            property: '165',
         },
         {
             id: 3,
             type: 'input',
             name: 'Вес',
-            property: '50'
+            property: '50',
         },
     ],
     funcFields: [
@@ -24,13 +24,11 @@ const ProfileFields = {
             id: 4,
             type: 'switcher',
             name: 'Уведомления',
-            property: true
         },
         {
             id: 5,
             type: 'switcher',
             name: 'Сортировать отмеченное',
-            property: true
         },
         {
             id: 6,
@@ -49,7 +47,7 @@ const ProfileFields = {
             type: 'exit',
             name: 'Выйти',
         },
-    ]
-}
+    ],
+};
 
 export default ProfileFields;

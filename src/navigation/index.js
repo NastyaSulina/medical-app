@@ -11,14 +11,11 @@ function Navigation() {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator
-                initialRouteName="Profile"
-                screenOptions={{ headerShown: false }}
-            >
+            <Stack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Authentication" component={Authentication} />
                 <Stack.Screen name="Registration" component={Registration} />
                 <Stack.Screen name="Main" component={Main} />
-                <Stack.Screen name="Profile" component={Profile}/>
+                <Stack.Screen name="Profile" component={Profile} />
             </Stack.Navigator>
         </NavigationContainer>
     );

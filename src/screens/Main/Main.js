@@ -8,7 +8,7 @@ import styles from './Main-styles';
 import TaskList from '../../components/TaskList/TaskList';
 import Menu from '../../components/Menu/Menu';
 import CustomDatePicker from '../../components/CustomDatePicker/CustomDatePicker';
-import Button from "../../components/Button/Button";
+import Button from '../../components/Button/Button';
 
 function Main() {
     const { tasks, email } = useSelector((state) => state.userReducer);
@@ -23,10 +23,7 @@ function Main() {
             <ScrollView centerContent contentContainerStyle={styles.container}>
                 <CustomDatePicker />
                 <View style={styles.content}>
-                    <Button text={email}
-                            type="link"
-                            onPress={handleProfilePressed}
-                    />
+                    <Button text={email} type="link" onPress={handleProfilePressed} />
                     <TaskList tasks={tasks[currDate]} type="medicine" date={currDate} />
                     <TaskList tasks={tasks[currDate]} type="symptom" date={currDate} />
                 </View>

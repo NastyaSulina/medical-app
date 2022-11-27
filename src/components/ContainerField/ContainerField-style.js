@@ -1,21 +1,42 @@
 import { StyleSheet } from 'react-native';
-import {COLORS} from "../../styles/globalStyles";
+import { COLORS } from '../../styles/globalStyles';
 
 const styles = StyleSheet.create({
-    input: {
-        paddingBottom: 20,
-        borderBottomColor: COLORS.lightGray,
-        borderBottomWidth: 0.5,
+    field: {
+        paddingVertical: 20,
         flexDirection: 'row',
     },
-    nameText: {
+    borderBottom: {
+        borderBottomColor: COLORS.lightGray,
+        borderBottomWidth: 0.5,
+    },
+    flexStart: {
+        justifyContent: 'flex-start',
+    },
+    spaceBetween: {
+        justifyContent: 'space-between',
+    },
+    grayText: {
         color: COLORS.gray,
         fontFamily: 'interMedium',
         marginRight: 20,
     },
-    propText: {
+    blackText: {
         color: COLORS.black,
         fontFamily: 'interMedium',
+        marginRight: 20,
+    },
+    exitIcon: {
+        width: 20,
+        height: 20,
+    },
+    smallArrow: {
+        width: 24,
+        height: 24,
+    },
+    switcherIcon: {
+        width: 48,
+        height: 28,
     },
 });
 

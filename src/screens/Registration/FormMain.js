@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import Input from '../../components/Input/Input';
 import styles from './Registration-styles';
 
-export default function FormMain({control, watch}) {
+export default function FormMain({ control, watch }) {
     const password = watch('password');
     return (
         <>
@@ -24,7 +24,7 @@ export default function FormMain({control, watch}) {
                 placeholderText="Введите логин"
                 name="username"
                 control={control}
-                rules={{required: 'Это поле обязательно для заполнения!'}}
+                rules={{ required: 'Это поле обязательно для заполнения!' }}
                 outerStyles={styles.usernameInput}
             />
             <Input
@@ -45,7 +45,7 @@ export default function FormMain({control, watch}) {
                 placeholderText="Повторите пароль"
                 name="passwordRepeat"
                 control={control}
-                rules={{validate: (value) => value === password || 'Пароли не совпадают!'}}
+                rules={{ validate: (value) => value === password || 'Пароли не совпадают!' }}
                 outerStyles={styles.passwordInput}
                 isSecretField
             />

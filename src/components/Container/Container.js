@@ -1,12 +1,11 @@
-import React from "react";
-import {View} from "react-native";
-import ContainerField from "../ContainerField/ContainerField";
+import React from 'react';
+import { View } from 'react-native';
+import ContainerField from '../ContainerField/ContainerField';
 import styles from './Container-styles';
 
-
-function Container({fields}) {
+function Container({ fields }) {
     return (
-        <View style={styles.container} >
+        <View style={styles.container}>
             {fields.map((field) => (
                 <ContainerField
                     key={field.id}
