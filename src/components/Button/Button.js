@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './Button-styles';
 import { BUTTON_SIZE, TEXT_COLOR_STYLES, TEXT_FONT, globalStyles } from '../../styles/globalStyles';
 
-function Button({ text, type, size, textColor, textFont, onPress, outerStyles }) {
+function Button({ text, type, size, textColor, textFont, onPress, outerStyles, iconSource, iconStyles }) {
     return (
         <View>
             <TouchableOpacity
@@ -15,6 +15,9 @@ function Button({ text, type, size, textColor, textFont, onPress, outerStyles })
                     outerStyles,
                 ]}
             >
+                {Boolean(iconSource) && (
+                    <Image style={iconStyles} source={iconSource} resizeMode="contain" />
+                )}
                 {Boolean(text) && (
                     <Text
                         style={[

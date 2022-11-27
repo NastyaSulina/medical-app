@@ -11,7 +11,7 @@ function Navigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName="Authentication"
+                initialRouteName="Main"
                 screenOptions={{ headerShown: false }}
             >
                 <Stack.Screen name="Authentication" component={Authentication} />

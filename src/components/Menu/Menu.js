@@ -1,25 +1,20 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import {View} from 'react-native';
 import styles from './Menu-styles';
 import ArchiveImage from '../../../assets/menu-assets/archive.png';
 import ScheduleImage from '../../../assets/menu-assets/schedule.png';
 import ReportImage from '../../../assets/menu-assets/report.png';
+import Button from "../Button/Button";
 
 function Menu() {
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.button} activeOpacity={1}>
-                <Image style={styles.icon} source={ArchiveImage} resizeMode="contain" />
-                <Text style={styles.buttonText}>Архив</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} activeOpacity={1}>
-                <Image style={styles.icon} source={ScheduleImage} resizeMode="contain" />
-                <Text style={styles.buttonText}>Главная</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} activeOpacity={1}>
-                <Image style={styles.icon} source={ReportImage} resizeMode="contain" />
-                <Text style={styles.buttonText}>Отчет</Text>
-            </TouchableOpacity>
+            <Button iconSource={ArchiveImage} iconStyles={styles.icon} text="Архив" outerStyles={styles.button}
+                    textColor="gray" textFont="medium"/>
+            <Button iconSource={ScheduleImage} iconStyles={styles.icon} text="Главная" outerStyles={styles.button}
+                    textColor="gray" textFont="medium"/>
+            <Button iconSource={ReportImage} iconStyles={styles.icon} text="Отчет" outerStyles={styles.button}
+                    textColor="gray" textFont="medium"/>
         </View>
     );
 }

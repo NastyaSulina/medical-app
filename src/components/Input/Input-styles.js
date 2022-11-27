@@ -22,6 +22,17 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         fontFamily: 'interRegular',
     },
+    eyeButton: {
+        position: 'absolute',
+        right: 5,
+        bottom: 0,
+        width: 35,
+        height: 35,
+    },
+    eyeImage: {
+        width: 24,
+        height: 24,
+    },
 });
 
 export default styles;

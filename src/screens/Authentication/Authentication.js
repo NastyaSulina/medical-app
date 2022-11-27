@@ -1,37 +1,34 @@
-import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { useForm } from 'react-hook-form';
+import React from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {useForm} from 'react-hook-form';
 import {
     Image,
     Platform,
     ScrollView,
     Text,
-    TouchableOpacity,
     View,
     KeyboardAvoidingView,
 } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { setEmail } from '../../redux/actions';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {useDispatch} from 'react-redux';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {setEmail} from '../../redux/actions';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Logo from '../../../assets/logo.png';
-import EyeImage from '../../../assets/auth-assets/eye.png';
-import EyeImageClosed from '../../../assets/auth-assets/eye_closed.png';
-import { globalStyles } from '../../styles/globalStyles';
+import {globalStyles} from '../../styles/globalStyles';
 import styles from './Authentication-style';
 
 export default function Authentication() {
-    const [passwordVisible, setPasswordVisible] = useState(true);
     const navigation = useNavigation();
     const dispatch = useDispatch();
-    const { control, handleSubmit } = useForm();
+    const {control, handleSubmit} = useForm();
 
     const onSignInPressed = (data) => {
         dispatch(setEmail(data.email)); // temp
         navigation.navigate('Main');
     };
-    const onForgotPasswordPressed = () => {};
+    const onForgotPasswordPressed = () => {
+    };
     const onRegistrationPressed = () => {
         navigation.navigate('Registration');
     };
@@ -41,7 +38,7 @@ export default function Authentication() {
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
                 <ScrollView centerContent contentContainerStyle={styles.container}>
                     <View style={styles.content}>
-                        <Image style={styles.logo} source={Logo} resizeMode="contain" />
+                        <Image style={styles.logo} source={Logo} resizeMode="contain"/>
                         <Text style={styles.text}>Вход в 120/80</Text>
 
                         <Input
@@ -56,32 +53,20 @@ export default function Authentication() {
                             }}
                             placeholderText="Введите почту"
                         />
-                        <View style={styles.passwordInput}>
-                            <Input
-                                name="password"
-                                control={control}
-                                rules={{
-                                    required: 'Это поле обязательно для заполнения!',
-                                    minLength: {
-                                        value: 8,
-                                        message: 'Длина пароля должна быть не менее 8 символов!',
-                                    },
-                                }}
-                                placeholderText="Введите пароль"
-                                secureTextEntry={passwordVisible}
-                            />
-                            <TouchableOpacity
-                                style={styles.eyeButton}
-                                activeOpacity={1}
-                                onPress={() => setPasswordVisible(!passwordVisible)}
-                            >
-                                <Image
-                                    style={styles.eyeImage}
-                                    source={passwordVisible ? EyeImageClosed : EyeImage}
-                                    resizeMode="contain"
-                                />
-                            </TouchableOpacity>
-                        </View>
+                        <Input
+                            name="password"
+                            control={control}
+                            outerStyles={styles.passwordInput}
+                            rules={{
+                                required: 'Это поле обязательно для заполнения!',
+                                minLength: {
+                                    value: 8,
+                                    message: 'Длина пароля должна быть не менее 8 символов!',
+                                },
+                            }}
+                            placeholderText="Введите пароль"
+                            isSecretField
+                        />
 
                         <Button
                             text="Забыли пароль?"
