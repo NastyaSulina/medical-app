@@ -23,6 +23,14 @@ const styles = StyleSheet.create({
       marginBottom: 5,
       backgroundColor: COLORS.yellow,
     },
+    login: {
+        fontSize: 20,
+        fontFamily: 'interMedium',
+        color: COLORS.black
+    },
+    containers: {
+
+    }
 });
 
 export default styles;
