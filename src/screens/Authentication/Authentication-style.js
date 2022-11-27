@@ -19,20 +19,9 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginBottom: 20,
     },
-    eyeButton: {
-        position: 'absolute',
-        right: 5,
-        top: 14,
-        width: 35,
-        height: 35,
-    },
-    eyeImage: {
-        width: 24,
-        height: 24,
-    },
     passwordInput: {
         width: '100%',
-        marginVertical: 10,
+        marginTop: 10,
     },
     text: {
         color: COLORS.black,
@@ -42,7 +31,7 @@ const styles = StyleSheet.create({
         fontFamily: 'interSemiBold',
     },
     forgotPasswordButton: {
-        paddingTop: 2,
+        paddingTop: 12,
         paddingBottom: 16,
     },
     registrationInvite: {

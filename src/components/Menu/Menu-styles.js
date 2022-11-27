@@ -28,10 +28,6 @@ const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
     },
-    buttonText: {
-        color: COLORS.gray,
-        fontFamily: 'interMedium',
-    },
 });
 
 export default styles;

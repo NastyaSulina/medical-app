@@ -17,17 +17,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginBottom: 48,
     },
-    eyeButton: {
-        position: 'absolute',
-        right: 5,
-        top: 14,
-        width: 35,
-        height: 35,
-    },
-    eyeImage: {
-        width: 24,
-        height: 24,
-    },
     passwordInput: {
         width: '100%',
         marginTop: 10,
