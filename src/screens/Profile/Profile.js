@@ -7,7 +7,7 @@ import styles from './Profile-styles';
 import Button from "../../components/Button/Button";
 import Arrow from '../../../assets/profile-assets/arrow-left.png';
 import Edit from '../../../assets/profile-assets/edit.png';
-import ContainerField from "../../components/ContainerField/ContainerField";
+import ProfileFields from './ProfileFields';
 
 export default function Profile() {
     const navigation = useNavigation();
@@ -33,9 +33,9 @@ export default function Profile() {
                 />
             </View>
             <View style={styles.containers}>
-                <Container/>
-                <Container/>
-                <Container/>
+                <Container fields={ProfileFields.infoFields}/>
+                <Container fields={ProfileFields.funcFields}/>
+                <Container fields={ProfileFields.exitFields}/>
             </View>
         </SafeAreaView>
     );

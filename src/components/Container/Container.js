@@ -4,13 +4,18 @@ import ContainerField from "../ContainerField/ContainerField";
 import styles from './Container-styles';
 
 
-function Container() {
+function Container({fields}) {
     return (
         <View style={styles.container} >
-            <ContainerField
-                name="Aboba"
-                property="12345"
-            />
+            {fields.map((field) => (
+                <ContainerField
+                    key={field.id}
+                    id={field.id}
+                    type={field.type}
+                    name={field.name}
+                    property={field.property}
+                />
+            ))}
         </View>
     );
 }
