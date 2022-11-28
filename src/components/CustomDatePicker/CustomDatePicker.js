@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { Image } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import theme from './CustomDatePicker-styles';
+import ArrowImageLeft from '../../../assets/main-assets/leftArrow.png';
+import ArrowImageRight from '../../../assets/main-assets/rightArrow.png';
 
 function CustomDatePicker() {
     LocaleConfig.locales.ru = {
@@ -49,16 +52,21 @@ function CustomDatePicker() {
     const initDate = new Date();
     const [selected, setSelected] = useState(initDate);
     return (
-
         <Calendar
-            initialDate={ selected }
+            initialDate={selected}
             onDayPress={(day) => {
                 setSelected(day.dateString);
             }}
             minDate="2022-05-30"
             maxDate="2024-05-30"
             firstDay={1}
-            hideArrows
+            renderArrow={(direction) => (
+                <Image
+                    style={{ width: 24, height: 24 }}
+                    source={direction === 'left' ? ArrowImageLeft : ArrowImageRight}
+                    resizeMode="contain"
+                />
+            )}
             theme={theme}
         />
     );
