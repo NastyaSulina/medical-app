@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
         width: 48,
         height: 28,
     },
+    switcher: {
+        height: 22,
+    },
 });
 
 export default styles;
