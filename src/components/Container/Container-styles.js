@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     },
     spaceBetween: {
         justifyContent: 'space-between',
+        flexWrap: 'wrap',
     },
 });
 

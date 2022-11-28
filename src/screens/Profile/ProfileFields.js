@@ -18,32 +18,44 @@ const ProfileFields = {
             name: 'Вес',
             property: '50',
         },
+        {
+            id: 4,
+            type: 'dropDownList',
+            name: 'Аллергии',
+            property:
+                'Укусы насекомых\n' + 'Пыльца\n' + 'Спреи от насекомых\n' + 'Солнцезащитные кремы',
+        },
+        {
+            id: 5,
+            type: 'dropDownList',
+            name: 'Хронические заболевания',
+        },
     ],
     funcFields: [
         {
-            id: 4,
+            id: 6,
             type: 'switcher',
             name: 'Уведомления',
         },
         {
-            id: 5,
+            id: 7,
             type: 'switcher',
             name: 'Сортировать отмеченное',
         },
         {
-            id: 6,
-            type: 'dropDownList',
+            id: 8,
+            type: 'link',
             name: 'Рассказать другу',
         },
         {
-            id: 7,
-            type: 'dropDownList',
+            id: 9,
+            type: 'link',
             name: 'О приложении',
         },
     ],
     exitFields: [
         {
-            id: 8,
+            id: 10,
             type: 'exit',
             name: 'Выйти',
         },

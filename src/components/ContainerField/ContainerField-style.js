@@ -27,6 +27,12 @@ const styles = StyleSheet.create({
     switcher: {
         height: 22,
     },
+    dropDown: {
+        width: '100%',
+        color: COLORS.gray,
+        fontFamily: 'interMedium',
+        marginTop: 12,
+    },
 });
 
 export default styles;
