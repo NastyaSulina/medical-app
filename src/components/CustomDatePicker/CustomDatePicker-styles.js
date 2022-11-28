@@ -19,6 +19,12 @@ const theme = {
             flexDirection: 'row',
             justifyContent: 'space-around',
         },
+        header: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginBottom: 8,
+            alignItems: 'center',
+        },
     },
     'stylesheet.day.basic': {
         base: {
@@ -36,6 +42,7 @@ const theme = {
     'stylesheet.calendar.main': {
         container: {
             padding: 20,
+            paddingTop: 10,
             backgroundColor: COLORS.white,
             borderRadius: 16,
             fontFamily: 'interMedium',
@@ -54,6 +61,6 @@ const theme = {
             alignItems: 'center',
         },
     },
-}
+};
 
 export default theme;
