@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         paddingBottom: 34,
         backgroundColor: COLORS.white,
         borderRadius: 16,
-        minWidth: '90%',
+        maxWidth: '90%',
         width: '100%',
         shadowColor: '#212121',
         shadowOffset: {
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
     },
     day: {
         fontFamily: 'interMedium',
-        display: 'flex',
+        paddingTop: 10,
         width: 40,
         height: 40,
         alignItems: 'center',
@@ -48,6 +48,8 @@ export const styles = StyleSheet.create({
     selectedDay: {
         backgroundColor: '#1CBE8E1F',
         borderRadius: 12,
+    },
+    selectedDayText: {
         color: COLORS.black,
     },
     today: {
@@ -60,7 +62,7 @@ export const styles = StyleSheet.create({
 
 export const theme = {
     selectedDayBackgroundColor: '#1CBE8E1F',
-    selectedDayTextColor: COLORS.black,
+    selectedDayTextColor: COLORS.green,
     textDayFontSize: 14,
     textMonthFontSize: 14,
     todayTextColor: COLORS.green,
