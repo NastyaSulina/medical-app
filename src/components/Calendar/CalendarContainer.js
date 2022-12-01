@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Image } from 'react-native';
-import { Calendar, LocaleConfig } from 'react-native-calendars';
-import theme from './CustomDatePicker-styles';
-import ArrowImageLeft from '../../../assets/main-assets/leftArrow.png';
-import ArrowImageRight from '../../../assets/main-assets/rightArrow.png';
+import { LocaleConfig } from 'react-native-calendars';
+import ArrowImageDown from '../../../assets/main-assets/downArrow.png';
+import ArrowImageUp from '../../../assets/main-assets/upArrow.png';
+import Button from '../Button/Button';
+import CalendarFull from './CalendarFull';
+import CalendarShort from './CalendarShort';
 
-function CustomDatePicker() {
+function CalendarContainer() {
     LocaleConfig.locales.ru = {
         monthNames: [
             'Январь',
@@ -49,27 +50,26 @@ function CustomDatePicker() {
     };
     LocaleConfig.defaultLocale = 'ru';
 
-    const initDate = new Date();
-    const [selected, setSelected] = useState(initDate);
+    const [isFullCalendarView, setFullCalendarView] = useState(false);
+    const getCalendar = () => {
+        if (isFullCalendarView) {
+            return <CalendarFull />;
+        }
+        return <CalendarShort />;
+    };
     return (
-        <Calendar
-            initialDate={selected}
-            onDayPress={(day) => {
-                setSelected(day.dateString);
-            }}
-            minDate="2022-05-30"
-            maxDate="2024-05-30"
-            firstDay={1}
-            renderArrow={(direction) => (
-                <Image
-                    style={{ width: 24, height: 24 }}
-                    source={direction === 'left' ? ArrowImageLeft : ArrowImageRight}
-                    resizeMode="contain"
-                />
-            )}
-            theme={theme}
-        />
+        <>
+            {getCalendar()}
+            <Button
+                iconSource={isFullCalendarView ? ArrowImageUp : ArrowImageDown}
+                iconStyles={{ width: 24, height: 24 }}
+                outerStyles={{ position: 'absolute', bottom: 8, alignSelf: 'center' }}
+                onPress={() => {
+                    setFullCalendarView(!isFullCalendarView);
+                }}
+            />
+        </>
     );
 }
 
-export default CustomDatePicker;
+export default CalendarContainer;

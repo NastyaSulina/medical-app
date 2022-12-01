@@ -7,7 +7,7 @@ import { globalStyles } from '../../styles/globalStyles';
 import styles from './Main-styles';
 import TaskList from '../../components/TaskList/TaskList';
 import Menu from '../../components/Menu/Menu';
-import CustomDatePicker from '../../components/CustomDatePicker/CustomDatePicker';
+import CalendarContainer from '../../components/Calendar/CalendarContainer';
 import Button from '../../components/Button/Button';
 
 function Main() {
@@ -21,7 +21,7 @@ function Main() {
     return (
         <SafeAreaView style={globalStyles.root}>
             <ScrollView centerContent contentContainerStyle={styles.container}>
-                <CustomDatePicker />
+                <CalendarContainer />
                 <View style={styles.content}>
                     <Button text={email} type="link" onPress={handleProfilePressed} />
                     <TaskList tasks={tasks[currDate]} type="medicine" date={currDate} />

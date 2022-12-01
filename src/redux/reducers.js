@@ -1,6 +1,8 @@
-import { CHANGE_TASK_STATUS, SET_USER_EMAIL } from './actions';
+import {CHANGE_TASK_STATUS, SET_SELECTED_DATE, SET_USER_EMAIL} from './actions';
+import {getFormattedDate} from "../common/dateFormatter";
 
 const initialState = {
+    selectedDate: getFormattedDate(),
     tasks: {
         '23/11/2022': [
             {
@@ -87,7 +89,13 @@ function userReducer(state = initialState, action) {
         case SET_USER_EMAIL: {
             const newState = getNewState(state);
 
-            newState['email'] = action.payload;
+            newState.email = action.payload;
+            return newState;
+        }
+        case SET_SELECTED_DATE: {
+            const newState = getNewState(state);
+
+            newState.selectedDate = action.payload;
             return newState;
         }
         default:
