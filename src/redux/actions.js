@@ -1,5 +1,6 @@
 export const CHANGE_TASK_STATUS = 'CHANGE_TASK_STATUS';
 export const SET_USER_EMAIL = 'SET_USER_EMAIL';
+export const SET_SELECTED_DATE = 'SET_SELECTED_DATE';
 
 export const changeStatus = (data) => {
     return {
@@ -15,5 +16,12 @@ export const setEmail = (email) => {
     return {
         type: SET_USER_EMAIL,
         payload: email,
+    };
+};
+
+export const setSelectedDate = (date) => {
+    return {
+        type: SET_SELECTED_DATE,
+        payload: date,
     };
 };
