@@ -13,6 +13,7 @@ function Button({
     outerStyles,
     iconSource,
     iconStyles,
+    textOuterStyles
 }) {
     return (
         <View>
@@ -34,6 +35,7 @@ function Button({
                             styles[`${type}TextColor`],
                             globalStyles[TEXT_COLOR_STYLES[textColor]],
                             globalStyles[TEXT_FONT[textFont]],
+                            textOuterStyles
                         ]}
                     >
                         {text}
