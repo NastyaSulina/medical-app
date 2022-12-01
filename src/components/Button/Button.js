@@ -3,7 +3,7 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './Button-styles';
 import { BUTTON_SIZE, TEXT_COLOR_STYLES, TEXT_FONT, globalStyles } from '../../styles/globalStyles';
 
-function Button({ text, type, size, textColor, textFont, onPress, outerStyles, iconSource, iconStyles }) {
+function Button({ text, type, size, textColor, textFont, onPress, outerStyles, iconSource, iconStyles, textOuterStyles }) {
     return (
         <View>
             <TouchableOpacity
@@ -24,6 +24,7 @@ function Button({ text, type, size, textColor, textFont, onPress, outerStyles, i
                             styles[`${type}TextColor`],
                             globalStyles[TEXT_COLOR_STYLES[textColor]],
                             globalStyles[TEXT_FONT[textFont]],
+                            textOuterStyles
                         ]}
                     >
                         {text}
