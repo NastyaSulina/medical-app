@@ -46,11 +46,12 @@ function CalendarShort() {
                             dispatch(setSelectedDate(day.dayFull));
                         }}
                         text={day.dayShort}
+                        outerStyles={day.dayFull === selectedDate && styles.selectedDay}
                         textOuterStyles={[
                             styles.day,
                             !day.isSelectedMonth && styles.otherMonthDay,
                             day.dayFull === getFormattedDate() && styles.today,
-                            day.dayFull === selectedDate && styles.selectedDay,
+                            day.dayFull === selectedDate && styles.selectedDayText
                         ]}
                     />
                 ))}
