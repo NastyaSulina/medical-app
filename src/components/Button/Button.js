@@ -3,11 +3,12 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from './Button-styles';
 import { BUTTON_SIZE, TEXT_COLOR_STYLES, TEXT_FONT, globalStyles } from '../../styles/globalStyles';
 
-function Button({ text, type, size, textColor, textFont, onPress, outerStyles, iconSource, iconStyles, textOuterStyles }) {
+function Button({ text, type, size, textColor, textFont, opacity, onPress, outerStyles, iconSource, iconStyles, textOuterStyles }) {
     return (
         <View>
             <TouchableOpacity
                 onPress={onPress}
+                activeOpacity={opacity}
                 style={[
                     size ? styles[BUTTON_SIZE[size]] : styles.defaultSize,
                     styles[type],

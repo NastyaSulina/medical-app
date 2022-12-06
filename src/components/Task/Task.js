@@ -24,6 +24,7 @@ function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
                 type={isChecked ? 'checked' : 'primary'}
                 size="M"
                 textFont="semiBold"
+                opacity= {0.6}
                 onPress={() => dispatch(changeStatus({ id: id, date: date }))}
             />
         </View>

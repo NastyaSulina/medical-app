@@ -31,6 +31,7 @@ function Input({control, name, rules = {}, placeholderText, outerStyles, isSecre
                     />
                     {isSecretField && (
                         <Button outerStyles={styles.eyeButton}
+                                opacity={1}
                                 onPress={() => setSecureText(!secureText)}
                                 iconStyles={styles.eyeImage}
                                 iconSource={secureText ? EyeImage : EyeImageClosed}/>
