@@ -23,7 +23,10 @@ function Main() {
             <ScrollView centerContent contentContainerStyle={styles.container}>
                 <CalendarContainer />
                 <View style={styles.content}>
-                    <Button text={email} type="link" onPress={handleProfilePressed} />
+                    <Button text={email}
+                            type="link"
+                            onPress={handleProfilePressed}
+                    />
                     <TaskList tasks={tasks[currDate]} type="medicine" date={currDate} />
                     <TaskList tasks={tasks[currDate]} type="symptom" date={currDate} />
                 </View>
