@@ -2,6 +2,8 @@ import {CHANGE_TASK_STATUS, SET_SELECTED_DATE, SET_USER_EMAIL} from './actions';
 import {getFormattedDate} from "../common/dateFormatter";
 
 const initialState = {
+    email: "sonelex123@gmail.com",
+    userName: "Сонечка",
     selectedDate: getFormattedDate(),
     tasks: {
         '23/11/2022': [
