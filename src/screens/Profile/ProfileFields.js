@@ -1,29 +1,19 @@
 const ProfileFields = {
     funcFields: [
         {
-            id: 6,
+            id: 3,
             type: 'switcher',
             name: 'Уведомления',
         },
         {
-            id: 7,
-            type: 'switcher',
-            name: 'Сортировать отмеченное',
-        },
-        {
-            id: 8,
+            id: 4,
             type: 'link',
-            name: 'Рассказать другу',
-        },
-        {
-            id: 9,
-            type: 'link',
-            name: 'О приложении',
-        },
+            name: 'Поменять пароль',
+        }
     ],
     exitFields: [
         {
-            id: 10,
+            id: 5,
             type: 'exit',
             name: 'Выйти',
         },

@@ -28,8 +28,10 @@ export default function Profile() {
                         onPress={handleBackPressed}
                     />
                     <View style={styles.profilePicture}>
-                        <View style={styles.profileIcon} />
-                        <Text style={styles.login}>LOGIN</Text>
+                        <View style={styles.profileIcon}>
+                            <Text style={styles.profileIconLetter}>{userName[0].toUpperCase()}</Text>
+                        </View>
+                        <Text style={styles.login}>{userName}</Text>
                     </View>
                     <Button
                         iconSource={Edit}
@@ -49,7 +51,7 @@ export default function Profile() {
                             {
                                 id: 2,
                                 type: 'input',
-                                name: 'Рост',
+                                name: 'Имя',
                                 property: userName,
                             },
                         ]}

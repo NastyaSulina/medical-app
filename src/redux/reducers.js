@@ -3,7 +3,7 @@ import {getFormattedDate} from "../common/dateFormatter";
 
 const initialState = {
     email: "sonelex123@gmail.com",
-    userName: "Сонечка",
+    userName: "sonelex",
     selectedDate: getFormattedDate(),
     tasks: {
         '23/11/2022': [
