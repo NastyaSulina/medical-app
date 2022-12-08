@@ -33,6 +33,11 @@ const styles = StyleSheet.create({
         width: 24,
         height: 24,
     },
+    label: {
+        color: COLORS.gray,
+        marginLeft: 15,
+        marginBottom: 8
+    }
 });
 
 export default styles;

@@ -7,7 +7,7 @@ import EyeImageClosed from '../../../assets/auth-assets/eye_closed.png';
 import EyeImage from '../../../assets/auth-assets/eye.png';
 import Button from '../Button/Button';
 
-function Input({ control, name, rules = {}, placeholderText, outerStyles, isSecretField }) {
+function Input({ control, name, rules = {}, placeholderText, outerStyles, isSecretField, label }) {
     const [secureText, setSecureText] = useState(false);
     return (
         <Controller
@@ -16,6 +16,7 @@ function Input({ control, name, rules = {}, placeholderText, outerStyles, isSecr
             rules={rules}
             render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
                 <>
+                    {Boolean(label) && (<Text style={styles.label}>{label}</Text>)}
                     <TextInput
                         style={[
                             styles.input,
