@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         marginBottom: 5,
         backgroundColor: COLORS.yellow,
-        justifyContent: "center",
-        alignItems: "center"
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     profileIconLetter: {
         color: COLORS.white,

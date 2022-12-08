@@ -14,9 +14,6 @@ import { globalStyles } from '../../styles/globalStyles';
 export default function Profile() {
     const { email, userName } = useSelector((state) => state.userReducer);
     const navigation = useNavigation();
-    const handleBackPressed = () => {
-        navigation.navigate('Main');
-    };
 
     return (
         <SafeAreaView style={globalStyles.root}>
@@ -25,18 +22,20 @@ export default function Profile() {
                     <Button
                         iconSource={Arrow}
                         iconStyles={{ width: 28, height: 28 }}
-                        onPress={handleBackPressed}
+                        onPress={() => navigation.navigate('Main')}
                     />
                     <View style={styles.profilePicture}>
                         <View style={styles.profileIcon}>
-                            <Text style={styles.profileIconLetter}>{userName[0].toUpperCase()}</Text>
+                            <Text style={styles.profileIconLetter}>
+                                {userName[0].toUpperCase()}
+                            </Text>
                         </View>
                         <Text style={styles.login}>{userName}</Text>
                     </View>
                     <Button
                         iconSource={Edit}
                         iconStyles={{ width: 24, height: 24 }}
-                        onPress={() => console.log('editing button is pressed!')}
+                        onPress={() => navigation.navigate('ProfileEdition')}
                     />
                 </View>
                 <View style={styles.containers}>

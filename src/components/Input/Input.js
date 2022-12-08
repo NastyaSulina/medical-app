@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TextInput } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { Controller } from 'react-hook-form';
 import { COLORS } from '../../styles/globalStyles';
 import styles from './Input-styles';
@@ -15,14 +15,10 @@ function Input({ control, name, rules = {}, placeholderText, outerStyles, isSecr
             name={name}
             rules={rules}
             render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
-                <>
-                    {Boolean(label) && (<Text style={styles.label}>{label}</Text>)}
+                <View style={outerStyles}>
+                    {Boolean(label) && <Text style={styles.label}>{label}</Text>}
                     <TextInput
-                        style={[
-                            styles.input,
-                            styles[`input${error ? 'Error' : 'Default'}Border`],
-                            outerStyles,
-                        ]}
+                        style={[styles.input, styles[`input${error ? 'Error' : 'Default'}Border`]]}
                         onChangeText={onChange}
                         value={value || ''}
                         onBlur={onBlur}
@@ -43,7 +39,7 @@ function Input({ control, name, rules = {}, placeholderText, outerStyles, isSecr
                             {error.message || 'Error'}
                         </Text>
                     )}
-                </>
+                </View>
             )}
         />
     );

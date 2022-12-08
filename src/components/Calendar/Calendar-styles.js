@@ -127,7 +127,7 @@ export const theme = {
         week: {
             marginVertical: 1,
             flexDirection: 'row',
-            justifyContent: 'space-around'
+            justifyContent: 'space-around',
         },
     },
 };
