@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import Button from '../Button/Button';
 import InfoCardCharacteristic from './InfoCardCharacteristic';
 import styles from './InfoCard-styles';
 

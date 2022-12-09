@@ -39,6 +39,11 @@ const localStyles = StyleSheet.create({
         alignSelf: 'center',
         borderRadius: 20,
     },
+    profileLabel: {
+        color: COLORS.gray,
+        marginLeft: 15,
+        marginBottom: 8,
+    },
 });
 
 export default localStyles;
