@@ -1,11 +1,12 @@
 import React from 'react';
-import { Image, View, Text } from 'react-native';
+import { Image, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { changeStatus } from '../../redux/actions';
 import Button from '../Button/Button';
 import TASK_TEXT from './Task-const';
 import ClockImage from '../../../assets/main-assets/clock.png';
 import styles from './Task-styles';
+import TextCustom from "../TextCustom/TextCustom";
 
 function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
     const dispatch = useDispatch();
@@ -13,10 +14,10 @@ function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
     return (
         <View style={[styles.container, outerStyles]}>
             <View style={styles.taskInfo}>
-                <Text style={styles.taskTitle}>{taskName}</Text>
+                <TextCustom text={taskName} outerStyles={styles.taskTitle} />
                 <View style={styles.timeInfo}>
                     <Image style={styles.clockImage} source={ClockImage} resizeMode="contain" />
-                    <Text style={styles.timeText}>{time}</Text>
+                    <TextCustom outerStyles={styles.timeText} text={time} />
                 </View>
             </View>
             <Button
@@ -25,7 +26,7 @@ function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
                 size="M"
                 textFont="semiBold"
                 opacity= {0.6}
-                onPress={() => dispatch(changeStatus({ id: id, date: date }))}
+                onPress={() => dispatch(changeStatus({ id, date }))}
             />
         </View>
     );

@@ -1,46 +1,35 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, TouchableOpacity, View } from 'react-native';
 import styles from './Button-styles';
-import { BUTTON_SIZE, TEXT_COLOR_STYLES, TEXT_FONT, globalStyles } from '../../styles/globalStyles';
+import {BUTTON_SIZE, TEXT_COLOR_STYLES, TEXT_FONT, globalStyles} from '../../styles/globalStyles';
+import TextCustom from "../TextCustom/TextCustom";
 
-function Button({
-    text,
-    type,
-    size,
-    textColor,
-    textFont,
-    onPress,
-    outerStyles,
-    iconSource,
-    iconStyles,
-    textOuterStyles,
-}) {
+function Button(props) {
     return (
         <View>
             <TouchableOpacity
-                onPress={onPress}
-                activeOpacity={opacity}
+                onPress={props.onPress}
+                activeOpacity={props.opacity || "1"}
                 style={[
-                    size ? styles[BUTTON_SIZE[size]] : styles.defaultSize,
-                    styles[type],
+                    styles[BUTTON_SIZE[props.size]],
+                    styles[props.type],
                     styles.button,
-                    outerStyles,
+                    props.outerStyles,
                 ]}
             >
-                {Boolean(iconSource) && (
-                    <Image style={iconStyles} source={iconSource} resizeMode="contain" />
+                {Boolean(props.iconSource) && (
+                    <Image style={props.iconStyles} source={props.iconSource} resizeMode="contain" />
                 )}
-                {Boolean(text) && (
-                    <Text
-                        style={[
-                            styles[`${type}TextColor`],
-                            globalStyles[TEXT_COLOR_STYLES[textColor]],
-                            globalStyles[TEXT_FONT[textFont]],
-                            textOuterStyles,
+                {Boolean(props.text) && (
+                    <TextCustom
+                        text={props.text}
+                        outerStyles={[
+                            globalStyles[TEXT_COLOR_STYLES[props.textColor]],
+                            globalStyles[TEXT_FONT[props.textFont]],
+                            styles[`${props.type}TextColor`],
+                            props.textOuterStyles,
                         ]}
-                    >
-                        {text}
-                    </Text>
+                    />
                 )}
             </TouchableOpacity>
         </View>

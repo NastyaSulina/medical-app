@@ -1,12 +1,13 @@
 import { CHANGE_TASK_STATUS, SET_SELECTED_DATE, SET_USER_EMAIL, SET_USER_NAME } from './actions';
-import { getFormattedDate } from '../common/dateFormatter';
+import { getFormattedDate } from '../transform/dateFormatter';
 
 const initialState = {
     email: 'qwerty123@gmail.com',
     userName: 'Анна',
     selectedDate: getFormattedDate(),
+    fontSize: 'normal',
     tasks: {
-        '23/11/2022': [
+        '10/12/2022': [
             {
                 id: 1,
                 type: 'medicine',
@@ -30,41 +31,6 @@ const initialState = {
             },
             {
                 id: 4,
-                type: 'symptom',
-                name: 'Давление',
-                status: true,
-                time: '17:00',
-            },
-            {
-                id: 5,
-                type: 'medicine',
-                name: 'Витамин C',
-                status: true,
-                time: '14:00',
-            },
-            {
-                id: 6,
-                type: 'symptom',
-                name: 'Настроение',
-                status: false,
-                time: '15:00',
-            },
-            {
-                id: 7,
-                type: 'symptom',
-                name: 'Давление',
-                status: true,
-                time: '17:00',
-            },
-            {
-                id: 8,
-                type: 'symptom',
-                name: 'Настроение',
-                status: false,
-                time: '15:00',
-            },
-            {
-                id: 9,
                 type: 'symptom',
                 name: 'Давление',
                 status: true,

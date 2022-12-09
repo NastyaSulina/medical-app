@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     text: {
         color: COLORS.black,
         fontSize: 20,
-        marginBottom: 13,
+        paddingBottom: 30,
         marginTop: 43,
         textAlign: 'center',
         fontFamily: 'interSemiBold',

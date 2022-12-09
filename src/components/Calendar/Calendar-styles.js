@@ -20,11 +20,17 @@ export const styles = StyleSheet.create({
     },
     dayTitlesContainer: {
         justifyContent: 'space-around',
+        alignItems: 'center',
         flexDirection: 'row',
     },
     dayTitlesText: {
         color: '#b6c1cd',
         fontFamily: 'interMedium',
+        fontSize: 16,
+        width: 40,
+        alignItems: 'center',
+        textAlign: 'center',
+        justifyContent: 'center',
     },
     daysContainer: {
         paddingTop: 12,
@@ -34,6 +40,7 @@ export const styles = StyleSheet.create({
     },
     day: {
         fontFamily: 'interMedium',
+        fontSize: 16,
         paddingTop: 10,
         width: 40,
         height: 40,
@@ -62,11 +69,11 @@ export const styles = StyleSheet.create({
 
 export const theme = {
     selectedDayBackgroundColor: '#1CBE8E1F',
-    selectedDayTextColor: COLORS.green,
-    textDayFontSize: 14,
-    textMonthFontSize: 14,
+    selectedDayTextColor: COLORS.black,
+    textDayFontSize: 16,
+    textMonthFontSize: 16,
     todayTextColor: COLORS.green,
-    textDayHeaderFontSize: 14,
+    textDayHeaderFontSize: 16,
     textDayFontFamily: 'interMedium',
     textMonthFontFamily: 'interMedium',
     textDayHeaderFontFamily: 'interMedium',

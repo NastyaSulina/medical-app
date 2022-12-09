@@ -45,6 +45,7 @@ export default function ProfileEdition() {
                         <Input
                             name="email"
                             label="Почта"
+                            labelStyles={localStyles.profileLabel}
                             control={control}
                             placeholderText="example@mail.ru"
                             defaultValue={email}
@@ -53,6 +54,7 @@ export default function ProfileEdition() {
                         <Input
                             name="userName"
                             label="Имя"
+                            labelStyles={localStyles.profileLabel}
                             control={control}
                             rules={{
                                 required: 'Это поле обязательно для заполнения!',

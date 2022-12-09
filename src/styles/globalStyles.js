@@ -30,6 +30,11 @@ export const TEXT_FONT = {
     extraBold: 'extraBoldFontWeight',
 };
 
+export const FONT_SIZES = {
+    normal: 16,
+    large: 20,
+};
+
 export const globalStyles = StyleSheet.create({
     blackTextColor: {
         color: COLORS.black,

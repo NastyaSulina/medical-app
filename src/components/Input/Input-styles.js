@@ -8,17 +8,18 @@ const styles = StyleSheet.create({
         padding: 16,
         paddingRight: 45,
         minWidth: '100%',
+        marginTop: 5,
         fontFamily: 'interRegular',
     },
     inputErrorBorder: {
         borderColor: COLORS.red,
-        borderWidth: 0.8,
+        borderWidth: 1,
     },
     inputDefaultBorder: {
         borderColor: '#D6DEED',
     },
     errorMessage: {
-        fontSize: 13,
+        fontSize: 14,
         paddingTop: 5,
         fontFamily: 'interRegular',
     },
@@ -32,12 +33,7 @@ const styles = StyleSheet.create({
     eyeImage: {
         width: 24,
         height: 24,
-    },
-    label: {
-        color: COLORS.gray,
-        marginLeft: 15,
-        marginBottom: 8,
-    },
+    }
 });
 
 export default styles;

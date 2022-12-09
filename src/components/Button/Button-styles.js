@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 16,
     },
-    defaultSize: {},
     primary: {
         backgroundColor: COLORS.green,
         alignItems: 'center',

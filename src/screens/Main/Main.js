@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { globalStyles } from '../../styles/globalStyles';
 import styles from './Main-styles';
@@ -11,8 +11,7 @@ import CalendarContainer from '../../components/Calendar/CalendarContainer';
 import Button from '../../components/Button/Button';
 
 function Main() {
-    const { tasks, email } = useSelector((state) => state.userReducer);
-    const currDate = '23/11/2022';
+    const { tasks, email, selectedDate } = useSelector((state) => state.userReducer);
     const navigation = useNavigation();
     const handleProfilePressed = () => {
         navigation.navigate('Profile');
@@ -20,12 +19,12 @@ function Main() {
 
     return (
         <SafeAreaView style={globalStyles.root}>
+            <Button text={email} type="link" onPress={handleProfilePressed} />
             <ScrollView centerContent contentContainerStyle={styles.container}>
                 <CalendarContainer />
                 <View style={styles.content}>
-                    <Button text={email} type="link" onPress={handleProfilePressed} />
-                    <TaskList tasks={tasks[currDate]} type="medicine" date={currDate} />
-                    <TaskList tasks={tasks[currDate]} type="symptom" date={currDate} />
+                    <TaskList tasks={tasks[selectedDate]} type="medicine" date={selectedDate} />
+                    <TaskList tasks={tasks[selectedDate]} type="symptom" date={selectedDate} />
                 </View>
             </ScrollView>
             <Menu />

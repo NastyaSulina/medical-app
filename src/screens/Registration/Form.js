@@ -1,16 +1,15 @@
 import React from 'react';
-import { Text } from 'react-native';
 import Input from '../../components/Input/Input';
 import styles from './Registration-styles';
 
-export default function FormMain({ control, watch }) {
+export default function Form({ control, watch }) {
     const password = watch('password');
     return (
         <>
-            <Text style={styles.formNumberText}>1/2</Text>
             <Input
-                placeholderText="Введите почту"
+                placeholderText="qwerty123@gmail.com"
                 name="email"
+                label="Почта *"
                 control={control}
                 rules={{
                     required: 'Это поле обязательно для заполнения!',
@@ -21,15 +20,17 @@ export default function FormMain({ control, watch }) {
                 }}
             />
             <Input
-                placeholderText="Введите логин"
+                placeholderText="Анна"
+                label="Имя *"
                 name="username"
                 control={control}
                 rules={{ required: 'Это поле обязательно для заполнения!' }}
                 outerStyles={styles.usernameInput}
             />
             <Input
-                placeholderText="Введите пароль"
+                placeholderText="loveyoukitty123"
                 name="password"
+                label="Пароль *"
                 control={control}
                 rules={{
                     required: 'Это поле обязательно для заполнения!',
@@ -42,8 +43,9 @@ export default function FormMain({ control, watch }) {
                 isSecretField
             />
             <Input
-                placeholderText="Повторите пароль"
+                placeholderText="loveyoukitty123"
                 name="passwordRepeat"
+                label="Подтверждение пароля *"
                 control={control}
                 rules={{ validate: (value) => value === password || 'Пароли не совпадают!' }}
                 outerStyles={styles.passwordInput}
