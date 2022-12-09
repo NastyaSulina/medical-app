@@ -8,7 +8,7 @@ const ProfileFields = {
         {
             id: 4,
             type: 'link',
-            name: 'Поменять пароль',
+            name: 'Сменить пароль',
         },
     ],
     exitFields: [

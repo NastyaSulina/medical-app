@@ -47,12 +47,6 @@ export default function Profile() {
                                 name: 'Почта',
                                 property: email,
                             },
-                            {
-                                id: 2,
-                                type: 'input',
-                                name: 'Имя',
-                                property: userName,
-                            },
                         ]}
                     />
                     <Container fields={ProfileFields.funcFields} />

@@ -3,17 +3,23 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { KeyboardAvoidingView, Platform, ScrollView, Text, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from '../Profile/Profile-styles';
 import localStyles from './ProfileEdition-styles';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Arrow from '../../../assets/profile-assets/arrow-left.png';
+import { setUserName } from '../../redux/actions';
 
 export default function ProfileEdition() {
     const { email, userName } = useSelector((state) => state.userReducer);
     const navigation = useNavigation();
+
     const { control, handleSubmit } = useForm();
+    const dispatch = useDispatch();
+    const onConfirmPressed = (data) => {
+        dispatch(setUserName(data.userName));
+    };
 
     return (
         <SafeAreaView style={{ backgroundColor: '#F5F7FB', flexGrow: 1 }}>
@@ -40,17 +46,12 @@ export default function ProfileEdition() {
                             name="email"
                             label="Почта"
                             control={control}
-                            rules={{
-                                required: 'Это поле обязательно для заполнения!',
-                                pattern: {
-                                    value: /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/,
-                                    message: 'Неправильный формат email!',
-                                },
-                            }}
                             placeholderText="example@mail.ru"
+                            defaultValue={email}
+                            editable={false}
                         />
                         <Input
-                            name="username"
+                            name="userName"
                             label="Имя"
                             control={control}
                             rules={{
@@ -58,6 +59,7 @@ export default function ProfileEdition() {
                             }}
                             placeholderText="username"
                             outerStyles={localStyles.marginTop}
+                            defaultValue={userName}
                         />
                     </View>
                     <Button
@@ -67,7 +69,7 @@ export default function ProfileEdition() {
                         textColor="white"
                         textFont="semiBold"
                         outerStyles={localStyles.submitButton}
-                        onPress={() => console.log('submit profile changes')}
+                        onPress={handleSubmit(onConfirmPressed)}
                     />
                 </ScrollView>
             </KeyboardAvoidingView>

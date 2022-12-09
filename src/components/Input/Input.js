@@ -7,7 +7,17 @@ import EyeImageClosed from '../../../assets/auth-assets/eye_closed.png';
 import EyeImage from '../../../assets/auth-assets/eye.png';
 import Button from '../Button/Button';
 
-function Input({ control, name, rules = {}, placeholderText, outerStyles, isSecretField, label }) {
+function Input({
+    control,
+    name,
+    rules = {},
+    placeholderText,
+    outerStyles,
+    isSecretField,
+    label,
+    defaultValue,
+    editable,
+}) {
     const [secureText, setSecureText] = useState(false);
     return (
         <Controller
@@ -20,11 +30,13 @@ function Input({ control, name, rules = {}, placeholderText, outerStyles, isSecr
                     <TextInput
                         style={[styles.input, styles[`input${error ? 'Error' : 'Default'}Border`]]}
                         onChangeText={onChange}
-                        value={value || ''}
+                        value={value || undefined}
                         onBlur={onBlur}
                         placeholder={placeholderText}
                         placeholderTextColor={COLORS.gray}
                         secureTextEntry={secureText}
+                        defaultValue={!error && defaultValue}
+                        editable={editable}
                     />
                     {isSecretField && (
                         <Button
