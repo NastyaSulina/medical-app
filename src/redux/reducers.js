@@ -5,6 +5,7 @@ const initialState = {
     email: 'qwerty123@gmail.com',
     userName: 'Анна',
     selectedDate: getFormattedDate(),
+    fontSize: 'normal',
     tasks: {
         '23/11/2022': [
             {

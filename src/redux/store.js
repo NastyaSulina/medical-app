@@ -4,4 +4,6 @@ import userReducer from './reducers';
 
 const rootReducer = combineReducers({ userReducer });
 
-export const Store = createStore(rootReducer, applyMiddleware(thunk));
+const Store = createStore(rootReducer, applyMiddleware(thunk));
+
+export default Store;

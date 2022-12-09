@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import Navigation from './src/navigation';
 import { Provider } from 'react-redux';
-import { Store } from './src/redux/store';
+import Navigation from './src/navigation';
+import Store from './src/redux/store';
 
 export default function App() {
     const [loaded] = useFonts({
@@ -22,9 +22,8 @@ export default function App() {
 
     if (!loaded) {
         return null;
-    } else {
-        SplashScreen.hideAsync();
     }
+    SplashScreen.hideAsync();
 
     return (
         <Provider store={Store}>
