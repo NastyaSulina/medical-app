@@ -4,19 +4,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Authentication from '../screens/Authentication/Authentication';
 import Registration from '../screens/Registration/Registration';
 import Main from '../screens/Main/Main';
+import Profile from '../screens/Profile/Profile';
+import ProfileEdition from '../screens/ProfileEdition/ProfileEdition';
 
 function Navigation() {
     const Stack = createNativeStackNavigator();
 
     return (
         <NavigationContainer>
-            <Stack.Navigator
-                initialRouteName="Main"
-                screenOptions={{ headerShown: false }}
-            >
+            <Stack.Navigator initialRouteName="Profile" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Authentication" component={Authentication} />
                 <Stack.Screen name="Registration" component={Registration} />
                 <Stack.Screen name="Main" component={Main} />
+                <Stack.Screen name="Profile" component={Profile} />
+                <Stack.Screen name="ProfileEdition" component={ProfileEdition} />
             </Stack.Navigator>
         </NavigationContainer>
     );
