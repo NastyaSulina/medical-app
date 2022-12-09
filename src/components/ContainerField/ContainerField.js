@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-import ToggleSwitch from 'toggle-switch-react-native';
+import { Text, View, Switch } from 'react-native';
 import styles from './ContainerField-style';
 import Exit from '../../../assets/profile-assets/exit.png';
 import SmallArrow from '../../../assets/profile-assets/smallArrow.png';
@@ -40,13 +39,12 @@ function ContainerField({ type, name, property, outerStyles }) {
                 <Text style={styles.dropDown}>{property}</Text>
             )}
             {type === 'switcher' && (
-                <ToggleSwitch
-                    isOn={isEnabled}
-                    onColor={COLORS.green}
-                    offColor={COLORS.gray}
-                    onToggle={toggleSwitch}
-                    disabled={false}
-                    size="small"
+                <Switch
+                    value={isEnabled}
+                    onValueChange={toggleSwitch}
+                    thumbColor={COLORS.white}
+                    trackColor={{ false: COLORS.gray, true: COLORS.green }}
+                    ios_backgroundColor={COLORS.gray}
                     style={styles.switcher}
                 />
             )}
