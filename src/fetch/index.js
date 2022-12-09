@@ -10,7 +10,9 @@ export const sendUserSignInInput = async (input) => {
             email: input.email,
             password: input.password,
         }),
-    }).then((result) => result);
+    }).then((result) => result.json());
+
+    return response;
 };
 
 export const sendUserSignUpInput = async (input) => {
@@ -26,13 +28,7 @@ export const sendUserSignUpInput = async (input) => {
             name: input.username,
             password: input.password,
         }),
-    }).then((result) => {
-        if (result.status === 200) {
-            console.log('Успешно зарегистрировались');
-        } else if (result.status === 400) {
-            console.log('Что-то пошло не так');
-        } else if (result.status === 500) {
-            console.log('Пользователь с такой почтой уже есть');
-        }
-    });
+    }).then((result) => result.json());
+    
+    return response;
 };
