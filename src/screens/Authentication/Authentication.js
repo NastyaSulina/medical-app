@@ -2,25 +2,24 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { Image, Platform, ScrollView, Text, View, KeyboardAvoidingView } from 'react-native';
-import { useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { setEmail } from '../../redux/actions';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Logo from '../../../assets/logo.png';
 import { globalStyles } from '../../styles/globalStyles';
 import styles from './Authentication-style';
+import TextCustom from "../../components/TextCustom/TextCustom";
+import {sendUserSignInInput} from "../../fetch";
 
 export default function Authentication() {
     const navigation = useNavigation();
-    const dispatch = useDispatch();
     const { control, handleSubmit } = useForm();
 
-    const onSignInPressed = (data) => {
-        dispatch(setEmail(data.email)); // temp
-        navigation.navigate('Main');
+    const onSignInPressed = async (data) => {
+        await sendUserSignInInput(data);
     };
     const onForgotPasswordPressed = () => {};
+
     const onRegistrationPressed = () => {
         navigation.navigate('Registration');
     };
@@ -35,6 +34,7 @@ export default function Authentication() {
 
                         <Input
                             name="email"
+                            label="Почта *"
                             control={control}
                             rules={{
                                 required: 'Это поле обязательно для заполнения!',
@@ -43,10 +43,11 @@ export default function Authentication() {
                                     message: 'Неправильный формат email!',
                                 },
                             }}
-                            placeholderText="Введите почту"
+                            placeholderText="qwerty123@gmail.com"
                         />
                         <Input
                             name="password"
+                            label="Пароль *"
                             control={control}
                             outerStyles={styles.passwordInput}
                             rules={{
@@ -56,7 +57,7 @@ export default function Authentication() {
                                     message: 'Длина пароля должна быть не менее 8 символов!',
                                 },
                             }}
-                            placeholderText="Введите пароль"
+                            placeholderText="loveyoukitty123"
                             isSecretField
                         />
 
@@ -69,7 +70,7 @@ export default function Authentication() {
                             onPress={onForgotPasswordPressed}
                         />
                         <View style={styles.registrationInvite}>
-                            <Text style={styles.registrationText}>Нет аккаунта? </Text>
+                            <TextCustom outerStyles={styles.registrationText} text="Нет аккаунта?"/>
                             <Button
                                 text="Зарегистрируйтесь!"
                                 type="link"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     KeyboardAvoidingView,
     Platform,
@@ -11,32 +11,23 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import Button from '../../components/Button/Button';
-import FormMain from './FormMain';
-import FormAdditional from './FormAdditional';
-import Authentication from '../Authentication/Authentication';
+import Form from './Form';
 import { globalStyles } from '../../styles/globalStyles';
 import styles from './Registration-styles';
+import TextCustom from "../../components/TextCustom/TextCustom";
+import {sendUserSignUpInput} from "../../fetch";
 
 export default function Registration() {
     const navigation = useNavigation();
     const { control, handleSubmit, watch } = useForm();
 
-    const [isFirstFormFilled, setFirstFormFilled] = useState(false);
-
     const onAuthenticationPressed = () => {
         navigation.navigate('Authentication');
     };
 
-    const sendData = (data) => {
-        console.log(data);
-    };
-
-    const getContent = () => {
-        if (isFirstFormFilled) {
-            return <FormAdditional control={control} />;
-        }
-        return <FormMain control={control} watch={watch} />;
-    };
+    const onSignUpPress = async (data) => {
+        await sendUserSignUpInput(data);
+    }
 
     return (
         <SafeAreaView style={globalStyles.root}>
@@ -46,11 +37,10 @@ export default function Registration() {
                         style={[styles.content, { minHeight: useWindowDimensions().height * 0.8 }]}
                     >
                         <Text style={styles.text}>Регистрация</Text>
-
-                        {getContent()}
+                        <Form control={control} watch={watch} />
 
                         <View style={styles.authenticationInvite}>
-                            <Text style={styles.authenticationText}>Уже есть аккаунт? </Text>
+                            <TextCustom outerStyles={styles.authenticationText} text="Уже есть аккаунт? " />
                             <Button
                                 text="Войти!"
                                 type="link"
@@ -62,15 +52,11 @@ export default function Registration() {
                         </View>
 
                         <Button
-                            text={isFirstFormFilled ? 'Готово!' : 'Далее'}
+                            text='Далее'
                             type="primary"
                             size="L"
                             textFont="semiBold"
-                            onPress={handleSubmit((data) => {
-                                if (isFirstFormFilled) {
-                                    sendData(data);
-                                } else setFirstFormFilled(true);
-                            })}
+                            onPress={handleSubmit(onSignUpPress)}
                         />
                     </View>
                 </ScrollView>
