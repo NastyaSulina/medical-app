@@ -19,6 +19,7 @@ function Button({
         <View>
             <TouchableOpacity
                 onPress={onPress}
+                activeOpacity={opacity}
                 style={[
                     size ? styles[BUTTON_SIZE[size]] : styles.defaultSize,
                     styles[type],

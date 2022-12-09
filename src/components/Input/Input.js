@@ -39,12 +39,11 @@ function Input({
                         editable={editable}
                     />
                     {isSecretField && (
-                        <Button
-                            outerStyles={styles.eyeButton}
-                            onPress={() => setSecureText(!secureText)}
-                            iconStyles={styles.eyeImage}
-                            iconSource={secureText ? EyeImage : EyeImageClosed}
-                        />
+                        <Button outerStyles={styles.eyeButton}
+                                opacity={1}
+                                onPress={() => setSecureText(!secureText)}
+                                iconStyles={styles.eyeImage}
+                                iconSource={secureText ? EyeImage : EyeImageClosed}/>
                     )}
                     {error && (
                         <Text style={[styles.errorMessage, { color: COLORS.red }]}>
