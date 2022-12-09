@@ -5,16 +5,22 @@ const localStyles = StyleSheet.create({
     container: {
         width: '100%',
         flexGrow: 1,
+        alignItems: 'center',
     },
     upperRow: {
         flexDirection: 'row',
         width: '90%',
         alignItems: 'center',
         marginVertical: 30,
+        position: 'relative',
     },
     backButton: {
-        marginRight: '28%',
-        marginLeft: 20,
+        position: 'absolute',
+        top: -14,
+    },
+    profilePicture: {
+        marginRight: 'auto',
+        marginLeft: 'auto',
     },
     inputField: {
         width: '90%',

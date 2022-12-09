@@ -32,7 +32,7 @@ export default function ProfileEdition() {
                             onPress={() => navigation.navigate('Profile')}
                             outerStyles={localStyles.backButton}
                         />
-                        <View style={styles.profilePicture}>
+                        <View style={[styles.profilePicture, localStyles.profilePicture]}>
                             <View style={styles.profileIcon}>
                                 <Text style={styles.profileIconLetter}>
                                     {userName[0].toUpperCase()}
