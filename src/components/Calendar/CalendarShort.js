@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { styles } from './Calendar-styles';
 import { setSelectedDate } from '../../redux/actions';
 import Button from '../Button/Button';
-import { getFormattedDate, getLocalDay } from '../../common/dateFormatter';
+import { getFormattedDate, getLocalDay } from '../../transform/dateFormatter';
 
 function CalendarShort() {
     const dispatch = useDispatch();
@@ -12,7 +12,6 @@ function CalendarShort() {
     const weekDayNames = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
     function getSelectedWeek(date) {
-        console.log(date);
         return Array(7)
             .fill(new Date(date))
             .map((x, index) => {
