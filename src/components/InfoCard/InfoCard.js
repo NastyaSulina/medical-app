@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import Button from '../Button/Button';
-import InfoCardCharacteristic from "./InfoCardCharacteristic";
+import InfoCardCharacteristic from './InfoCardCharacteristic';
 import styles from './InfoCard-styles';
 
 function InfoCard({ title, time, interval }) {
@@ -9,7 +9,7 @@ function InfoCard({ title, time, interval }) {
         <View style={styles.infoContainer}>
             <Text style={styles.title}>{title}</Text>
             <InfoCardCharacteristic InfoKey="Время" InfoValue={time} isTimeInfo />
-            <InfoCardCharacteristic InfoKey="Временной промежуток" InfoValue={interval}/>
+            <InfoCardCharacteristic InfoKey="Временной промежуток" InfoValue={interval} />
         </View>
     );
 }
