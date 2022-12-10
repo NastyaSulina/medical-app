@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     eyeImage: {
         width: 24,
         height: 24,
-    }
+    },
 });
 
 export default styles;

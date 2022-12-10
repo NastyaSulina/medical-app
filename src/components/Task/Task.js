@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import TASK_TEXT from './Task-const';
 import ClockImage from '../../../assets/main-assets/clock.png';
 import styles from './Task-styles';
-import TextCustom from "../TextCustom/TextCustom";
+import TextCustom from '../TextCustom/TextCustom';
 
 function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
     const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
                 type={isChecked ? 'checked' : 'primary'}
                 size="M"
                 textFont="semiBold"
-                opacity= {0.6}
+                opacity={0.6}
                 onPress={() => dispatch(changeStatus({ id, date }))}
             />
         </View>

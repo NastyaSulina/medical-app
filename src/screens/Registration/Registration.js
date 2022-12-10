@@ -14,8 +14,8 @@ import Button from '../../components/Button/Button';
 import Form from './Form';
 import { globalStyles } from '../../styles/globalStyles';
 import styles from './Registration-styles';
-import TextCustom from "../../components/TextCustom/TextCustom";
-import {sendUserSignUpInput} from "../../fetch";
+import TextCustom from '../../components/TextCustom/TextCustom';
+import { sendUserSignUpInput } from '../../fetch';
 
 export default function Registration() {
     const navigation = useNavigation();
@@ -27,7 +27,7 @@ export default function Registration() {
 
     const onSignUpPress = async (data) => {
         await sendUserSignUpInput(data);
-    }
+    };
 
     return (
         <SafeAreaView style={globalStyles.root}>
@@ -40,7 +40,10 @@ export default function Registration() {
                         <Form control={control} watch={watch} />
 
                         <View style={styles.authenticationInvite}>
-                            <TextCustom outerStyles={styles.authenticationText} text="Уже есть аккаунт? " />
+                            <TextCustom
+                                outerStyles={styles.authenticationText}
+                                text="Уже есть аккаунт? "
+                            />
                             <Button
                                 text="Войти!"
                                 type="link"
@@ -52,7 +55,7 @@ export default function Registration() {
                         </View>
 
                         <Button
-                            text='Далее'
+                            text="Далее"
                             type="primary"
                             size="L"
                             textFont="semiBold"
