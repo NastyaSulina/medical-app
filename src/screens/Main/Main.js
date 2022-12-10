@@ -26,6 +26,7 @@ function Main() {
                     text={userName[0].toUpperCase()}
                     textColor="white"
                     textFont="semiBold"
+                    opacity={0.6}
                     textOuterStyles={styles.iconText}
                     outerStyles={styles.icon}
                     onPress={handleProfilePressed}

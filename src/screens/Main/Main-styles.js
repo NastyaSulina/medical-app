@@ -33,12 +33,11 @@ const styles = StyleSheet.create({
         height: 40,
         borderRadius: 20,
         backgroundColor: COLORS.yellow,
-        justifyContent: 'center',
-        alignItems: 'center',
     },
     iconText: {
         fontSize: 30,
         textAlign: 'center',
+        lineHeight: 40,
     },
 });
 
