@@ -5,13 +5,12 @@ const styles = StyleSheet.create({
     container: {
         borderTopRightRadius: 16,
         borderTopLeftRadius: 16,
-        minHeight: 180,
+        minHeight: 73,
         backgroundColor: COLORS.white,
         minWidth: '100%',
-        marginTop: 12,
         flexDirection: 'row',
         alignItems: 'flex-start',
-        paddingTop: 20,
+        paddingTop: 10,
         justifyContent: 'space-evenly',
         shadowColor: '#212121',
         shadowOffset: {

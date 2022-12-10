@@ -16,6 +16,7 @@ function Menu() {
                 outerStyles={styles.button}
                 textColor="gray"
                 textFont="medium"
+                textOuterStyles={{ fontSize: 12 }}
             />
             <Button
                 iconSource={ScheduleImage}
@@ -24,6 +25,7 @@ function Menu() {
                 outerStyles={styles.button}
                 textColor="gray"
                 textFont="medium"
+                textOuterStyles={{ fontSize: 12 }}
             />
             <Button
                 iconSource={ReportImage}
@@ -32,6 +34,7 @@ function Menu() {
                 outerStyles={styles.button}
                 textColor="gray"
                 textFont="medium"
+                textOuterStyles={{ fontSize: 12 }}
             />
         </View>
     );
