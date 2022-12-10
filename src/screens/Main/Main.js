@@ -8,11 +8,10 @@ import styles from './Main-styles';
 import TaskList from '../../components/TaskList/TaskList';
 import Menu from '../../components/Menu/Menu';
 import CalendarContainer from '../../components/Calendar/CalendarContainer';
-import Button from '../../components/Button/Button';
-import TextCustom from '../../components/TextCustom/TextCustom';
+import UpperMenu from '../../components/UpperMenu/UpperMenu';
 
 function Main() {
-    const { tasks, userName, selectedDate } = useSelector((state) => state.userReducer);
+    const { tasks, selectedDate } = useSelector((state) => state.userReducer);
     const navigation = useNavigation();
     const handleProfilePressed = () => {
         navigation.navigate('Profile');
@@ -20,18 +19,7 @@ function Main() {
 
     return (
         <SafeAreaView style={[globalStyles.root, { height: '100%' }]}>
-            <View style={styles.upperMenu}>
-                <TextCustom text="График приёма" outerStyles={styles.title} />
-                <Button
-                    text={userName[0].toUpperCase()}
-                    textColor="white"
-                    textFont="semiBold"
-                    opacity={0.6}
-                    textOuterStyles={styles.iconText}
-                    outerStyles={styles.icon}
-                    onPress={handleProfilePressed}
-                />
-            </View>
+            <UpperMenu text="График приёма" onButtonPress={handleProfilePressed} />
             <CalendarContainer />
             <ScrollView centerContent contentContainerStyle={styles.container}>
                 <View style={styles.content}>
