@@ -47,6 +47,14 @@ const styles = StyleSheet.create({
         color: COLORS.gray,
         fontFamily: 'interMedium',
     },
+    errorMessage: {
+        color: COLORS.red,
+        fontSize: 14,
+        textAlign: 'center',
+        alignSelf: 'center',
+        position: 'absolute',
+        top: 110,
+    }
 });
 
 export default styles;
