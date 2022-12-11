@@ -22,13 +22,13 @@ function Main() {
         <SafeAreaView style={[globalStyles.root, { height: '100%' }]}>
             <UpperMenu text="График приёма" onButtonPress={handleProfilePressed} />
             <CalendarContainer />
-            <ScrollView centerContent contentContainerStyle={styles.container}>
+            <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.content}>
                     <TaskList tasks={tasks[initialDate]} type="medicine" date={initialDate} />
                     <TaskList tasks={tasks[initialDate]} type="symptom" date={initialDate} />
                 </View>
             </ScrollView>
-            <Menu />
+            <Menu screen="Главная"/>
         </SafeAreaView>
     );
 }

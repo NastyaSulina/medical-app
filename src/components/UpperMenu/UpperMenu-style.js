@@ -4,7 +4,7 @@ import { COLORS } from '../../styles/globalStyles';
 const styles = StyleSheet.create({
     upperMenu: {
         flexDirection: 'row',
-        marginVertical: 28,
+        marginVertical: 24,
         position: 'relative',
         width: '90%',
         alignItems: 'center',
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: 'interSemiBold',
         color: COLORS.black,
-        fontSize: 24,
+        fontSize: 22,
         marginLeft: 'auto',
         marginRight: 'auto',
     },
