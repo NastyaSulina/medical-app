@@ -11,7 +11,8 @@ import CalendarContainer from '../../components/Calendar/CalendarContainer';
 import UpperMenu from '../../components/UpperMenu/UpperMenu';
 
 function Main() {
-    const { tasks, selectedDate } = useSelector((state) => state.userReducer);
+    const { tasks } = useSelector((state) => state.userReducer);
+    const initialDate = '2022-12-10';
     const navigation = useNavigation();
     const handleProfilePressed = () => {
         navigation.navigate('Profile');
@@ -23,8 +24,8 @@ function Main() {
             <CalendarContainer />
             <ScrollView centerContent contentContainerStyle={styles.container}>
                 <View style={styles.content}>
-                    <TaskList tasks={tasks[selectedDate]} type="medicine" date={selectedDate} />
-                    <TaskList tasks={tasks[selectedDate]} type="symptom" date={selectedDate} />
+                    <TaskList tasks={tasks[initialDate]} type="medicine" date={initialDate} />
+                    <TaskList tasks={tasks[initialDate]} type="symptom" date={initialDate} />
                 </View>
             </ScrollView>
             <Menu />
