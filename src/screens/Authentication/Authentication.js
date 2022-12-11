@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useForm} from 'react-hook-form';
+import {useDispatch} from "react-redux";
 import {Image, KeyboardAvoidingView, Platform, ScrollView, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Button from '../../components/Button/Button';
@@ -10,21 +11,25 @@ import {globalStyles} from '../../styles/globalStyles';
 import styles from './Authentication-style';
 import TextCustom from '../../components/TextCustom/TextCustom';
 import { sendUserSignInInput } from '../../fetch';
+import {setUserName, setEmail} from "../../redux/actions";
 
 export default function Authentication() {
     const navigation = useNavigation();
+    const dispatch = useDispatch();
     const {control, handleSubmit, setError, formState: {errors}} = useForm();
 
     const onSignInPressed = async (data) => {
         const response = await sendUserSignInInput(data);
 
         if (response.code === "12" || response.code === "11") {
-            const formError = {type: "server", message: "Проверьте почту и пароль!"};
+            const formError = {type: "server", message: "Проверьте почту или пароль!"};
             setError('password', formError);
             setError('email', formError);
         } else {
-            navigation.navigate('Main');
             console.log(response);
+            dispatch(setUserName(response.name));
+            dispatch(setEmail(response.email));
+            navigation.navigate('Main');
         }
     };
 
