@@ -1,15 +1,15 @@
 import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 import styles from './Button-styles';
-import {BUTTON_SIZE, TEXT_COLOR_STYLES, TEXT_FONT, globalStyles} from '../../styles/globalStyles';
-import TextCustom from "../TextCustom/TextCustom";
+import { BUTTON_SIZE, TEXT_COLOR_STYLES, TEXT_FONT, globalStyles } from '../../styles/globalStyles';
+import TextCustom from '../TextCustom/TextCustom';
 
 function Button(props) {
     return (
         <View>
             <TouchableOpacity
                 onPress={props.onPress}
-                activeOpacity={props.opacity || "1"}
+                activeOpacity={props.opacity || 1}
                 style={[
                     styles[BUTTON_SIZE[props.size]],
                     styles[props.type],
@@ -18,7 +18,11 @@ function Button(props) {
                 ]}
             >
                 {Boolean(props.iconSource) && (
-                    <Image style={props.iconStyles} source={props.iconSource} resizeMode="contain" />
+                    <Image
+                        style={props.iconStyles}
+                        source={props.iconSource}
+                        resizeMode="contain"
+                    />
                 )}
                 {Boolean(props.text) && (
                     <TextCustom

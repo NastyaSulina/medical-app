@@ -29,6 +29,6 @@ export const sendUserSignUpInput = async (input) => {
             password: input.password,
         }),
     }).then((result) => result.json());
-    
+
     return response;
 };

@@ -8,8 +8,8 @@ import Input from '../../components/Input/Input';
 import Logo from '../../../assets/logo.png';
 import { globalStyles } from '../../styles/globalStyles';
 import styles from './Authentication-style';
-import TextCustom from "../../components/TextCustom/TextCustom";
-import {sendUserSignInInput} from "../../fetch";
+import TextCustom from '../../components/TextCustom/TextCustom';
+import { sendUserSignInInput } from '../../fetch';
 
 export default function Authentication() {
     const navigation = useNavigation();
@@ -70,7 +70,10 @@ export default function Authentication() {
                             onPress={onForgotPasswordPressed}
                         />
                         <View style={styles.registrationInvite}>
-                            <TextCustom outerStyles={styles.registrationText} text="Нет аккаунта?"/>
+                            <TextCustom
+                                outerStyles={styles.registrationText}
+                                text="Нет аккаунта?"
+                            />
                             <Button
                                 text="Зарегистрируйтесь!"
                                 type="link"
