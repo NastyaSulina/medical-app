@@ -3,22 +3,21 @@ import { COLORS } from '../../styles/globalStyles';
 
 const styles = StyleSheet.create({
     container: {
-        borderTopRightRadius: 16,
-        borderTopLeftRadius: 16,
-        minHeight: 73,
+        borderRadius: 16,
+        minHeight: 86,
         backgroundColor: COLORS.white,
         minWidth: '100%',
         flexDirection: 'row',
         alignItems: 'flex-start',
-        paddingTop: 10,
+        paddingTop: 15,
         justifyContent: 'space-evenly',
         shadowColor: '#212121',
         shadowOffset: {
-            width: 0,
-            height: 2,
+            width: 2,
+            height: 0,
         },
-        shadowOpacity: 0.04,
-        shadowRadius: 3,
+        shadowOpacity: 0.06,
+        shadowRadius: 4,
     },
     icon: {
         width: 28,

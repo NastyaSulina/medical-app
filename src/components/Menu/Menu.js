@@ -1,40 +1,43 @@
 import React from 'react';
 import { View } from 'react-native';
 import styles from './Menu-styles';
-import ArchiveImage from '../../../assets/menu-assets/archive.png';
-import ScheduleImage from '../../../assets/menu-assets/schedule.png';
-import ReportImage from '../../../assets/menu-assets/report.png';
+import ArchiveImageGray from '../../../assets/menu-assets/archiveGray.png';
+import ScheduleImageGray from '../../../assets/menu-assets/scheduleGray.png';
+import ReportImageGray from '../../../assets/menu-assets/reportGray.png';
+import ArchiveImageGreen from '../../../assets/menu-assets/archiveGreen.png';
+import ScheduleImageGreen from '../../../assets/menu-assets/scheduleGreen.png';
+import ReportImageGreen from '../../../assets/menu-assets/reportGreen.png';
 import Button from '../Button/Button';
 
-function Menu() {
+function Menu({ screen }) {
     return (
         <View style={styles.container}>
             <Button
-                iconSource={ArchiveImage}
+                iconSource={screen === "Архив" ? ArchiveImageGreen : ArchiveImageGray}
                 iconStyles={styles.icon}
                 text="Архив"
                 outerStyles={styles.button}
-                textColor="gray"
+                textColor={screen === 'Архив' ? "green" : "gray"}
                 textFont="medium"
-                textOuterStyles={{ fontSize: 12 }}
+                textOuterStyles={{ fontSize: 14 }}
             />
             <Button
-                iconSource={ScheduleImage}
+                iconSource={screen === 'Главная' ? ScheduleImageGreen : ScheduleImageGray}
                 iconStyles={styles.icon}
                 text="Главная"
                 outerStyles={styles.button}
-                textColor="gray"
+                textColor={screen === 'Главная' ? "green" : "gray"}
                 textFont="medium"
-                textOuterStyles={{ fontSize: 12 }}
+                textOuterStyles={{ fontSize: 14 }}
             />
             <Button
-                iconSource={ReportImage}
+                iconSource={screen === 'Отчет' ? ReportImageGreen : ReportImageGray}
                 iconStyles={styles.icon}
                 text="Отчет"
                 outerStyles={styles.button}
-                textColor="gray"
+                textColor={screen === 'Отчет' ? "green" : "gray"}
                 textFont="medium"
-                textOuterStyles={{ fontSize: 12 }}
+                textOuterStyles={{ fontSize: 14 }}
             />
         </View>
     );
