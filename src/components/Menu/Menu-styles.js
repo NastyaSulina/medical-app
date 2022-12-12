@@ -12,13 +12,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         paddingTop: 10,
         justifyContent: 'space-evenly',
-        shadowColor: '#212121',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.04,
-        shadowRadius: 3,
     },
     icon: {
         width: 28,

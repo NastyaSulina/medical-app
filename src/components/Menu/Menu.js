@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Shadow } from 'react-native-shadow-2';
 import styles from './Menu-styles';
 import ArchiveImage from '../../../assets/menu-assets/archive.png';
 import ScheduleImage from '../../../assets/menu-assets/schedule.png';
@@ -8,7 +8,14 @@ import Button from '../Button/Button';
 
 function Menu() {
     return (
-        <View style={styles.container}>
+        <Shadow
+            distance={3}
+            startColor="rgba(33, 33, 33, 0.04)"
+            offset={[2, 0]}
+            sides="top"
+            stretch
+            style={styles.container}
+        >
             <Button
                 iconSource={ArchiveImage}
                 iconStyles={styles.icon}
@@ -36,7 +43,7 @@ function Menu() {
                 textFont="medium"
                 textOuterStyles={{ fontSize: 12 }}
             />
-        </View>
+        </Shadow>
     );
 }
 

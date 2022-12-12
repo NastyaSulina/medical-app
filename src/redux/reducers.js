@@ -7,7 +7,7 @@ const initialState = {
     selectedDate: getFormattedDate(),
     fontSize: 'normal',
     tasks: {
-        '2022-12-10': [
+        '2022-12-12': [
             {
                 id: 1,
                 type: 'medicine',

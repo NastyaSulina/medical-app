@@ -18,7 +18,10 @@ function Main() {
     };
 
     return (
-        <SafeAreaView style={[globalStyles.root, { height: '100%' }]}>
+        <SafeAreaView
+            style={[globalStyles.root, { height: '100%' }]}
+            edges={['right', 'top', 'left']}
+        >
             <UpperMenu text="График приёма" onButtonPress={handleProfilePressed} />
             <CalendarContainer />
             <ScrollView centerContent contentContainerStyle={styles.container}>
