@@ -15,13 +15,12 @@ const styles = StyleSheet.create({
         paddingVertical: 2,
         borderWidth: 1,
         borderColor: COLORS.green,
-        borderRadius: 16,
+        borderRadius: 12,
         marginRight: 8,
     },
     infoValue: {
         color: '#566275',
-        fontSize: 14,
-        marginTop: 5,
+        marginTop: 8,
     },
     container: {
         flexDirection: 'row',

@@ -116,13 +116,14 @@ export const theme = {
             fontFamily: 'interMedium',
             minWidth: '90%',
             width: '100%',
-            shadowColor: '#212121',
+            shadowColor: 'rgba(33, 33, 33, 0.045)',
             shadowOffset: {
                 width: 0,
                 height: 2,
             },
-            shadowOpacity: 0.04,
+            shadowOpacity: 1,
             shadowRadius: 3,
+            elevation: 3,
         },
         week: {
             marginVertical: 1,

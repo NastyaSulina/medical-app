@@ -7,25 +7,25 @@ const styles = StyleSheet.create({
         paddingBottom: 12,
     },
     content: {
-        maxWidth: '90%',
+        maxWidth: '80%',
         minHeight: '100%',
     },
     switcherContainer: {
         flexDirection: "row",
-        minWidth: "90%",
+        minWidth: "80%",
         justifyContent: "space-around",
     },
     active: {
         borderBottomWidth: 2,
         borderColor: COLORS.green,
         borderRadius: 0,
-        minWidth: 120,
+        minWidth: "40%",
         paddingBottom: 8,
     },
     default: {
         borderRadius: 0,
         paddingBottom: 8,
-        minWidth: 120,
+        minWidth: "40%",
     }
 });
 

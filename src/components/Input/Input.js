@@ -36,12 +36,12 @@ function Input({
                             { fontSize: FONT_SIZES.normal },
                         ]}
                         onChangeText={onChange}
-                        value={value || undefined}
+                        value={value}
                         onBlur={onBlur}
                         placeholder={placeholderText}
                         placeholderTextColor={COLORS.gray}
                         secureTextEntry={secureText}
-                        defaultValue={!error && defaultValue}
+                        defaultValue={defaultValue}
                         editable={editable}
                     />
                     {isSecretField && (

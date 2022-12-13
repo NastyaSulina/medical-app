@@ -28,7 +28,7 @@ function InfoCardList({ listTitle }) {
     ];
     return (
         <View>
-            <TextCustom text={listTitle} outerStyles={[styles.listTitle, globalStyles[TEXT_FONT.medium]]}/>
+            <TextCustom text={listTitle} outerStyles={[styles.listTitle, globalStyles[TEXT_FONT.semiBold]]}/>
             {data.map((card) => (
                 <InfoCard
                     key={card.key}

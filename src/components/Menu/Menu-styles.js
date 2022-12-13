@@ -4,7 +4,7 @@ import { COLORS } from '../../styles/globalStyles';
 const styles = StyleSheet.create({
     container: {
         borderRadius: 16,
-        minHeight: 86,
+        minHeight: 96,
         backgroundColor: COLORS.white,
         width: '100%',
         flexDirection: 'row',

@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
         minWidth: '100%',
         marginTop: 5,
         fontFamily: 'interRegular',
+        color: COLORS.black,
     },
     inputErrorBorder: {
         borderColor: COLORS.red,
