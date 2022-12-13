@@ -3,14 +3,13 @@ import { COLORS } from '../../styles/globalStyles';
 
 const styles = StyleSheet.create({
     container: {
-        borderTopRightRadius: 16,
-        borderTopLeftRadius: 16,
-        minHeight: 73,
+        borderRadius: 16,
+        minHeight: 86,
         backgroundColor: COLORS.white,
         width: '100%',
         flexDirection: 'row',
         alignItems: 'flex-start',
-        paddingTop: 10,
+        paddingTop: 15,
         justifyContent: 'space-evenly',
     },
     icon: {

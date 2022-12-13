@@ -19,14 +19,13 @@ const styles = StyleSheet.create({
         borderColor: '#D6DEED',
     },
     errorMessage: {
-        fontSize: 14,
         paddingTop: 5,
         fontFamily: 'interRegular',
     },
     eyeButton: {
         position: 'absolute',
         right: 5,
-        bottom: 0,
+        bottom: 3,
         width: 35,
         height: 35,
     },

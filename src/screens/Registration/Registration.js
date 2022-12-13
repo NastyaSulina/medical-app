@@ -19,14 +19,22 @@ import { sendUserSignUpInput } from '../../fetch';
 
 export default function Registration() {
     const navigation = useNavigation();
-    const { control, handleSubmit, watch } = useForm();
+    const { control, handleSubmit, watch, setError, formState: {errors}} = useForm();
 
     const onAuthenticationPressed = () => {
         navigation.navigate('Authentication');
     };
 
     const onSignUpPress = async (data) => {
-        await sendUserSignUpInput(data);
+        const response = await sendUserSignUpInput(data);
+
+        if (response.code === "10") {
+            const formError = {type: "server", message: "Пользователь с такой почтой уже зарегистрирован!"};
+            setError('email', formError);
+        } else {
+            navigation.navigate('Authentication');
+            console.log(response);
+        }
     };
 
     return (
@@ -41,6 +49,7 @@ export default function Registration() {
                         ]}
                     >
                         <Text style={styles.text}>Регистрация</Text>
+                        {errors && errors.email?.type === 'server' && <TextCustom text={errors.email?.message} outerStyles={styles.errorMessage}/>}
                         <Form control={control} watch={watch} />
 
                         <View style={styles.authenticationInvite}>

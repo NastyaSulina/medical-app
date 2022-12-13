@@ -1,5 +1,5 @@
 export const sendUserSignInInput = async (input) => {
-    const response = await fetch('', {
+    const response = await fetch('http://80.249.147.77/user/signIn', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
@@ -10,7 +10,9 @@ export const sendUserSignInInput = async (input) => {
             email: input.email,
             password: input.password,
         }),
-    }).then((result) => result.json());
+    })
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
 
     return response;
 };
@@ -28,7 +30,8 @@ export const sendUserSignUpInput = async (input) => {
             name: input.username,
             password: input.password,
         }),
-    }).then((result) => result.json());
-
+    })
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
     return response;
 };

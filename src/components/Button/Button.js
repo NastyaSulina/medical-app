@@ -9,7 +9,7 @@ function Button(props) {
         <View>
             <TouchableOpacity
                 onPress={props.onPress}
-                activeOpacity={props.opacity || 1}
+                activeOpacity={props.opacity || 0.5}
                 style={[
                     styles[BUTTON_SIZE[props.size]],
                     styles[props.type],
