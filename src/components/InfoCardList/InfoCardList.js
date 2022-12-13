@@ -2,8 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import InfoCard from '../InfoCard/InfoCard';
 import styles from './InfoCardList-styles';
-import TextCustom from "../TextCustom/TextCustom";
-import {globalStyles, TEXT_FONT} from "../../styles/globalStyles";
+import TextCustom from '../TextCustom/TextCustom';
+import { globalStyles, TEXT_FONT } from '../../styles/globalStyles';
 
 function InfoCardList({ listTitle }) {
     const data = [
@@ -28,7 +28,10 @@ function InfoCardList({ listTitle }) {
     ];
     return (
         <View>
-            <TextCustom text={listTitle} outerStyles={[styles.listTitle, globalStyles[TEXT_FONT.semiBold]]}/>
+            <TextCustom
+                text={listTitle}
+                outerStyles={[styles.listTitle, globalStyles[TEXT_FONT.semiBold]]}
+            />
             {data.map((card) => (
                 <InfoCard
                     key={card.key}

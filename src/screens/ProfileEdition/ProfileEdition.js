@@ -30,7 +30,7 @@ export default function ProfileEdition() {
                         <Button
                             iconSource={Arrow}
                             iconStyles={{ width: 28, height: 28 }}
-                            onPress={() => navigation.navigate('Profile')}
+                            onPress={() => navigation.goBack()}
                             outerStyles={localStyles.backButton}
                         />
                         <View style={[styles.profilePicture, localStyles.profilePicture]}>

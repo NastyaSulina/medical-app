@@ -23,7 +23,7 @@ export default function Profile() {
                     <Button
                         iconSource={Arrow}
                         iconStyles={{ width: 28, height: 28 }}
-                        onPress={() => navigation.navigate('Main')}
+                        onPress={() => navigation.goBack()}
                     />
                     <View style={styles.profilePicture}>
                         <View style={styles.profileIcon}>

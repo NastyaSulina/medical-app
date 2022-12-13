@@ -9,17 +9,17 @@ import Button from '../Button/Button';
 import TextCustom from '../TextCustom/TextCustom';
 
 function Input({
-                   control,
-                   name,
-                   rules = {},
-                   placeholderText,
-                   outerStyles,
-                   isSecretField,
-                   label,
-                   labelStyles,
-                   defaultValue,
-                   editable,
-               }) {
+    control,
+    name,
+    rules = {},
+    placeholderText,
+    outerStyles,
+    isSecretField,
+    label,
+    labelStyles,
+    defaultValue,
+    editable,
+}) {
     const [secureText, setSecureText] = useState(isSecretField);
     return (
         <Controller
@@ -54,7 +54,7 @@ function Input({
                         />
                     )}
                     {error && error.type !== 'server' && (
-                        <Text style={[styles.errorMessage, { color: COLORS.red, fontSize: 14  }]}>
+                        <Text style={[styles.errorMessage, { color: COLORS.red, fontSize: 14 }]}>
                             {error.message || 'Error'}
                         </Text>
                     )}

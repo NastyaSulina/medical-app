@@ -1,7 +1,14 @@
-import { CHANGE_TASK_STATUS, SET_SELECTED_DATE, SET_USER_EMAIL, SET_USER_NAME } from './actions';
+import {
+    CHANGE_TASK_STATUS,
+    SET_SELECTED_DATE,
+    SET_USER_EMAIL,
+    SET_USER_NAME,
+    SIGN_IN,
+} from './actions';
 import { getFormattedDate } from '../transform/dateFormatter';
 
 const initialState = {
+    isSignedIn: false,
     email: 'qwerty123@gmail.com',
     userName: 'Анна',
     selectedDate: getFormattedDate(),
@@ -69,6 +76,11 @@ function userReducer(state = initialState, action) {
         case SET_USER_NAME: {
             const newState = getNewState(state);
             newState.userName = action.payload;
+            return newState;
+        }
+        case SIGN_IN: {
+            const newState = getNewState(state);
+            newState.isSignedIn = true;
             return newState;
         }
 
