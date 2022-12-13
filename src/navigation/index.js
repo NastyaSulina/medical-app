@@ -6,6 +6,7 @@ import Registration from '../screens/Registration/Registration';
 import Main from '../screens/Main/Main';
 import Profile from '../screens/Profile/Profile';
 import ProfileEdition from '../screens/ProfileEdition/ProfileEdition';
+import Archive from "../screens/Archive/Archive";
 
 function Navigation() {
     const Stack = createNativeStackNavigator();
@@ -21,6 +22,7 @@ function Navigation() {
                 <Stack.Screen name="Main" component={Main} />
                 <Stack.Screen name="Profile" component={Profile} />
                 <Stack.Screen name="ProfileEdition" component={ProfileEdition} />
+                <Stack.Screen name="Archive" component={Archive} />
             </Stack.Navigator>
         </NavigationContainer>
     );

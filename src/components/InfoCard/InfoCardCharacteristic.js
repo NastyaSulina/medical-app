@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import styles from './InfoCard-styles';
+import TextCustom from "../TextCustom/TextCustom";
 
-function InfoCardCharacteristic({ InfoKey, InfoValue, isTimeInfo }) {
+function InfoCardCharacteristic({ InfoValue, isTimeInfo }) {
     return (
         <View style={styles.container}>
-            <Text style={styles.infoKey}>{InfoKey}</Text>
-            {!isTimeInfo && <Text style={styles.infoValue}>{InfoValue}</Text>}
+            {!isTimeInfo && <TextCustom outerStyles={styles.infoValue} text={InfoValue}/>}
             {isTimeInfo &&
                 InfoValue.map((value) => (
-                    <Text style={[styles.time, styles.infoValue]}>{value}</Text>
+                    <TextCustom outerStyles={[styles.time, styles.infoValue]} text={value}/>
                 ))}
         </View>
     );
