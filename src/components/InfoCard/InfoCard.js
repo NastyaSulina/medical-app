@@ -7,7 +7,7 @@ import {globalStyles, TEXT_FONT} from "../../styles/globalStyles";
 
 function InfoCard({ title, time, interval }) {
     return (
-        <View style={styles.infoContainer}>
+        <View style={[styles.infoContainer, globalStyles.shadow]}>
             <TextCustom text={title} outerStyles={globalStyles[TEXT_FONT.medium]} />
             <InfoCardCharacteristic InfoValue={time} isTimeInfo />
             <InfoCardCharacteristic InfoValue={interval} />
