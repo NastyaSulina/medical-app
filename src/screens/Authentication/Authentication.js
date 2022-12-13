@@ -10,8 +10,8 @@ import Logo from '../../../assets/logo.png';
 import {globalStyles} from '../../styles/globalStyles';
 import styles from './Authentication-style';
 import TextCustom from '../../components/TextCustom/TextCustom';
-import { sendUserSignInInput } from '../../fetch';
-import {setUserName, setEmail} from "../../redux/actions";
+import {sendUserSignInInput} from '../../fetch';
+import {setEmail, setUserName} from "../../redux/actions";
 
 export default function Authentication() {
     const navigation = useNavigation();
@@ -21,10 +21,12 @@ export default function Authentication() {
     const onSignInPressed = async (data) => {
         const response = await sendUserSignInInput(data);
 
-        if (response.code === "12" || response.code === "11") {
-            const formError = {type: "server", message: "Проверьте почту или пароль!"};
-            setError('password', formError);
+        if (response.code === "11") {
+            const formError = {type: "server", message: "Нет пользователя с такой почтой!"};
             setError('email', formError);
+        } else if (response.code === "12") {
+            const formError = {type: "server", message: "Неправильный пароль!"};
+            setError('password', formError);
         } else {
             console.log(response);
             dispatch(setUserName(response.name));
@@ -45,9 +47,12 @@ export default function Authentication() {
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
                 <ScrollView centerContent contentContainerStyle={styles.container}>
                     <View style={[styles.content, globalStyles.shadow]}>
-                        <Image style={styles.logo} source={Logo} resizeMode="contain" />
+                        <Image style={styles.logo} source={Logo} resizeMode="contain"/>
                         <Text style={styles.text}>Вход в 120/80</Text>
-                        {errors && errors.email?.type === 'server' && <TextCustom text={errors.email?.message} outerStyles={styles.errorMessage}/>}
+                        {errors && errors.email?.type === 'server' &&
+                            <TextCustom text={errors.email?.message} outerStyles={styles.errorMessage}/>}
+                        {errors && errors.password?.type === 'server' &&
+                            <TextCustom text={errors.password?.message} outerStyles={styles.errorMessage}/>}
                         <Input
                             name="email"
                             label="Почта *"
