@@ -28,7 +28,7 @@ export default function Authentication() {
         <SafeAreaView style={globalStyles.root}>
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
                 <ScrollView centerContent contentContainerStyle={styles.container}>
-                    <View style={styles.content}>
+                    <View style={[styles.content, globalStyles.shadow]}>
                         <Image style={styles.logo} source={Logo} resizeMode="contain" />
                         <Text style={styles.text}>Вход в 120/80</Text>
 

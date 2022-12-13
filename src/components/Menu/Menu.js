@@ -5,10 +5,11 @@ import ArchiveImage from '../../../assets/menu-assets/archive.png';
 import ScheduleImage from '../../../assets/menu-assets/schedule.png';
 import ReportImage from '../../../assets/menu-assets/report.png';
 import Button from '../Button/Button';
+import { globalStyles } from '../../styles/globalStyles';
 
 function Menu() {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, globalStyles.shadow]}>
             <Button
                 iconSource={ArchiveImage}
                 iconStyles={styles.icon}

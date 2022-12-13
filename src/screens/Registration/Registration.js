@@ -34,7 +34,11 @@ export default function Registration() {
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
                 <ScrollView centerContent contentContainerStyle={styles.container}>
                     <View
-                        style={[styles.content, { minHeight: useWindowDimensions().height * 0.8 }]}
+                        style={[
+                            styles.content,
+                            globalStyles.shadow,
+                            { minHeight: useWindowDimensions().height * 0.8 },
+                        ]}
                     >
                         <Text style={styles.text}>Регистрация</Text>
                         <Form control={control} watch={watch} />

@@ -10,6 +10,7 @@ import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Arrow from '../../../assets/profile-assets/arrow-left.png';
 import { setUserName } from '../../redux/actions';
+import { globalStyles } from '../../styles/globalStyles';
 
 export default function ProfileEdition() {
     const { email, userName } = useSelector((state) => state.userReducer);
@@ -41,7 +42,7 @@ export default function ProfileEdition() {
                             <Text style={styles.login}>{userName}</Text>
                         </View>
                     </View>
-                    <View style={localStyles.inputField}>
+                    <View style={[localStyles.inputField, globalStyles.shadow]}>
                         <Input
                             name="email"
                             label="Почта"

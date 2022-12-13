@@ -29,9 +29,6 @@ const localStyles = StyleSheet.create({
         paddingVertical: 23,
         borderRadius: 16,
         alignSelf: 'center',
-        shadowColor: 'rgba(33, 33, 33, 0.04)',
-        shadowRadius: 3,
-        elevation: 16,
     },
     marginTop: {
         marginTop: 22,
