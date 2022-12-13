@@ -24,7 +24,6 @@ function Menu({ screen }) {
                 outerStyles={styles.button}
                 textColor={screen === 'Архив' ? "green" : "gray"}
                 textFont="medium"
-                textOuterStyles={{ fontSize: 14 }}
             />
             <Button
                 iconSource={screen === 'Главная' ? ScheduleImageGreen : ScheduleImageGray}
@@ -34,7 +33,6 @@ function Menu({ screen }) {
                 outerStyles={styles.button}
                 textColor={screen === 'Главная' ? "green" : "gray"}
                 textFont="medium"
-                textOuterStyles={{ fontSize: 14 }}
             />
             <Button
                 iconSource={screen === 'Отчет' ? ReportImageGreen : ReportImageGray}
@@ -43,7 +41,6 @@ function Menu({ screen }) {
                 outerStyles={styles.button}
                 textColor={screen === 'Отчет' ? "green" : "gray"}
                 textFont="medium"
-                textOuterStyles={{ fontSize: 14 }}
             />
         </View>
     );

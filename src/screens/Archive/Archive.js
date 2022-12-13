@@ -17,7 +17,8 @@ function Archive() {
     const [pageActive, setPageActive] = useState("medicine")
 
     return (
-        <SafeAreaView style={[globalStyles.root, { height: '100%' }]}>
+        <SafeAreaView style={[globalStyles.root, { height: '100%' }]}
+                      edges={['right', 'top', 'left']}>
             <UpperMenu text="Список лекарств" onButtonPress={handleProfilePressed} />
             <ArchiveSwitcher pageActive={pageActive} onPress={setPageActive}/>
             <ScrollView contentContainerStyle={styles.container}>

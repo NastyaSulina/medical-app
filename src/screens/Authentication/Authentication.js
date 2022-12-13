@@ -89,7 +89,7 @@ export default function Authentication() {
                         <View style={styles.registrationInvite}>
                             <TextCustom
                                 outerStyles={styles.registrationText}
-                                text="Нет аккаунта?"
+                                text="Нет аккаунта? "
                             />
                             <Button
                                 text="Зарегистрируйтесь!"

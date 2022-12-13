@@ -70,11 +70,12 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
     },
     shadow: {
-        shadowColor: 'rgba(33, 33, 33, 0.04)',
+        shadowColor: 'rgba(33, 33, 33, 0.045)',
         shadowOffset: {
             width: 0,
             height: 2,
         },
+        shadowOpacity: 1,
         shadowRadius: 3,
         elevation: 3,
     },
