@@ -12,7 +12,7 @@ import UpperMenu from '../../components/UpperMenu/UpperMenu';
 
 function Main() {
     const { tasks } = useSelector((state) => state.userReducer);
-    const initialDate = '2022-12-10';
+    const initialDate = '2022-12-13';
     const navigation = useNavigation();
     const handleProfilePressed = () => {
         navigation.navigate('Profile');
