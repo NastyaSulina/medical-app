@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, Switch } from 'react-native';
+import { View, Switch } from 'react-native';
 import styles from './ContainerField-style';
 import Exit from '../../../assets/profile-assets/exit.png';
 import SmallArrow from '../../../assets/profile-assets/smallArrow.png';
@@ -7,6 +7,7 @@ import SmallArrowTop from '../../../assets/profile-assets/SmallArrowTop.png';
 import SmallArrowBottom from '../../../assets/profile-assets/SmallArrowBottom.png';
 import Button from '../Button/Button';
 import { COLORS } from '../../styles/globalStyles';
+import TextCustom from '../TextCustom/TextCustom';
 
 function ContainerField({ type, name, property, outerStyles }) {
     const [isEnabled, setIsEnabled] = useState(true);
@@ -17,9 +18,12 @@ function ContainerField({ type, name, property, outerStyles }) {
 
     return (
         <View style={outerStyles}>
-            <Text style={type === 'input' ? styles.grayText : styles.blackText}>{name}</Text>
+            <TextCustom
+                text={name}
+                outerStyles={type === 'input' ? styles.grayText : styles.blackText}
+            />
             {type === 'input' && Boolean(property) && (
-                <Text style={styles.blackText}>{property}</Text>
+                <TextCustom text={property} outerStyles={styles.blackText} />
             )}
             {(type === 'exit' || type === 'link') && (
                 <Button
@@ -36,7 +40,7 @@ function ContainerField({ type, name, property, outerStyles }) {
                 />
             )}
             {type === 'dropDownList' && isOpen && Boolean(property) && (
-                <Text style={styles.dropDown}>{property}</Text>
+                <TextCustom text={property} outerStyles={styles.dropDown} />
             )}
             {type === 'switcher' && (
                 <Switch

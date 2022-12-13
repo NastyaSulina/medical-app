@@ -11,13 +11,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         backgroundColor: COLORS.white,
         minWidth: '100%',
-        shadowColor: '#212121',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.04,
-        shadowRadius: 3,
     },
     taskInfo: {
         flexDirection: 'column',

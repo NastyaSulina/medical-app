@@ -8,10 +8,11 @@ import ArchiveImageGreen from '../../../assets/menu-assets/archiveGreen.png';
 import ScheduleImageGreen from '../../../assets/menu-assets/scheduleGreen.png';
 import ReportImageGreen from '../../../assets/menu-assets/reportGreen.png';
 import Button from '../Button/Button';
+import { globalStyles } from '../../styles/globalStyles';
 
 function Menu({ screen }) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, globalStyles.shadow]}>
             <Button
                 iconSource={screen === "Архив" ? ArchiveImageGreen : ArchiveImageGray}
                 iconStyles={styles.icon}

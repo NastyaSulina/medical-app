@@ -2,10 +2,11 @@ import React from 'react';
 import { View } from 'react-native';
 import ContainerField from '../ContainerField/ContainerField';
 import styles from './Container-styles';
+import { globalStyles } from '../../styles/globalStyles';
 
 function Container({ fields }) {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, globalStyles.shadow]}>
             {fields.map((field, index) => (
                 <ContainerField
                     key={field.id}

@@ -5,6 +5,7 @@ import { styles } from './Calendar-styles';
 import { setSelectedDate } from '../../redux/actions';
 import Button from '../Button/Button';
 import { getFormattedDate, getLocalDay } from '../../transform/dateFormatter';
+import { globalStyles } from '../../styles/globalStyles';
 
 function CalendarShort() {
     const dispatch = useDispatch();
@@ -31,7 +32,7 @@ function CalendarShort() {
     const dates = getSelectedWeek(selectedDate);
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, globalStyles.shadow]}>
             <View style={styles.dayTitlesContainer}>
                 {dates.map((day) => (
                     <Text key={day.key} style={styles.dayTitlesText}>

@@ -10,13 +10,6 @@ export const styles = StyleSheet.create({
         borderRadius: 16,
         maxWidth: '90%',
         width: '100%',
-        shadowColor: '#212121',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.04,
-        shadowRadius: 3,
     },
     dayTitlesContainer: {
         justifyContent: 'space-around',

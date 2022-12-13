@@ -10,6 +10,7 @@ import Arrow from '../../../assets/profile-assets/arrow-left.png';
 import Edit from '../../../assets/profile-assets/edit.png';
 import ProfileFields from './ProfileFields';
 import { globalStyles } from '../../styles/globalStyles';
+import TextCustom from '../../components/TextCustom/TextCustom';
 
 export default function Profile() {
     const { email, userName } = useSelector((state) => state.userReducer);
@@ -30,7 +31,7 @@ export default function Profile() {
                                 {userName[0].toUpperCase()}
                             </Text>
                         </View>
-                        <Text style={styles.login}>{userName}</Text>
+                        <TextCustom text={userName} outerStyles={styles.login} />
                     </View>
                     <Button
                         iconSource={Edit}
