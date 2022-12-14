@@ -31,7 +31,7 @@ function Main() {
                     <TaskList tasks={tasks[initialDate]} type="symptom" date={initialDate} />
                 </View>
             </ScrollView>
-            <Menu screen="Главная"/>
+            <Menu screen="Главная" />
         </SafeAreaView>
     );
 }

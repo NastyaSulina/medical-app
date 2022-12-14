@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         position: 'absolute',
         top: 110,
-    }
+    },
 });
 
 export default styles;
