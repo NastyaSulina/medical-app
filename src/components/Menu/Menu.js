@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import styles from './Menu-styles';
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
 import ArchiveImageGray from '../../../assets/menu-assets/archiveGray.png';
 import ScheduleImageGray from '../../../assets/menu-assets/scheduleGray.png';
 import ReportImageGray from '../../../assets/menu-assets/reportGray.png';
@@ -17,12 +17,12 @@ function Menu({ screen }) {
     return (
         <View style={[styles.container, globalStyles.shadow]}>
             <Button
-                iconSource={screen === "Архив" ? ArchiveImageGreen : ArchiveImageGray}
+                iconSource={screen === 'Архив' ? ArchiveImageGreen : ArchiveImageGray}
                 iconStyles={styles.icon}
                 text="Архив"
                 onPress={() => navigation.navigate('Archive')}
                 outerStyles={styles.button}
-                textColor={screen === 'Архив' ? "green" : "gray"}
+                textColor={screen === 'Архив' ? 'green' : 'gray'}
                 textFont="medium"
             />
             <Button
@@ -31,7 +31,7 @@ function Menu({ screen }) {
                 onPress={() => navigation.navigate('Main')}
                 text="Главная"
                 outerStyles={styles.button}
-                textColor={screen === 'Главная' ? "green" : "gray"}
+                textColor={screen === 'Главная' ? 'green' : 'gray'}
                 textFont="medium"
             />
             <Button
@@ -39,7 +39,7 @@ function Menu({ screen }) {
                 iconStyles={styles.icon}
                 text="Отчет"
                 outerStyles={styles.button}
-                textColor={screen === 'Отчет' ? "green" : "gray"}
+                textColor={screen === 'Отчет' ? 'green' : 'gray'}
                 textFont="medium"
             />
         </View>

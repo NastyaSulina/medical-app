@@ -1,22 +1,28 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {useForm} from 'react-hook-form';
-import {useDispatch} from "react-redux";
-import {Image, KeyboardAvoidingView, Platform, ScrollView, Text, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Logo from '../../../assets/logo.png';
-import {globalStyles} from '../../styles/globalStyles';
+import { globalStyles } from '../../styles/globalStyles';
 import styles from './Authentication-style';
 import TextCustom from '../../components/TextCustom/TextCustom';
-import {sendUserSignInInput} from '../../fetch';
-import {setEmail, setUserName} from "../../redux/actions";
+import { sendUserSignInInput } from '../../fetch';
+import { setUserName, setEmail, signIn } from '../../redux/actions';
 
 export default function Authentication() {
     const navigation = useNavigation();
     const dispatch = useDispatch();
-    const {control, handleSubmit, setError, formState: {errors}} = useForm();
+    const { isSignedIn } = useSelector((state) => state.userReducer);
+    const {
+        control,
+        handleSubmit,
+        setError,
+        formState: { errors },
+    } = useForm();
 
     const onSignInPressed = async (data) => {
         const response = await sendUserSignInInput(data);
@@ -31,12 +37,11 @@ export default function Authentication() {
             console.log(response);
             dispatch(setUserName(response.name));
             dispatch(setEmail(response.email));
-            navigation.navigate('Main');
+            dispatch(signIn(isSignedIn));
         }
     };
 
-    const onForgotPasswordPressed = () => {
-    };
+    const onForgotPasswordPressed = () => {};
 
     const onRegistrationPressed = () => {
         navigation.navigate('Registration');
@@ -49,10 +54,12 @@ export default function Authentication() {
                     <View style={[styles.content, globalStyles.shadow]}>
                         <Image style={styles.logo} source={Logo} resizeMode="contain"/>
                         <Text style={styles.text}>Вход в 120/80</Text>
+                        
                         {errors && errors.email?.type === 'server' &&
                             <TextCustom text={errors.email?.message} outerStyles={styles.errorMessage}/>}
                         {errors && errors.password?.type === 'server' &&
                             <TextCustom text={errors.password?.message} outerStyles={styles.errorMessage}/>}
+                            
                         <Input
                             name="email"
                             label="Почта *"

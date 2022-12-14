@@ -2,8 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import InfoCardCharacteristic from './InfoCardCharacteristic';
 import styles from './InfoCard-styles';
-import TextCustom from "../TextCustom/TextCustom";
-import {globalStyles, TEXT_FONT} from "../../styles/globalStyles";
+import TextCustom from '../TextCustom/TextCustom';
+import { globalStyles, TEXT_FONT } from '../../styles/globalStyles';
 
 function InfoCard({ title, time, interval }) {
     return (
