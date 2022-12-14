@@ -12,19 +12,19 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         width: '90%',
         minHeight: 100,
-        padding: 24,
+        paddingVertical: 24,
         borderRadius: 12,
         alignItems: 'center',
     },
     title: {
         fontFamily: 'interMedium',
         fontSize: 20,
-        marginBottom: 23,
+        marginBottom: 15,
     },
     button: {
         width: 173,
         borderRadius: 20,
-        marginTop: 22,
+        marginTop: 8,
     },
 });
 

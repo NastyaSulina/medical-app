@@ -2,13 +2,14 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     slider: {
-        width: '100%',
+        width: '85%',
+        marginVertical: 10,
     },
     thumb: {
         width: 19,
         height: 19,
         left: -148,
-        top: 14,
+        top: 25,
     },
 });
 

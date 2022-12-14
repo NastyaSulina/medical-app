@@ -19,6 +19,8 @@ function Main() {
         navigation.navigate('Profile');
     };
 
+    const temperatureOptions = ['Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', ];
+
     return (
         <SafeAreaView
             style={[globalStyles.root, { height: '100%' }]}
@@ -33,7 +35,11 @@ function Main() {
                 </View>
             </ScrollView>
             <Menu screen="Главная" />
-            <SymptomPopup text="Как ваше настроение?" type="slider" />
+            <SymptomPopup
+                text="Как ваше настроение?"
+                type="wheel"
+                wheelOptions={temperatureOptions}
+            />
         </SafeAreaView>
     );
 }

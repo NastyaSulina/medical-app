@@ -3,6 +3,7 @@ import { Modal, View } from 'react-native';
 import TextCustom from '../TextCustom/TextCustom';
 import Button from '../Button/Button';
 import CustomSlider from '../CustomSlider/CustomSlider';
+import CustomWheel from '../CustomWheel/CustomWheel';
 import styles from './SymptomPopup-styles';
 
 function SymptomPopup(props) {
@@ -12,6 +13,7 @@ function SymptomPopup(props) {
                 <View style={styles.container}>
                     <TextCustom text={props.text} outerStyles={styles.title} />
                     {props.type === 'slider' && <CustomSlider />}
+                    {props.type === 'wheel' && <CustomWheel options={props.wheelOptions} />}
                     <Button
                         text="Готово!"
                         type="primary"
