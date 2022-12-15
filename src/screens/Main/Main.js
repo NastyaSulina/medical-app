@@ -19,7 +19,11 @@ function Main() {
         navigation.navigate('Profile');
     };
 
-    const temperatureOptions = ['Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', ];
+    const temperatureOptions = [
+        ['Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba'],
+        ['Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba'],
+        ['Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba'],
+    ];
 
     return (
         <SafeAreaView
@@ -35,11 +39,7 @@ function Main() {
                 </View>
             </ScrollView>
             <Menu screen="Главная" />
-            <SymptomPopup
-                text="Как ваше настроение?"
-                type="wheel"
-                wheelOptions={temperatureOptions}
-            />
+            <SymptomPopup text="Как ваше настроение?" type="slider" />
         </SafeAreaView>
     );
 }
