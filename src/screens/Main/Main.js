@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import { ScrollView, View } from 'react-native';
@@ -9,7 +9,8 @@ import TaskList from '../../components/TaskList/TaskList';
 import Menu from '../../components/Menu/Menu';
 import CalendarContainer from '../../components/Calendar/CalendarContainer';
 import UpperMenu from '../../components/UpperMenu/UpperMenu';
-import Popup from '../../components/Popup/Popup';
+import AddingTrackerButton from '../../components/AddingTrackerButton/AddingTrackerButton';
+import AddingTrackerPopup from '../../components/AddingTrackerPopup/AddingTrackerPopup';
 
 function Main() {
     const { tasks } = useSelector((state) => state.userReducer);
@@ -25,6 +26,8 @@ function Main() {
         ['Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba', 'Aboba'],
     ];
 
+    const [modalVisible, setModalVisible] = useState(false);
+
     return (
         <SafeAreaView
             style={[globalStyles.root, { height: '100%' }]}
@@ -38,12 +41,9 @@ function Main() {
                     <TaskList tasks={tasks[initialDate]} type="symptom" date={initialDate} />
                 </View>
             </ScrollView>
+            <AddingTrackerButton onPress={() => setModalVisible(!modalVisible)} />
             <Menu screen="Главная" />
-            <Popup
-                text="Как ваше настроение?"
-                type="wheel"
-                wheelOptions={temperatureOptions}
-            />
+            <AddingTrackerPopup modalVisible={modalVisible} setModalVisible={setModalVisible} />
         </SafeAreaView>
     );
 }
