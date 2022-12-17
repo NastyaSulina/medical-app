@@ -5,9 +5,12 @@ const styles = StyleSheet.create({
         marginTop: 12,
     },
     separator: {
-        borderTopWidth: 0.5,
-        borderColor: '#9FAABB',
-        marginTop: 16,
+        marginTop: 24,
+        marginBottom: 12,
+        alignSelf: 'center',
+        width: '95%',
+        height: 0.5,
+        backgroundColor: '#9FAABB',
     }
 });
 
