@@ -70,13 +70,13 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
     },
     shadow: {
-        shadowColor: 'rgba(33, 33, 33, 0.045)',
+        shadowColor: 'rgba(33, 33, 33, 0.2)',
         shadowOffset: {
             width: 0,
             height: 2,
         },
-        shadowOpacity: 1,
+        shadowOpacity: 0.2,
         shadowRadius: 3,
-        elevation: 3,
+        elevation: 6,
     },
 });
