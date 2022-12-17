@@ -10,7 +10,7 @@ import { globalStyles } from '../../styles/globalStyles';
 import TextCustom from '../../components/TextCustom/TextCustom';
 import AddingForm from "./AddingForm";
 
-export default function Adding({ type }) {
+export default function Adding({ type = "medicine" }) {
     const navigation = useNavigation();
     const {
         control,
@@ -26,19 +26,20 @@ export default function Adding({ type }) {
                         iconStyles={{ width: 28, height: 28 }}
                         onPress={() => navigation.goBack()}
                     />
-                    <TextCustom text={type === "symptom" ? "Добавить симптом" : "Добавить лекарство"} />
+                    <TextCustom outerStyles={styles.title} text={type === "symptom" ? "Симптом" : " Лекарство"} />
                 </View>
 
                 <View style={styles.containers}>
                     <AddingForm
                         type={type}
-                        сontrol={control}
+                        control={control}
                     />
                     <Button
                         text="Готово!"
                         type="primary"
                         textFont="semiBold"
-                        size="L"
+                        size="M"
+                        outerStyles={styles.submitButton}
                         onPress={handleSubmit()}
                     />
                 </View>
