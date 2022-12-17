@@ -3,6 +3,7 @@ import { Modal, View, TouchableOpacity } from 'react-native';
 import TextCustom from '../TextCustom/TextCustom';
 import Button from '../Button/Button';
 import CustomSlider from '../CustomSlider/CustomSlider';
+import CustomRadio from "../CustomRadio/CustomRadio";
 import CustomWheel from '../CustomWheel/CustomWheel';
 import styles from './Popup-styles';
 
@@ -26,6 +27,7 @@ function Popup(props) {
                     <TextCustom text={props.text} outerStyles={styles.title} />
                     {props.type === 'slider' && <CustomSlider />}
                     {props.type === 'wheel' && <CustomWheel options={props.wheelOptions} />}
+                    {props.type === 'radio' && <CustomRadio />}
                     <Button
                         text="Готово!"
                         type="primary"

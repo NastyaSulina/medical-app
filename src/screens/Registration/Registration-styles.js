@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     },
     content: {
         backgroundColor: COLORS.white,
-        maxWidth: '90%',
+        maxWidth: '94%',
         padding: 20,
         borderRadius: 16,
     },

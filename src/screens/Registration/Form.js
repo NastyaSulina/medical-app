@@ -24,7 +24,13 @@ export default function Form({ control, watch }) {
                 label="Имя *"
                 name="username"
                 control={control}
-                rules={{ required: 'Это поле обязательно для заполнения!' }}
+                rules={{
+                    required: 'Это поле обязательно для заполнения!',
+                    pattern: {
+                        value: /^[a-zA-Zа-яА-Я]+$/,
+                        message: 'Введены недопустимые символы!',
+                    },
+                }}
                 outerStyles={styles.usernameInput}
             />
             <Input

@@ -60,7 +60,7 @@ export default function ProfileEdition() {
                             rules={{
                                 required: 'Это поле обязательно для заполнения!',
                                 pattern: {
-                                    value: /^[^\s()-]*$/,
+                                    value: /^[a-zA-Zа-яА-Я]+$/,
                                     message: 'Введены недопустимые символы',
                                 },
                             }}
