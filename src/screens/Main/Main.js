@@ -34,8 +34,8 @@ function Main() {
             <CalendarContainer />
             <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.content}>
-                    <TaskList tasks={tasks[initialDate]} type="medicine" date={initialDate} />
-                    <TaskList tasks={tasks[initialDate]} type="symptom" date={initialDate} />
+                    <TaskList tasks={tasks[initialDate]} status={false} date={initialDate} />
+                    <TaskList tasks={tasks[initialDate]} status date={initialDate} />
                 </View>
             </ScrollView>
             <Menu screen="Главная" />

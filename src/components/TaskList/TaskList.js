@@ -1,16 +1,18 @@
 import React from 'react';
+import {View} from "react-native";
 import styles from './TaskList-styles';
 import Task from '../Task/Task';
 
-function TaskList({ tasks, type, date }) {
+function TaskList({ tasks, status, date }) {
     return (
         <>
+            {status && <View style={styles.separator}/>}
             {tasks
-                .filter((task) => task.type === type)
+                .filter((task) => task.status === status)
                 .map((task) => (
                     <Task
                         key={task.id}
-                        type={type}
+                        type={task.type}
                         id={task.id}
                         date={date}
                         taskName={task.name}
