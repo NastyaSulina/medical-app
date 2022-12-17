@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         paddingBottom: 34,
         backgroundColor: COLORS.white,
         borderRadius: 16,
-        maxWidth: '90%',
+        minWidth: '90%',
         width: '100%',
     },
     dayTitlesContainer: {
