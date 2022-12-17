@@ -23,6 +23,7 @@ function CustomSlider() {
                 minimumValue={0}
                 maximumValue={10}
                 value={value}
+                step={0.1}
                 onValueChange={onValueChange}
                 containerStyle={styles.slider}
                 trackStyle={{ height: 6, borderRadius: 3 }}

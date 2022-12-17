@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'rgba(0, 0, 0, .3)',
     },
+    closing: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+    },
     container: {
         backgroundColor: COLORS.white,
         width: '90%',

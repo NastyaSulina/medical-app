@@ -59,6 +59,10 @@ export default function ProfileEdition() {
                             control={control}
                             rules={{
                                 required: 'Это поле обязательно для заполнения!',
+                                pattern: {
+                                    value: /^[^\s()-]*$/,
+                                    message: 'Введены недопустимые символы',
+                                },
                             }}
                             placeholderText="username"
                             outerStyles={localStyles.marginTop}

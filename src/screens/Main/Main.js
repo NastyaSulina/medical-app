@@ -9,7 +9,7 @@ import TaskList from '../../components/TaskList/TaskList';
 import Menu from '../../components/Menu/Menu';
 import CalendarContainer from '../../components/Calendar/CalendarContainer';
 import UpperMenu from '../../components/UpperMenu/UpperMenu';
-import SymptomPopup from '../../components/SymptomPopup/SymptomPopup';
+import Popup from '../../components/Popup/Popup';
 
 function Main() {
     const { tasks } = useSelector((state) => state.userReducer);
@@ -39,7 +39,11 @@ function Main() {
                 </View>
             </ScrollView>
             <Menu screen="Главная" />
-            <SymptomPopup text="Как ваше настроение?" type="slider" />
+            <Popup
+                text="Как ваше настроение?"
+                type="wheel"
+                wheelOptions={temperatureOptions}
+            />
         </SafeAreaView>
     );
 }
