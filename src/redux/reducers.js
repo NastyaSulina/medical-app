@@ -8,7 +8,7 @@ import {
 import { getFormattedDate } from '../transform/dateFormatter';
 
 const initialState = {
-    isSignedIn: false,
+    isSignedIn: true,
     email: 'qwerty123@gmail.com',
     userName: 'Анна',
     selectedDate: getFormattedDate(),
