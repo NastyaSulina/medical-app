@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Modal, View, TouchableOpacity } from 'react-native';
 import styles from './AddingTrackerPopup-style';
 import Button from '../Button/Button';
 
 function AddingTrackerPopup(props) {
+    const navigation = useNavigation();
+
     return (
         <Modal
             transparent
@@ -25,6 +28,10 @@ function AddingTrackerPopup(props) {
                         textFont="medium"
                         textOuterStyles={styles.buttonText}
                         outerStyles={styles.button}
+                        onPress={() => {
+                            props.setModalVisible(!props.modalVisible);
+                            navigation.navigate('Adding', { type: 'standard' });
+                        }}
                     />
                     <Button
                         text="Добавить лекарство"
@@ -33,6 +40,10 @@ function AddingTrackerPopup(props) {
                         textFont="medium"
                         textOuterStyles={styles.buttonText}
                         outerStyles={styles.button}
+                        onPress={() => {
+                            props.setModalVisible(!props.modalVisible);
+                            navigation.navigate('Adding', { type: 'medicine' });
+                        }}
                     />
                     <Button
                         text="Добавить симптом"
@@ -40,6 +51,10 @@ function AddingTrackerPopup(props) {
                         size="L"
                         textFont="medium"
                         textOuterStyles={styles.buttonText}
+                        onPress={() => {
+                            props.setModalVisible(!props.modalVisible);
+                            navigation.navigate('Adding', { type: 'symptom' });
+                        }}
                     />
                 </View>
             </View>

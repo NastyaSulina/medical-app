@@ -2,20 +2,27 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView, View } from 'react-native';
-import {useForm} from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import styles from './Adding-styles';
 import Button from '../../components/Button/Button';
 import Arrow from '../../../assets/profile-assets/arrow-left.png';
 import { globalStyles } from '../../styles/globalStyles';
 import TextCustom from '../../components/TextCustom/TextCustom';
-import AddingForm from "./AddingForm";
+import AddingForm from './AddingForm';
+import StandardTrackers from '../../components/AddingTrackerPopup/StandardTrackers';
 
-export default function Adding({ type = "medicine" }) {
+export default function Adding({ type = 'medicine' }) {
     const navigation = useNavigation();
-    const {
-        control,
-        handleSubmit,
-    } = useForm();
+    const { control, handleSubmit } = useForm();
+
+    const title = {
+        customSymptom: 'Симптом',
+        standardSymptom: 'Симптом',
+        medicine: 'Лекарство',
+        standard: 'Стандартные параметры',
+    };
+
+    const moveToStandard = () => {};
 
     return (
         <SafeAreaView style={globalStyles.root}>
@@ -26,24 +33,22 @@ export default function Adding({ type = "medicine" }) {
                         iconStyles={{ width: 28, height: 28 }}
                         onPress={() => navigation.goBack()}
                     />
-                    <TextCustom outerStyles={styles.title} text={type === "symptom" ? "Симптом" : " Лекарство"} />
+                    <TextCustom outerStyles={[styles.title]} text={title[type]} />
                 </View>
 
                 <View style={styles.containers}>
-                    <AddingForm
-                        type={type}
-                        control={control}
-                    />
+                    {Boolean(type === 'standard') && <StandardTrackers />}
+                    {Boolean(type !== 'standard') && <AddingForm type={type} control={control} />}
+
                     <Button
                         text="Готово!"
                         type="primary"
                         textFont="semiBold"
                         size="M"
                         outerStyles={styles.submitButton}
-                        onPress={handleSubmit()}
+                        onPress={type === 'standard' ? moveToStandard() : handleSubmit()}
                     />
                 </View>
-
             </ScrollView>
         </SafeAreaView>
     );

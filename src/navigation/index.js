@@ -8,6 +8,7 @@ import Main from '../screens/Main/Main';
 import Profile from '../screens/Profile/Profile';
 import ProfileEdition from '../screens/ProfileEdition/ProfileEdition';
 import Archive from '../screens/Archive/Archive';
+import Adding from '../screens/Adding/Adding';
 
 function Navigation() {
     const Stack = createNativeStackNavigator();
@@ -22,6 +23,7 @@ function Navigation() {
                         <Stack.Screen name="Profile" component={Profile} />
                         <Stack.Screen name="ProfileEdition" component={ProfileEdition} />
                         <Stack.Screen name="Archive" component={Archive} />
+                        <Stack.Screen name="Adding" component={Adding} />
                     </>
                 ) : (
                     <>

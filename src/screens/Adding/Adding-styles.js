@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
         paddingVertical: 24,
         borderRadius: 16,
         alignSelf: 'center',
-        marginBottom: 24,
     },
     upperRow: {
         flexDirection: 'row',
@@ -42,6 +41,7 @@ const styles = StyleSheet.create({
         minWidth: 200,
         alignSelf: 'center',
         borderRadius: 24,
+        marginTop: 24,
     },
     icon: {
         width: 25,
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     containers: {
         flexGrow: 1,
         height: '100%',
+        alignItems: 'center',
     },
     additionalInputs: {
         flexDirection: 'row',
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     },
     additionalInput: {
         maxWidth: 80,
-    }
+    },
 });
 
 export default styles;

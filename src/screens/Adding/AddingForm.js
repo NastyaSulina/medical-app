@@ -68,7 +68,9 @@ export default function AddingForm({ type, control }) {
             <Input
                 name="start_day"
                 label={
-                    type === 'symptom' ? 'Дата начала отслеживания' : 'Дата начала приема'
+                    type === 'customSymptom' || type === 'standardSymptom'
+                        ? 'Дата начала отслеживания'
+                        : 'Дата начала приема'
                 }
                 outerStyles={styles.input}
                 control={control}
@@ -78,7 +80,7 @@ export default function AddingForm({ type, control }) {
             <Input
                 name="start_day"
                 label={
-                    type === 'symptom'
+                    type === 'customSymptom' || type === 'standardSymptom'
                         ? 'Сколько дней отслеживать?'
                         : 'Сколько дней принимать?'
                 }
