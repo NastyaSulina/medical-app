@@ -4,6 +4,7 @@ import { COLORS } from '../../styles/globalStyles';
 const styles = StyleSheet.create({
     container: {
         width: '90%',
+        alignSelf: 'center',
     },
     addingForm: {
         backgroundColor: COLORS.white,
