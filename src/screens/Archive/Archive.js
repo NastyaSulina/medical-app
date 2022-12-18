@@ -8,6 +8,8 @@ import Menu from '../../components/Menu/Menu';
 import UpperMenu from '../../components/UpperMenu/UpperMenu';
 import InfoCardList from '../../components/InfoCardList/InfoCardList';
 import ArchiveSwitcher from './ArchiveSwitcher';
+import AddingTrackerButton from "../../components/AddingTrackerButton/AddingTrackerButton";
+import AddingTrackerPopup from "../../components/AddingTrackerPopup/AddingTrackerPopup";
 
 function Archive() {
     const navigation = useNavigation();
@@ -15,6 +17,7 @@ function Archive() {
         navigation.navigate('Profile');
     };
     const [pageActive, setPageActive] = useState('medicine');
+    const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <SafeAreaView
@@ -29,7 +32,9 @@ function Archive() {
                     <InfoCardList listTitle="Архив" />
                 </View>
             </ScrollView>
+            <AddingTrackerButton onPress={() => setModalVisible(!modalVisible)} />
             <Menu screen="Архив" />
+            <AddingTrackerPopup modalVisible={modalVisible} setModalVisible={setModalVisible} />
         </SafeAreaView>
     );
 }
