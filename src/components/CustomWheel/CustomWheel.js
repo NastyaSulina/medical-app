@@ -22,7 +22,7 @@ function CustomWheel(props) {
                 inx === props.options.length - 1 ? {} : { borderRightWidth: 2 },
                 styles.selectedOption,
             ]}
-            containerStyle={{ flexGrow: 1 }}
+            containerStyle={props.options.length === 3 ? { width: '33.3%' } : {flex: 1}}
             itemTextStyle={[styles.optionText, globalStyles[TEXT_FONT.medium]]}
         />
     );
