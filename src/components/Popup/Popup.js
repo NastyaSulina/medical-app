@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal, View, TouchableOpacity } from 'react-native';
 import TextCustom from '../TextCustom/TextCustom';
 import Button from '../Button/Button';
@@ -38,7 +38,6 @@ function Popup(props) {
                         textFont="semiBold"
                         outerStyles={styles.button}
                         onPress={() => {
-                            console.log('Закрыли модалку');
                             props.setModalVisible(!props.modalVisible);
                         }}
                     />

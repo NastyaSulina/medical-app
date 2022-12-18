@@ -12,7 +12,7 @@ export default function AddingForm({ type, name, control }) {
     const [count, setCount] = useState(0);
     const [popupVisible, setPopupVisible] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const measureValues = [['мл', 'мг', 'табл.', 'штука']];
+    const measureValues = [['мл', 'мг', 'табл.', 'шт.']];
 
     return (
         <View style={[styles.addingForm, globalStyles.shadow]}>
@@ -20,18 +20,18 @@ export default function AddingForm({ type, name, control }) {
                 name="title"
                 label="Название"
                 control={control}
-                rules={{ required: 'Это поле обязательно для заполнения!' }}
                 placeholderText="Парацетамол"
-                defaultValue={Boolean(name) && name}
+                defaultValue={name}
                 editable={!name}
             />
             {Boolean(count) &&
                 Array(count)
                     .fill(0)
-                    .map(() => (
+                    .map((x, inx) => (
                         <View style={styles.additionalInputs}>
                             <Input
-                                name="time"
+                                name={`time_${inx}`}
+                                key={`time_${inx}`}
                                 label="Время"
                                 outerStyles={styles.additionalInput}
                                 control={control}
@@ -47,7 +47,8 @@ export default function AddingForm({ type, name, control }) {
                             {type === 'medicine' && (
                                 <>
                                     <Input
-                                        name="amount"
+                                        name={`amount_${inx}`}
+                                        key={`amount_${inx}`}
                                         label="Доза"
                                         control={control}
                                         outerStyles={styles.additionalInput}
@@ -63,9 +64,11 @@ export default function AddingForm({ type, name, control }) {
                                     <TouchableOpacity
                                         activeOpacity={1}
                                         onPress={() => setPopupVisible(!popupVisible)}
+                                        key={`open_modal_${inx}`}
                                     >
                                         <Input
                                             name="unit"
+                                            key={`unit_${inx}`}
                                             label="Ед.изм."
                                             control={control}
                                             outerStyles={styles.additionalInput}
@@ -92,6 +95,7 @@ export default function AddingForm({ type, name, control }) {
                                 onPress={() => {
                                     setCount(count - 1);
                                 }}
+                                key={`button_${inx}`}
                             />
                         </View>
                     ))}

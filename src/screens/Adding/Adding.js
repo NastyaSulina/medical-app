@@ -48,7 +48,12 @@ export default function Adding({ route }) {
                             textFont="semiBold"
                             size="M"
                             outerStyles={styles.submitButton}
-                            onPress={handleSubmit()}
+                            onPress={handleSubmit((data) => {
+                                if (name) {
+                                    data.title = name;
+                                }
+                                console.log(data);
+                            })}
                         />
                     )}
                 </View>

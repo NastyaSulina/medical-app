@@ -21,17 +21,6 @@ function StandardTrackers() {
                 }}
             />
             <Button
-                text="Вода"
-                type="checked"
-                size="L"
-                textFont="medium"
-                textOuterStyles={styles.buttonText}
-                outerStyles={styles.button}
-                onPress={() => {
-                    navigation.navigate('Adding', { type: 'standardSymptom', name: 'Вода' });
-                }}
-            />
-            <Button
                 text="Давление"
                 type="checked"
                 size="L"
@@ -40,31 +29,6 @@ function StandardTrackers() {
                 outerStyles={styles.button}
                 onPress={() => {
                     navigation.navigate('Adding', { type: 'standardSymptom', name: 'Давление' });
-                }}
-            />
-            <Button
-                text="Вес"
-                type="checked"
-                size="L"
-                textFont="medium"
-                textOuterStyles={styles.buttonText}
-                outerStyles={styles.button}
-                onPress={() => {
-                    navigation.navigate('Adding', { type: 'standardSymptom', name: 'Вес' });
-                }}
-            />
-            <Button
-                text="Уровень сахара"
-                type="checked"
-                size="L"
-                textFont="medium"
-                textOuterStyles={styles.buttonText}
-                outerStyles={styles.button}
-                onPress={() => {
-                    navigation.navigate('Adding', {
-                        type: 'standardSymptom',
-                        name: 'Уровень сахара',
-                    });
                 }}
             />
             <Button

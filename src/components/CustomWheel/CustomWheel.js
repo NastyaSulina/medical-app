@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import WheelPicker from 'react-native-wheely';
 import styles from './CustomWheel-styles';
