@@ -16,7 +16,7 @@ const getTemperature = () => {
         temperature.push(i.toFixed(1));
     }
     return [temperature];
-}
+};
 
 const getPressure = () => {
     const pressure = [];
@@ -39,8 +39,8 @@ const getPressure = () => {
 
     pressure.push(upper, lower, heartbeat);
 
-    return pressure
-}
+    return pressure;
+};
 
 export const WHEEL_OPTIONS = {
     pressure: getPressure(),

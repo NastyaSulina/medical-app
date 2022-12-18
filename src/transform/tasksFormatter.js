@@ -1,5 +1,4 @@
 export const formatTasksByDate = (data) => {
-
     const arr = [];
 
     function Task(id, time, type, name, units, numberPerUse) {
@@ -15,8 +14,17 @@ export const formatTasksByDate = (data) => {
     }
 
     for (const task of data) {
-        arr.push(new Task(task.id, task.schedule.time, task.type, task.name, task.units, task.numberPerUse))
+        arr.push(
+            new Task(
+                task.id,
+                task.schedule.time,
+                task.type,
+                task.name,
+                task.units,
+                task.numberPerUse
+            )
+        );
     }
 
     return arr;
-}
+};

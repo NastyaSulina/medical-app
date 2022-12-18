@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         width: '95%',
         height: 0.5,
         backgroundColor: '#9FAABB',
-    }
+    },
 });
 
 export default styles;

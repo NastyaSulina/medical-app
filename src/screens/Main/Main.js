@@ -17,9 +17,7 @@ import TextCustom from '../../components/TextCustom/TextCustom';
 import { formatTasksByDate } from '../../transform/tasksFormatter';
 
 function Main() {
-    const { tasks, selectedDate, userId } = useSelector(
-        (state) => state.userReducer
-    );
+    const { tasks, selectedDate, userId } = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const handleProfilePressed = () => {
@@ -43,13 +41,17 @@ function Main() {
     return (
         <SafeAreaView
             style={[globalStyles.root, { height: '100%' }]}
-            edges={['right', 'top', 'left']}>
+            edges={['right', 'top', 'left']}
+        >
             <UpperMenu text="График приёма" onButtonPress={handleProfilePressed} />
             <CalendarContainer />
             <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.content}>
                     {Boolean(tasks[selectedDate] && tasks[selectedDate].length === 0) && (
-                        <TextCustom text="На этот день вы ничего не назначили! :)" outerStyles={styles.textEmpty} />
+                        <TextCustom
+                            text="На этот день вы ничего не назначили! :)"
+                            outerStyles={styles.textEmpty}
+                        />
                     )}
                     {Boolean(tasks[selectedDate] && tasks[selectedDate].length !== 0) && (
                         <>
@@ -58,21 +60,14 @@ function Main() {
                                 status={false}
                                 date={selectedDate}
                             />
-                            <TaskList
-                                tasks={tasks[selectedDate]}
-                                status
-                                date={selectedDate}
-                            />
+                            <TaskList tasks={tasks[selectedDate]} status date={selectedDate} />
                         </>
                     )}
                 </View>
             </ScrollView>
             <AddingTrackerButton onPress={() => setModalVisible(!modalVisible)} />
             <Menu screen="Главная" />
-            <AddingTrackerPopup
-                modalVisible={modalVisible}
-                setModalVisible={setModalVisible}
-            />
+            <AddingTrackerPopup modalVisible={modalVisible} setModalVisible={setModalVisible} />
         </SafeAreaView>
     );
 }
