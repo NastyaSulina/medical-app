@@ -38,7 +38,7 @@ export default function Authentication() {
             dispatch(setUserName(response.name));
             dispatch(setEmail(response.email));
             dispatch(setUserId(response.id));
-            dispatch(signIn(isSignedIn));
+            dispatch(signIn(isSignedIn(true)));
         }
     };
 

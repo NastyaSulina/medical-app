@@ -9,7 +9,6 @@ import MinusIcon from '../../../assets/adding-assets/MinusCircle.png';
 import Popup from '../../components/Popup/Popup';
 
 export default function AddingForm({ type, name, control }) {
-    const [count, setCount] = useState(0);
     const [popupVisible, setPopupVisible] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const measureValues = [['мл', 'мг', 'табл.', 'шт.']];
@@ -21,14 +20,16 @@ export default function AddingForm({ type, name, control }) {
                 label="Название"
                 control={control}
                 placeholderText="Парацетамол"
+                rules={!name ? {
+                    required: 'Это поле обязательно для заполнения!',
+                } : {}}
                 defaultValue={name}
                 editable={!name}
             />
 
             <View style={styles.additionalInputs}>
                 <Input
-                    name={`time_0`}
-                    key={`time_0`}
+                    name='time'
                     label="Время"
                     outerStyles={styles.additionalInput}
                     control={control}
@@ -44,8 +45,7 @@ export default function AddingForm({ type, name, control }) {
                 {type === 'medicine' && (
                     <>
                         <Input
-                            name={`amount_0`}
-                            key={`amount_0`}
+                            name='amount'
                             label="Доза"
                             control={control}
                             outerStyles={styles.additionalInput}
@@ -61,15 +61,12 @@ export default function AddingForm({ type, name, control }) {
                         <TouchableOpacity
                             activeOpacity={1}
                             onPress={() => setPopupVisible(!popupVisible)}
-                            key={`open_modal_0`}
                         >
                             <Input
                                 name="unit"
-                                key={`unit_0`}
                                 label="Ед.изм."
                                 control={control}
                                 outerStyles={styles.additionalInput}
-                                rules={{ required: 'Заполните!' }}
                                 editable={false}
                                 placeholderText="мл"
                                 defaultValue={measureValues[0][selectedIndex]}
@@ -85,13 +82,12 @@ export default function AddingForm({ type, name, control }) {
                             setModalVisible={setPopupVisible}
                         />
                     </>
-                    )}
-                    <Button
-                        iconSource={MinusIcon}
-                        iconStyles={[styles.icon, { top: 12.5 }]}
-                        key={`button_0`}
-                    />
-                </View>
+                )}
+                <Button
+                    iconSource={MinusIcon}
+                    iconStyles={[styles.icon, { top: 12.5 }]}
+                />
+            </View>
 
             <Button
                 text="Добавить время"
