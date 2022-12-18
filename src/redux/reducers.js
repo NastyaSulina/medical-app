@@ -1,7 +1,9 @@
 import {
     CHANGE_TASK_STATUS,
-    SET_SELECTED_DATE, SET_TASKS_BY_DATE,
-    SET_USER_EMAIL, SET_USER_ID,
+    SET_SELECTED_DATE,
+    SET_TASKS_BY_DATE,
+    SET_USER_EMAIL,
+    SET_USER_ID,
     SET_USER_NAME,
     SIGN_IN,
 } from './actions';
@@ -41,7 +43,14 @@ const initialState = {
                 id: 4,
                 type: 'symptom',
                 name: 'Давление',
-                status: true,
+                status: false,
+                time: '17:00',
+            },
+            {
+                id: 5,
+                type: 'symptom',
+                name: 'Температура',
+                status: false,
                 time: '17:00',
             },
         ],

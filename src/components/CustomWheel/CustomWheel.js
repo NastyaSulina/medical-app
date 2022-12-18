@@ -5,23 +5,27 @@ import styles from './CustomWheel-styles';
 import { globalStyles, TEXT_FONT } from '../../styles/globalStyles';
 
 function CustomWheel(props) {
-    const renderWheel = (options, inx) => {
-        return (
-            <WheelPicker
-                options={options}
-                visibleRest={3}
-                selectedIndex={props.selectedIndex}
-                onChange={(index) => props.setSelectedIndex(index)}
-                itemHeight={22}
-                selectedIndicatorStyle={[
-                    inx === props.options.length - 1 ? {} : { borderRightWidth: 2 },
-                    styles.selectedOption,
-                ]}
-                containerStyle={{ flexGrow: 1 }}
-                itemTextStyle={[styles.optionText, globalStyles[TEXT_FONT.medium]]}
-            />
-        );
-    };
+    const selectedIndexes = [props.selectedIndex, props.selectedIndex2, props.selectedIndex3];
+    const selectedIndexesSetters = [
+        props.setSelectedIndex,
+        props.setSelectedIndex2,
+        props.setSelectedIndex3,
+    ];
+    const renderWheel = (options, inx) => (
+        <WheelPicker
+            options={options}
+            visibleRest={3}
+            selectedIndex={selectedIndexes[inx]}
+            onChange={(index) => selectedIndexesSetters[inx](index)}
+            itemHeight={22}
+            selectedIndicatorStyle={[
+                inx === props.options.length - 1 ? {} : { borderRightWidth: 2 },
+                styles.selectedOption,
+            ]}
+            containerStyle={{ flexGrow: 1 }}
+            itemTextStyle={[styles.optionText, globalStyles[TEXT_FONT.medium]]}
+        />
+    );
 
     return (
         <View style={styles.wheelContainer}>

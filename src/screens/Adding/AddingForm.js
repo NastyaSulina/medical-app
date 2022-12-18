@@ -85,13 +85,13 @@ export default function AddingForm({ type, name, control }) {
                             setModalVisible={setPopupVisible}
                         />
                     </>
-                    )}
-                    <Button
-                        iconSource={MinusIcon}
-                        iconStyles={[styles.icon, { top: 12.5 }]}
-                        key={`button_0`}
-                    />
-                </View>
+                )}
+                <Button
+                    iconSource={MinusIcon}
+                    iconStyles={[styles.icon, { top: 12.5 }]}
+                    key={`button_0`}
+                />
+            </View>
 
             <Button
                 text="Добавить время"

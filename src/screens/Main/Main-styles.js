@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         marginVertical: 20,
         marginHorizontal: 20,
         lineHeight: 25,
-    }
+    },
 });
 
 export default styles;

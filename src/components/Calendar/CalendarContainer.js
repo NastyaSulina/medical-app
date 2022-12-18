@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LocaleConfig } from 'react-native-calendars';
-import {View} from "react-native";
+import { View } from 'react-native';
 import ArrowImageDown from '../../../assets/main-assets/downArrow.png';
 import ArrowImageUp from '../../../assets/main-assets/upArrow.png';
 import Button from '../Button/Button';
@@ -59,7 +59,7 @@ function CalendarContainer() {
         return <CalendarShort />;
     };
     return (
-        <View style={{marginBottom: 10}}>
+        <View style={{ marginBottom: 10 }}>
             {getCalendar()}
             <Button
                 iconSource={isFullCalendarView ? ArrowImageUp : ArrowImageDown}

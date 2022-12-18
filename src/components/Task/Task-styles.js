@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         color: COLORS.gray,
         marginLeft: 10,
         fontFamily: 'interMedium',
-    }
+    },
 });
 
 export default styles;
