@@ -24,81 +24,74 @@ export default function AddingForm({ type, name, control }) {
                 defaultValue={name}
                 editable={!name}
             />
-            {Boolean(count) &&
-                Array(count)
-                    .fill(0)
-                    .map((x, inx) => (
-                        <View style={styles.additionalInputs}>
+
+            <View style={styles.additionalInputs}>
+                <Input
+                    name={`time_0`}
+                    key={`time_0`}
+                    label="Время"
+                    outerStyles={styles.additionalInput}
+                    control={control}
+                    rules={{
+                        required: 'Заполните!',
+                        pattern: {
+                            value: /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/,
+                            message: 'Формат!',
+                        },
+                    }}
+                    placeholderText="12:30"
+                />
+                {type === 'medicine' && (
+                    <>
+                        <Input
+                            name={`amount_0`}
+                            key={`amount_0`}
+                            label="Доза"
+                            control={control}
+                            outerStyles={styles.additionalInput}
+                            rules={{
+                                required: 'Заполните!',
+                                pattern: {
+                                    value: /^\d+$/,
+                                    message: 'Формат!',
+                                },
+                            }}
+                            placeholderText="125"
+                        />
+                        <TouchableOpacity
+                            activeOpacity={1}
+                            onPress={() => setPopupVisible(!popupVisible)}
+                            key={`open_modal_0`}
+                        >
                             <Input
-                                name={`time_${inx}`}
-                                key={`time_${inx}`}
-                                label="Время"
-                                outerStyles={styles.additionalInput}
+                                name="unit"
+                                key={`unit_0`}
+                                label="Ед.изм."
                                 control={control}
-                                rules={{
-                                    required: 'Заполните!',
-                                    pattern: {
-                                        value: /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/,
-                                        message: 'Формат!',
-                                    },
-                                }}
-                                placeholderText="12:30"
+                                outerStyles={styles.additionalInput}
+                                rules={{ required: 'Заполните!' }}
+                                editable={false}
+                                placeholderText="мл"
+                                defaultValue={measureValues[0][selectedIndex]}
                             />
-                            {type === 'medicine' && (
-                                <>
-                                    <Input
-                                        name={`amount_${inx}`}
-                                        key={`amount_${inx}`}
-                                        label="Доза"
-                                        control={control}
-                                        outerStyles={styles.additionalInput}
-                                        rules={{
-                                            required: 'Заполните!',
-                                            pattern: {
-                                                value: /^\d+$/,
-                                                message: 'Формат!',
-                                            },
-                                        }}
-                                        placeholderText="125"
-                                    />
-                                    <TouchableOpacity
-                                        activeOpacity={1}
-                                        onPress={() => setPopupVisible(!popupVisible)}
-                                        key={`open_modal_${inx}`}
-                                    >
-                                        <Input
-                                            name="unit"
-                                            key={`unit_${inx}`}
-                                            label="Ед.изм."
-                                            control={control}
-                                            outerStyles={styles.additionalInput}
-                                            rules={{ required: 'Заполните!' }}
-                                            editable={false}
-                                            placeholderText="мл"
-                                            defaultValue={measureValues[0][selectedIndex]}
-                                        />
-                                    </TouchableOpacity>
-                                    <Popup
-                                        type="wheel"
-                                        text="Ед. изм."
-                                        wheelOptions={measureValues}
-                                        selectedIndex={selectedIndex}
-                                        setSelectedIndex={setSelectedIndex}
-                                        modalVisible={popupVisible}
-                                        setModalVisible={setPopupVisible}
-                                    />
-                                </>
-                            )}
-                            <Button
-                                iconSource={MinusIcon}
-                                iconStyles={[styles.icon, { top: 12.5 }]}
-                                onPress={() => {
-                                    setCount(count - 1);
-                                }}
-                                key={`button_${inx}`}
-                            />
-                        </View>
-                    ))}
+                        </TouchableOpacity>
+                        <Popup
+                            type="wheel"
+                            text="Ед. изм."
+                            wheelOptions={measureValues}
+                            selectedIndex={selectedIndex}
+                            setSelectedIndex={setSelectedIndex}
+                            modalVisible={popupVisible}
+                            setModalVisible={setPopupVisible}
+                        />
+                    </>
+                    )}
+                    <Button
+                        iconSource={MinusIcon}
+                        iconStyles={[styles.icon, { top: 12.5 }]}
+                        key={`button_0`}
+                    />
+                </View>
 
             <Button
                 text="Добавить время"
@@ -106,9 +99,6 @@ export default function AddingForm({ type, name, control }) {
                 outerStyles={styles.plusButton}
                 iconSource={PlusIcon}
                 iconStyles={styles.icon}
-                onPress={() => {
-                    setCount(count + 1);
-                }}
             />
             <Input
                 name="start_day"
