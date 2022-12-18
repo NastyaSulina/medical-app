@@ -80,7 +80,7 @@ function userReducer(state = initialState, action) {
         }
         case SIGN_IN: {
             const newState = getNewState(state);
-            newState.isSignedIn = true;
+            newState.isSignedIn = action.payload;
             return newState;
         }
 
