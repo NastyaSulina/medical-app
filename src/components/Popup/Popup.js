@@ -8,6 +8,26 @@ import CustomWheel from '../CustomWheel/CustomWheel';
 import styles from './Popup-styles';
 
 function Popup(props) {
+    let value;
+    switch (props.type) {
+        case 'slider':
+            value = props.sliderValue;
+            break;
+        case 'wheel':
+            props.wheelOptions.length > 1
+                ? (value = [
+                      props.wheelOptions[0][props.selectedIndex],
+                      props.wheelOptions[1][props.selectedIndex],
+                      props.wheelOptions[2][props.selectedIndex],
+                  ])
+                : (value = props.wheelOptions[0][props.selectedIndex]);
+            break;
+        case 'radio':
+            value = props.chosenOption;
+            break;
+        default:
+            value = undefined;
+    }
     return (
         <Modal
             transparent
@@ -40,7 +60,12 @@ function Popup(props) {
                             setSelectedIndex3={props.setSelectedIndex3}
                         />
                     )}
-                    {props.type === 'radio' && <CustomRadio />}
+                    {props.type === 'radio' && (
+                        <CustomRadio
+                            chosenOption={props.chosenOption}
+                            setChosenOption={props.setChosenOption}
+                        />
+                    )}
                     <Button
                         text="Готово!"
                         type="primary"
@@ -49,6 +74,7 @@ function Popup(props) {
                         textFont="semiBold"
                         outerStyles={styles.button}
                         onPress={() => {
+                            console.log(value);
                             props.setModalVisible(!props.modalVisible);
                         }}
                     />

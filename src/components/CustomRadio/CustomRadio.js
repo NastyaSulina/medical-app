@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { View } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import { COLORS } from '../../styles/globalStyles';
-import { View } from 'react-native';
 
 function CustomRadio() {
     const [chosenOption, setChosenOption] = useState('false');

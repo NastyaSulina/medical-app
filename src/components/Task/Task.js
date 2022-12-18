@@ -27,11 +27,13 @@ function Task({
     const [modalOptions, setModalOptions] = useState();
     const [modalType, setModalType] = useState('radio');
 
-    const [selectedIndex, setSelectedIndex] = useState(35);
-    const [selectedIndex2, setSelectedIndex2] = useState(35);
-    const [selectedIndex3, setSelectedIndex3] = useState(35);
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [selectedIndex2, setSelectedIndex2] = useState(0);
+    const [selectedIndex3, setSelectedIndex3] = useState(0);
 
     const [sliderValue, setSliderValue] = useState(5);
+
+    const [radioOption, setRadioOption] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -94,6 +96,8 @@ function Task({
                 setSelectedIndex3={setSelectedIndex3}
                 sliderValue={sliderValue}
                 setSliderValue={setSliderValue}
+                chosenOption={radioOption}
+                setChosenOption={setRadioOption}
                 modalVisible={modalVisible}
                 setModalVisible={setModalVisible}
             />
