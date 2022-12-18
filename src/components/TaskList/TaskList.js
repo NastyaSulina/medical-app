@@ -7,7 +7,7 @@ function TaskList({ tasks, status, date }) {
     return (
         <>
             {status && <View style={styles.separator}/>}
-            {tasks
+            {Boolean(tasks) && tasks
                 .filter((task) => task.status === status)
                 .map((task) => (
                     <Task
@@ -15,6 +15,8 @@ function TaskList({ tasks, status, date }) {
                         type={task.type}
                         id={task.id}
                         date={date}
+                        units={task.units}
+                        numberPerUse={task.numberPerUse}
                         taskName={task.name}
                         isChecked={task.status}
                         time={task.time}

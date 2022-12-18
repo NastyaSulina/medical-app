@@ -35,3 +35,30 @@ export const sendUserSignUpInput = async (input) => {
         .catch((err) => console.log(err));
     return response;
 };
+
+export const sendNewUserName = async (input) => {
+    const response = await fetch('http://80.249.147.77/user/update', {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json',
+            'Transfer-Encoding': 'chunked',
+            'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify({
+            id: input.id,
+            email: input.email,
+            name: input.name,
+            password: input.password,
+        }),
+    })
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+    return response;
+};
+
+export const getTasksByDate = async (id, date) => {
+    const response = await fetch(`http://80.249.147.77/all/getSorted/${id}&${date}`)
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+    return response;
+};

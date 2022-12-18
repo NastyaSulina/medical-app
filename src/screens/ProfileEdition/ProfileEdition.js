@@ -9,16 +9,25 @@ import localStyles from './ProfileEdition-styles';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Arrow from '../../../assets/profile-assets/arrow-left.png';
-import { setUserName } from '../../redux/actions';
+import {setUserName} from '../../redux/actions';
 import { globalStyles } from '../../styles/globalStyles';
+import {sendNewUserName} from "../../fetch";
 
 export default function ProfileEdition() {
-    const { email, userName } = useSelector((state) => state.userReducer);
+    const { email, userName, userId } = useSelector((state) => state.userReducer);
     const navigation = useNavigation();
 
     const { control, handleSubmit } = useForm();
     const dispatch = useDispatch();
-    const onConfirmPressed = (data) => {
+
+    const onConfirmPressed = async (data) => {
+        const userData = {
+            id: userId,
+            email,
+            name: data.userName,
+            password: '12345678',
+        }
+        const response = await sendNewUserName(userData);
         dispatch(setUserName(data.userName));
     };
 

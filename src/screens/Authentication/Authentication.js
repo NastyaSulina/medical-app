@@ -11,7 +11,7 @@ import { globalStyles } from '../../styles/globalStyles';
 import styles from './Authentication-style';
 import TextCustom from '../../components/TextCustom/TextCustom';
 import { sendUserSignInInput } from '../../fetch';
-import { setUserName, setEmail, signIn } from '../../redux/actions';
+import {setUserName, setEmail, signIn, setUserId} from '../../redux/actions';
 
 export default function Authentication() {
     const navigation = useNavigation();
@@ -37,6 +37,7 @@ export default function Authentication() {
             console.log(response);
             dispatch(setUserName(response.name));
             dispatch(setEmail(response.email));
+            dispatch(setUserId(response.id));
             dispatch(signIn(isSignedIn));
         }
     };

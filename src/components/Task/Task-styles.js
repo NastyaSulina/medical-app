@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
     },
+    unitsText: {
+        color: COLORS.gray,
+        marginLeft: 10,
+        fontFamily: 'interMedium',
+    }
 });
 
 export default styles;

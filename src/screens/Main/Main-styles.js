@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../styles/globalStyles';
 
 const styles = StyleSheet.create({
     container: {
@@ -9,6 +10,13 @@ const styles = StyleSheet.create({
         maxWidth: '90%',
         minHeight: '100%',
     },
+    textEmpty: {
+        textAlign: 'center',
+        color: COLORS.gray,
+        marginVertical: 20,
+        marginHorizontal: 20,
+        lineHeight: 25,
+    }
 });
 
 export default styles;

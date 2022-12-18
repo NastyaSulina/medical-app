@@ -9,7 +9,7 @@ import styles from './Task-styles';
 import TextCustom from '../TextCustom/TextCustom';
 import { globalStyles } from '../../styles/globalStyles';
 
-function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
+function Task({ date, id, taskName, type, isChecked, time, outerStyles, units, numberPerUse }) {
     const dispatch = useDispatch();
 
     return (
@@ -19,6 +19,7 @@ function Task({ date, id, taskName, type, isChecked, time, outerStyles }) {
                 <View style={styles.timeInfo}>
                     <Image style={styles.clockImage} source={ClockImage} resizeMode="contain" />
                     <TextCustom outerStyles={styles.timeText} text={time} />
+                    <TextCustom outerStyles={styles.unitsText} text={`${numberPerUse} ${units}`} />
                 </View>
             </View>
             <Button
