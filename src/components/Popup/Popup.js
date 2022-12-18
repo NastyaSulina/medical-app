@@ -7,25 +7,29 @@ import CustomWheel from '../CustomWheel/CustomWheel';
 import styles from './Popup-styles';
 
 function Popup(props) {
-    const [modalVisible, setModalVisible] = useState(true);
-
     return (
         <Modal
             transparent
             animationType="fade"
-            onRequestClose={() => setModalVisible(!modalVisible)}
-            visible={modalVisible}
+            onRequestClose={() => props.setModalVisible(!props.modalVisible)}
+            visible={props.modalVisible}
         >
             <View style={styles.centered}>
                 <TouchableOpacity
                     style={styles.closing}
                     activeOpacity={1}
-                    onPress={() => setModalVisible(!modalVisible)}
+                    onPress={() => props.setModalVisible(!props.modalVisible)}
                 />
                 <View style={styles.container}>
                     <TextCustom text={props.text} outerStyles={styles.title} />
                     {props.type === 'slider' && <CustomSlider />}
-                    {props.type === 'wheel' && <CustomWheel options={props.wheelOptions} />}
+                    {props.type === 'wheel' && (
+                        <CustomWheel
+                            options={props.wheelOptions}
+                            selectedIndex={props.selectedIndex}
+                            setSelectedIndex={props.setSelectedIndex}
+                        />
+                    )}
                     <Button
                         text="Готово!"
                         type="primary"
@@ -35,7 +39,7 @@ function Popup(props) {
                         outerStyles={styles.button}
                         onPress={() => {
                             console.log('Закрыли модалку');
-                            setModalVisible(!modalVisible);
+                            props.setModalVisible(!props.modalVisible);
                         }}
                     />
                 </View>

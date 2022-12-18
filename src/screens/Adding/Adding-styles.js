@@ -2,8 +2,10 @@ import { StyleSheet } from 'react-native';
 import { COLORS } from '../../styles/globalStyles';
 
 const styles = StyleSheet.create({
-    addingForm: {
+    container: {
         width: '90%',
+    },
+    addingForm: {
         backgroundColor: COLORS.white,
         paddingHorizontal: 20,
         paddingVertical: 24,
@@ -12,7 +14,7 @@ const styles = StyleSheet.create({
     },
     upperRow: {
         flexDirection: 'row',
-        width: '90%',
+        width: '100%',
         alignItems: 'center',
         alignSelf: 'center',
         marginVertical: 30,
@@ -22,7 +24,6 @@ const styles = StyleSheet.create({
         height: 28,
         position: 'absolute',
         top: -14,
-        left: -14,
     },
     title: {
         fontFamily: 'interSemiBold',
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     additionalInput: {
-        maxWidth: 80,
+        width: 80,
     },
 });
 

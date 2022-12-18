@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderRadius: 12,
         padding: 16,
-        paddingRight: 45,
         minWidth: '100%',
         marginTop: 5,
         fontFamily: 'interRegular',

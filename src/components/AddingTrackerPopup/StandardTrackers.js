@@ -8,7 +8,7 @@ function StandardTrackers() {
     const navigation = useNavigation();
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { width: '100%' }]}>
             <Button
                 text="Настроение"
                 type="checked"

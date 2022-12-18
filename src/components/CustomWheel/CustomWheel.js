@@ -6,13 +6,12 @@ import { globalStyles, TEXT_FONT } from '../../styles/globalStyles';
 
 function CustomWheel(props) {
     const renderWheel = (options, inx) => {
-        const [selectedIndex, setSelectedIndex] = useState(4);
         return (
             <WheelPicker
                 options={options}
                 visibleRest={3}
-                selectedIndex={selectedIndex}
-                onChange={(index) => setSelectedIndex(index)}
+                selectedIndex={props.selectedIndex}
+                onChange={(index) => props.setSelectedIndex(index)}
                 itemHeight={22}
                 selectedIndicatorStyle={[
                     inx === props.options.length - 1 ? {} : { borderRightWidth: 2 },
