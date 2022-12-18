@@ -16,6 +16,9 @@ function StandardTrackers() {
                 textFont="medium"
                 textOuterStyles={styles.buttonText}
                 outerStyles={styles.button}
+                onPress={() => {
+                    navigation.navigate('Adding', { type: 'standardSymptom', name: 'Настроение' });
+                }}
             />
             <Button
                 text="Вода"
@@ -24,6 +27,9 @@ function StandardTrackers() {
                 textFont="medium"
                 textOuterStyles={styles.buttonText}
                 outerStyles={styles.button}
+                onPress={() => {
+                    navigation.navigate('Adding', { type: 'standardSymptom', name: 'Вода' });
+                }}
             />
             <Button
                 text="Давление"
@@ -32,6 +38,9 @@ function StandardTrackers() {
                 textFont="medium"
                 textOuterStyles={styles.buttonText}
                 outerStyles={styles.button}
+                onPress={() => {
+                    navigation.navigate('Adding', { type: 'standardSymptom', name: 'Давление' });
+                }}
             />
             <Button
                 text="Вес"
@@ -40,6 +49,9 @@ function StandardTrackers() {
                 textFont="medium"
                 textOuterStyles={styles.buttonText}
                 outerStyles={styles.button}
+                onPress={() => {
+                    navigation.navigate('Adding', { type: 'standardSymptom', name: 'Вес' });
+                }}
             />
             <Button
                 text="Уровень сахара"
@@ -48,6 +60,12 @@ function StandardTrackers() {
                 textFont="medium"
                 textOuterStyles={styles.buttonText}
                 outerStyles={styles.button}
+                onPress={() => {
+                    navigation.navigate('Adding', {
+                        type: 'standardSymptom',
+                        name: 'Уровень сахара',
+                    });
+                }}
             />
             <Button
                 text="Температура"
@@ -55,6 +73,9 @@ function StandardTrackers() {
                 size="L"
                 textFont="medium"
                 textOuterStyles={styles.buttonText}
+                onPress={() => {
+                    navigation.navigate('Adding', { type: 'standardSymptom', name: 'Температура' });
+                }}
             />
         </View>
     );

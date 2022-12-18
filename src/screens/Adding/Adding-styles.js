@@ -13,15 +13,21 @@ const styles = StyleSheet.create({
     upperRow: {
         flexDirection: 'row',
         width: '90%',
-        justifyContent: 'space-between',
         alignItems: 'center',
         alignSelf: 'center',
         marginVertical: 30,
     },
+    backButton: {
+        width: 28,
+        height: 28,
+        position: 'absolute',
+        top: -14,
+        left: -14,
+    },
     title: {
         fontFamily: 'interSemiBold',
         color: COLORS.black,
-        fontSize: 22,
+        fontSize: 18,
         marginLeft: 'auto',
         marginRight: 'auto',
     },

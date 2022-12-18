@@ -11,7 +11,8 @@ import TextCustom from '../../components/TextCustom/TextCustom';
 import AddingForm from './AddingForm';
 import StandardTrackers from '../../components/AddingTrackerPopup/StandardTrackers';
 
-export default function Adding({ type = 'medicine' }) {
+export default function Adding({ route }) {
+    const { type, name } = route.params;
     const navigation = useNavigation();
     const { control, handleSubmit } = useForm();
 
@@ -22,15 +23,13 @@ export default function Adding({ type = 'medicine' }) {
         standard: 'Стандартные параметры',
     };
 
-    const moveToStandard = () => {};
-
     return (
         <SafeAreaView style={globalStyles.root}>
             <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.upperRow}>
                     <Button
                         iconSource={Arrow}
-                        iconStyles={{ width: 28, height: 28 }}
+                        iconStyles={styles.backButton}
                         onPress={() => navigation.goBack()}
                     />
                     <TextCustom outerStyles={[styles.title]} text={title[type]} />
@@ -38,16 +37,20 @@ export default function Adding({ type = 'medicine' }) {
 
                 <View style={styles.containers}>
                     {Boolean(type === 'standard') && <StandardTrackers />}
-                    {Boolean(type !== 'standard') && <AddingForm type={type} control={control} />}
+                    {Boolean(type !== 'standard') && (
+                        <AddingForm type={type} name={name} control={control} />
+                    )}
 
-                    <Button
-                        text="Готово!"
-                        type="primary"
-                        textFont="semiBold"
-                        size="M"
-                        outerStyles={styles.submitButton}
-                        onPress={type === 'standard' ? moveToStandard() : handleSubmit()}
-                    />
+                    {Boolean(type !== 'standard') && (
+                        <Button
+                            text="Готово!"
+                            type="primary"
+                            textFont="semiBold"
+                            size="M"
+                            outerStyles={styles.submitButton}
+                            onPress={handleSubmit()}
+                        />
+                    )}
                 </View>
             </ScrollView>
         </SafeAreaView>

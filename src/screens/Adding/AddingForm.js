@@ -7,7 +7,7 @@ import styles from './Adding-styles';
 import PlusIcon from '../../../assets/adding-assets/PlusCircle.png';
 import MinusIcon from '../../../assets/adding-assets/MinusCircle.png';
 
-export default function AddingForm({ type, control }) {
+export default function AddingForm({ type, name, control }) {
     const [count, setCount] = useState(0);
     return (
         <View style={[styles.addingForm, globalStyles.shadow]}>
@@ -17,6 +17,8 @@ export default function AddingForm({ type, control }) {
                 control={control}
                 rules={{ required: 'Это поле обязательно для заполнения!' }}
                 placeholderText="Парацетамол"
+                defaultValue={Boolean(name) && name}
+                editable={!name}
             />
             {Boolean(count) &&
                 Array(count)

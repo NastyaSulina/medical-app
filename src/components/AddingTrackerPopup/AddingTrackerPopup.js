@@ -53,7 +53,7 @@ function AddingTrackerPopup(props) {
                         textOuterStyles={styles.buttonText}
                         onPress={() => {
                             props.setModalVisible(!props.modalVisible);
-                            navigation.navigate('Adding', { type: 'symptom' });
+                            navigation.navigate('Adding', { type: 'customSymptom' });
                         }}
                     />
                 </View>
