@@ -64,25 +64,22 @@ export const getTasksByDate = async (id, date) => {
 };
 
 export const sendNewMedicine = async (input) => {
-    const response = await fetch(
-        `http://80.249.147.77/medicine/add/${input.id}`,
-        {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-                'Transfer-Encoding': 'chunked',
-                'Access-Control-Allow-Origin': '*',
-            },
-            body: JSON.stringify({
-                name: input.title,
-                units: input.units,
-                per_use: input.amount,
-                start_day: input.start_day,
-                time: input.time,
-                duration: input.number_of_days,
-            }),
-        }
-    )
+    const response = await fetch(`http://80.249.147.77/medicine/add/${input.id}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Transfer-Encoding': 'chunked',
+            'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify({
+            name: input.title,
+            units: input.units,
+            per_use: input.amount,
+            start_day: input.start_day,
+            time: input.time,
+            duration: input.number_of_days,
+        }),
+    })
         .then((result) => result.json())
         .catch((err) => console.log(err));
 

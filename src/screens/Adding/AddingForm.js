@@ -4,14 +4,13 @@ import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import { globalStyles } from '../../styles/globalStyles';
 import styles from './Adding-styles';
+import measureValues from './AddingConst';
 import PlusIcon from '../../../assets/adding-assets/PlusCircle.png';
 import MinusIcon from '../../../assets/adding-assets/MinusCircle.png';
 import Popup from '../../components/Popup/Popup';
 
-export default function AddingForm({ type, name, control }) {
+export default function AddingForm({ type, name, control, selectedIndex, setSelectedIndex }) {
     const [popupVisible, setPopupVisible] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const measureValues = [['мл', 'мг', 'табл.', 'шт.']];
 
     return (
         <View style={[styles.addingForm, globalStyles.shadow]}>
@@ -20,16 +19,20 @@ export default function AddingForm({ type, name, control }) {
                 label="Название"
                 control={control}
                 placeholderText="Парацетамол"
-                rules={!name ? {
-                    required: 'Это поле обязательно для заполнения!',
-                } : {}}
+                rules={
+                    !name
+                        ? {
+                              required: 'Это поле обязательно для заполнения!',
+                          }
+                        : {}
+                }
                 defaultValue={name}
                 editable={!name}
             />
 
             <View style={styles.additionalInputs}>
                 <Input
-                    name='time'
+                    name="time"
                     label="Время"
                     outerStyles={styles.additionalInput}
                     control={control}
@@ -45,7 +48,7 @@ export default function AddingForm({ type, name, control }) {
                 {type === 'medicine' && (
                     <>
                         <Input
-                            name='amount'
+                            name="amount"
                             label="Доза"
                             control={control}
                             outerStyles={styles.additionalInput}
@@ -83,10 +86,7 @@ export default function AddingForm({ type, name, control }) {
                         />
                     </>
                 )}
-                <Button
-                    iconSource={MinusIcon}
-                    iconStyles={[styles.icon, { top: 12.5 }]}
-                />
+                <Button iconSource={MinusIcon} iconStyles={[styles.icon, { top: 12.5 }]} />
             </View>
 
             <Button

@@ -1,18 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    View,
-} from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import styles from './Adding-styles';
 import Button from '../../components/Button/Button';
 import Arrow from '../../../assets/profile-assets/arrow-left.png';
 import { globalStyles } from '../../styles/globalStyles';
+import measureValues from './AddingConst';
 import TextCustom from '../../components/TextCustom/TextCustom';
 import AddingForm from './AddingForm';
 import StandardTrackers from '../../components/AddingTrackerPopup/StandardTrackers';
@@ -27,6 +23,7 @@ export default function Adding({ route }) {
         },
     });
     const { userId } = useSelector((state) => state.userReducer);
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
     const title = {
         customSymptom: 'Симптом',
@@ -37,8 +34,7 @@ export default function Adding({ route }) {
 
     return (
         <SafeAreaView style={globalStyles.root}>
-            <KeyboardAvoidingView
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+            <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
                 <ScrollView contentContainerStyle={styles.container}>
                     <View style={styles.upperRow}>
                         <Button
@@ -56,6 +52,8 @@ export default function Adding({ route }) {
                                 type={type}
                                 name={name}
                                 control={control}
+                                selectedIndex={selectedIndex}
+                                setSelectedIndex={setSelectedIndex}
                             />
                         )}
 
@@ -71,6 +69,7 @@ export default function Adding({ route }) {
                                         data.title = name;
                                     }
                                     data.id = userId;
+                                    data.unit = measureValues[0][selectedIndex];
                                     console.log(data);
                                 })}
                             />
