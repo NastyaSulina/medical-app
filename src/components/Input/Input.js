@@ -34,6 +34,7 @@ function Input({
                             styles.input,
                             styles[`input${error ? 'Error' : 'Default'}Border`],
                             { fontSize: FONT_SIZES.normal },
+                            isSecretField && { paddingRight: 45 },
                         ]}
                         onChangeText={onChange}
                         value={value}
