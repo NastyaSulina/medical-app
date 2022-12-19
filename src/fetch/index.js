@@ -85,3 +85,45 @@ export const sendNewMedicine = async (input) => {
 
     return response;
 };
+
+export const sendNewCustomSymptom = async (input) => {
+    const response = await fetch(`http://80.249.147.77/parameter/add/${input.id}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Transfer-Encoding': 'chunked',
+            'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify({
+            name: input.title,
+            is_default: false,
+            start_day: input.start_day,
+            time: input.time,
+            duration: input.number_of_days,
+        }),
+    })
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+
+    return response;
+};
+
+export const sendNewPressure = async (input) => {
+    const response = await fetch(`http://80.249.147.77/parameter/add/pressure/${input.id}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Transfer-Encoding': 'chunked',
+            'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify({
+            start_day: input.start_day,
+            time: input.time,
+            duration: input.number_of_days,
+        }),
+    })
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+
+    return response;
+};

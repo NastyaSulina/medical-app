@@ -1,14 +1,21 @@
 export const formatTasksByDate = (data) => {
     const arr = [];
 
-    function Task(id, time, type, name, units, numberPerUse) {
+    function Task(id, time, type, name, units, numberPerUse, isDefault) {
         this.id = id;
         this.name = name;
         this.type = type;
 
         this.time = time.slice(11, 16);
-        this.units = units;
-        this.numberPerUse = numberPerUse;
+
+        if (type === "medicine") {
+            this.units = units;
+            this.numberPerUse = numberPerUse;
+        }
+
+        if (type === "symptom") {
+            this.default = isDefault;
+        }
 
         this.status = false;
     }
@@ -21,7 +28,8 @@ export const formatTasksByDate = (data) => {
                 task.type,
                 task.name,
                 task.units,
-                task.numberPerUse
+                task.numberPerUse,
+                task.default
             )
         );
     }

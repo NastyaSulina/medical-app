@@ -12,7 +12,8 @@ import measureValues from './AddingConst';
 import TextCustom from '../../components/TextCustom/TextCustom';
 import AddingForm from './AddingForm';
 import StandardTrackers from '../../components/AddingTrackerPopup/StandardTrackers';
-import { sendNewMedicine } from '../../fetch';
+import {sendNewCustomSymptom, sendNewMedicine, sendNewPressure} from '../../fetch';
+import {getFormattedDate} from "../../transform/dateFormatter";
 
 export default function Adding({ route }) {
     const { type, name } = route.params;
@@ -64,13 +65,25 @@ export default function Adding({ route }) {
                                 textFont="semiBold"
                                 size="M"
                                 outerStyles={styles.submitButton}
-                                onPress={handleSubmit((data) => {
-                                    if (name) {
-                                        data.title = name;
-                                    }
+                                onPress={handleSubmit(async (data) => {
                                     data.id = userId;
                                     data.unit = measureValues[0][selectedIndex];
-                                    console.log(data);
+                                    let tmp = data.start_day;
+
+                                    data.start_day = getFormattedDate(new Date(tmp));
+
+                                    let response;
+
+                                    if (type === "medicine") {
+                                        response = await sendNewMedicine(data);
+                                    } else if (type === "customSymptom") {
+                                        response = await sendNewCustomSymptom(data);
+                                    } else if (name === "Давление" && type === "standardSymptom") {
+                                        response = await sendNewPressure(data);
+                                    }
+
+                                    console.log(response);
+                                    navigation.goBack();
                                 })}
                             />
                         )}

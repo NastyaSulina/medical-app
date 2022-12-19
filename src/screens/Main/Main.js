@@ -27,15 +27,13 @@ function Main() {
     const [modalVisible, setModalVisible] = useState(false);
 
     const getSelectedTasks = async () => {
-        if (tasks[selectedDate]) return tasks[selectedDate];
-
         const response = await getTasksByDate(userId, selectedDate);
         const formattedTasks = formatTasksByDate(response);
 
         dispatch(setTasksByDate(selectedDate, formattedTasks));
-        console.log(tasks);
         return formattedTasks;
     };
+
     getSelectedTasks();
 
     return (

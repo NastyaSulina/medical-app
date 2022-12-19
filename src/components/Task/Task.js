@@ -20,7 +20,7 @@ function Task({
     outerStyles,
     units,
     numberPerUse,
-    isDefault = true,
+    isDefault,
 }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalText, setModalText] = useState('Отметьте');
