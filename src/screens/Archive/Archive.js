@@ -24,7 +24,7 @@ function Archive() {
     const [pageActive, setPageActive] = useState('medicine');
     const [modalVisible, setModalVisible] = useState(false);
 
-    const { currentTasks, userId } = useSelector((state) => state.userReducer);
+    const { currentTasks, userId} = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
 
     const getCurrentTasks = async () => {
@@ -32,11 +32,19 @@ function Archive() {
 
         const response = await getCurrentTasksByDate(userId, getFormattedDate());
         const formattedTasks = formatCurrentTasksByDate(response);
+        console.log(formattedTasks);
 
         dispatch(setCurrentTasks(formattedTasks));
-
-        return formattedTasks;
     };
+
+    getCurrentTasks();
+
+    const mockPreviousTasks = [
+        {id:137,title:"Парацетамол",time:"12:40",interval:"2022-11-19 - 2022-12-01"},
+        {id:137,title:"Ибупрофен",time:"12:40",interval:"2022-12-01 - 2022-12-13"},
+        {id:137,title:"Витамин А",time:"12:40",interval:"2022-12-13 - 2022-12-14"}
+    ];
+
 
     return (
         <SafeAreaView
@@ -47,8 +55,8 @@ function Archive() {
             <ArchiveSwitcher pageActive={pageActive} onPress={setPageActive} />
             <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.content}>
-                    <InfoCardList listTitle="Текущие" data={getCurrentTasks()}/>
-                    {/*<InfoCardList listTitle="Архив" />*/}
+                    <InfoCardList listTitle="Текущие" data={currentTasks}/>
+                    <InfoCardList listTitle="Архив" data={mockPreviousTasks}/>
                 </View>
             </ScrollView>
             <AddingTrackerButton onPress={() => setModalVisible(!modalVisible)} />
