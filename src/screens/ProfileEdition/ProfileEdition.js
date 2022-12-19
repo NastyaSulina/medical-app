@@ -23,11 +23,11 @@ export default function ProfileEdition() {
     const onConfirmPressed = async (data) => {
         const userData = {
             id: userId,
-            email,
             name: data.userName,
-            password: '12345678',
         };
+
         const response = await sendNewUserName(userData);
+        console.log(response);
         dispatch(setUserName(data.userName));
     };
 

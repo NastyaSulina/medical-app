@@ -100,6 +100,8 @@ function Task({
                 setChosenOption={setRadioOption}
                 modalVisible={modalVisible}
                 setModalVisible={setModalVisible}
+                id={id}
+                date={date}
             />
         </>
     );

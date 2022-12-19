@@ -22,7 +22,7 @@ function TaskList({ tasks, status, date }) {
                             isChecked={task.status}
                             time={task.time}
                             outerStyles={styles.task}
-                            isDefault={task.isDefault}
+                            isDefault={task.default}
                         />
                     ))}
         </>

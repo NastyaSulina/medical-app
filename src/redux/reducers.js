@@ -6,6 +6,7 @@ import {
     SET_USER_ID,
     SET_USER_NAME,
     SIGN_IN,
+    RESET_TASKS
 } from './actions';
 import { getFormattedDate } from '../transform/dateFormatter';
 
@@ -16,45 +17,9 @@ const initialState = {
     userId: 0,
     selectedDate: getFormattedDate(),
     fontSize: 'normal',
-    tasks: {
-        '2022-12-13': [
-            {
-                id: 1,
-                type: 'medicine',
-                name: 'Витамин D',
-                status: false,
-                time: '14:00',
-            },
-            {
-                id: 2,
-                type: 'medicine',
-                name: 'Витамин C',
-                status: true,
-                time: '14:00',
-            },
-            {
-                id: 3,
-                type: 'symptom',
-                name: 'Настроение',
-                status: false,
-                time: '15:00',
-            },
-            {
-                id: 4,
-                type: 'symptom',
-                name: 'Давление',
-                status: false,
-                time: '17:00',
-            },
-            {
-                id: 5,
-                type: 'symptom',
-                name: 'Температура',
-                status: false,
-                time: '17:00',
-            },
-        ],
-    },
+    tasks: {},
+    currentTasks: {},
+    previousTasks: {},
 };
 
 const getNewState = (state) => JSON.parse(JSON.stringify(state));
@@ -101,6 +66,11 @@ function userReducer(state = initialState, action) {
         case SET_TASKS_BY_DATE: {
             const newState = getNewState(state);
             newState.tasks[action.payload.date] = [...action.payload.tasks];
+            return newState;
+        }
+        case RESET_TASKS: {
+            const newState = getNewState(state);
+            newState.tasks = {};
             return newState;
         }
 

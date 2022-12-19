@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { useForm } from 'react-hook-form';
 import styles from './Adding-styles';
 import Button from '../../components/Button/Button';
@@ -13,17 +13,19 @@ import TextCustom from '../../components/TextCustom/TextCustom';
 import AddingForm from './AddingForm';
 import StandardTrackers from '../../components/AddingTrackerPopup/StandardTrackers';
 import {sendNewCustomSymptom, sendNewMedicine, sendNewPressure} from '../../fetch';
-import {getFormattedDate} from "../../transform/dateFormatter";
+import {getFormattedDateFromDefault} from "../../transform/dateFormatter";
+import {resetTasks} from "../../redux/actions";
 
 export default function Adding({ route }) {
     const { type, name } = route.params;
+    const dispatch = useDispatch();
     const navigation = useNavigation();
     const { control, handleSubmit } = useForm({
         defaultValues: {
             title: name,
         },
     });
-    const { userId } = useSelector((state) => state.userReducer);
+    const { userId, tasks } = useSelector((state) => state.userReducer);
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const title = {
@@ -70,7 +72,11 @@ export default function Adding({ route }) {
                                     data.unit = measureValues[0][selectedIndex];
                                     let tmp = data.start_day;
 
-                                    data.start_day = getFormattedDate(new Date(tmp));
+                                    data.start_day = getFormattedDateFromDefault(tmp);
+                                    data.amount = +data.amount;
+                                    data.number_of_days = +data.number_of_days;
+
+                                    console.log(data);
 
                                     let response;
 
@@ -83,6 +89,11 @@ export default function Adding({ route }) {
                                     }
 
                                     console.log(response);
+
+                                    dispatch(resetTasks());
+
+                                    console.log(tasks);
+
                                     navigation.goBack();
                                 })}
                             />

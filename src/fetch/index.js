@@ -46,9 +46,7 @@ export const sendNewUserName = async (input) => {
         },
         body: JSON.stringify({
             id: input.id,
-            email: input.email,
             name: input.name,
-            password: input.password,
         }),
     })
         .then((result) => result.json())
@@ -73,7 +71,7 @@ export const sendNewMedicine = async (input) => {
         },
         body: JSON.stringify({
             name: input.title,
-            units: input.units,
+            units: input.unit,
             per_use: input.amount,
             start_day: input.start_day,
             time: input.time,

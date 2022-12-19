@@ -13,3 +13,10 @@ export const getLocalDay = (date) => {
 
     return day;
 };
+
+export const getFormattedDateFromDefault = (dayString) =>
+    'Y-m-d'
+        .replace('Y', dayString.slice(6, 10))
+        .replace('m', dayString.slice(3, 5))
+        .replace('d', dayString.slice(0, 2))
+

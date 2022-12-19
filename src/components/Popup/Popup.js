@@ -6,8 +6,11 @@ import CustomSlider from '../CustomSlider/CustomSlider';
 import CustomRadio from '../CustomRadio/CustomRadio';
 import CustomWheel from '../CustomWheel/CustomWheel';
 import styles from './Popup-styles';
+import {changeStatus} from "../../redux/actions";
+import {useDispatch} from "react-redux";
 
 function Popup(props) {
+    const dispatch = useDispatch();
     let value;
     switch (props.type) {
         case 'slider':
@@ -75,6 +78,7 @@ function Popup(props) {
                         outerStyles={styles.button}
                         onPress={() => {
                             console.log(value);
+                            dispatch(changeStatus({ id: props.id, date: props.date }));
                             props.setModalVisible(!props.modalVisible);
                         }}
                     />
