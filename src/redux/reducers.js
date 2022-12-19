@@ -10,10 +10,10 @@ import {
 import { getFormattedDate } from '../transform/dateFormatter';
 
 const initialState = {
-    isSignedIn: true,
-    userName: 'Настя',
-    email: 'user@mail.ru',
-    userId: '68',
+    isSignedIn: false,
+    userName: '',
+    email: '',
+    userId: 0,
     selectedDate: getFormattedDate(),
     fontSize: 'normal',
     tasks: {
