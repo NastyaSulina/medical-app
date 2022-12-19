@@ -36,3 +36,28 @@ export const formatTasksByDate = (data) => {
 
     return arr;
 };
+
+export const formatCurrentTasksByDate = (data) => {
+    const arr = [];
+
+    function Task(id, time, firstDay, lastDay, name) {
+        this.id = id;
+        this.title = name;
+        this.time = time.slice(11, 16);
+        this.interval = `${firstDay} - ${lastDay}`;
+    }
+
+    for (const task of data) {
+        arr.push(
+            new Task(
+                task.id,
+                task.schedule.time,
+                task.schedule.firstDay,
+                task.schedule.lastDay,
+                task.name
+            )
+        );
+    }
+
+    return arr;
+};

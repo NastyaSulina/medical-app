@@ -61,6 +61,13 @@ export const getTasksByDate = async (id, date) => {
     return response;
 };
 
+export const getCurrentTasksByDate = async (id, date) => {
+    const response = await fetch(`http://80.249.147.77/getByDate/${id}&${date}`)
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+    return response;
+};
+
 export const sendNewMedicine = async (input) => {
     const response = await fetch(`http://80.249.147.77/medicine/add/${input.id}`, {
         method: 'POST',

@@ -10,6 +10,11 @@ import InfoCardList from '../../components/InfoCardList/InfoCardList';
 import ArchiveSwitcher from './ArchiveSwitcher';
 import AddingTrackerButton from "../../components/AddingTrackerButton/AddingTrackerButton";
 import AddingTrackerPopup from "../../components/AddingTrackerPopup/AddingTrackerPopup";
+import {useDispatch, useSelector} from "react-redux";
+import {getCurrentTasksByDate} from "../../fetch";
+import {formatCurrentTasksByDate} from "../../transform/tasksFormatter";
+import {setCurrentTasks} from "../../redux/actions";
+import {getFormattedDate} from "../../transform/dateFormatter";
 
 function Archive() {
     const navigation = useNavigation();
@@ -18,6 +23,20 @@ function Archive() {
     };
     const [pageActive, setPageActive] = useState('medicine');
     const [modalVisible, setModalVisible] = useState(false);
+
+    const { currentTasks, userId } = useSelector((state) => state.userReducer);
+    const dispatch = useDispatch();
+
+    const getCurrentTasks = async () => {
+        if (currentTasks.length > 0) return currentTasks;
+
+        const response = await getCurrentTasksByDate(userId, getFormattedDate());
+        const formattedTasks = formatCurrentTasksByDate(response);
+
+        dispatch(setCurrentTasks(formattedTasks));
+
+        return formattedTasks;
+    };
 
     return (
         <SafeAreaView
@@ -28,8 +47,8 @@ function Archive() {
             <ArchiveSwitcher pageActive={pageActive} onPress={setPageActive} />
             <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.content}>
-                    <InfoCardList listTitle="Текущие" />
-                    <InfoCardList listTitle="Архив" />
+                    <InfoCardList listTitle="Текущие" data={getCurrentTasks()}/>
+                    {/*<InfoCardList listTitle="Архив" />*/}
                 </View>
             </ScrollView>
             <AddingTrackerButton onPress={() => setModalVisible(!modalVisible)} />

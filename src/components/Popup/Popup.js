@@ -78,7 +78,7 @@ function Popup(props) {
                         outerStyles={styles.button}
                         onPress={() => {
                             console.log(value);
-                            dispatch(changeStatus({ id: props.id, date: props.date }));
+                            if (props.id) dispatch(changeStatus({ id: props.id, date: props.date }));
                             props.setModalVisible(!props.modalVisible);
                         }}
                     />

@@ -6,6 +6,7 @@ export const SET_USER_ID = 'SET_USER_ID';
 export const SIGN_IN = 'SIGN_IN';
 export const SET_TASKS_BY_DATE = 'SET_TASKS_BY_DATE';
 export const RESET_TASKS = 'RESET_TASKS';
+export const SET_CURRENT_TASKS = 'SET_CURRENT_TASKS';
 
 export const changeStatus = (data) => ({
     type: CHANGE_TASK_STATUS,
@@ -42,6 +43,11 @@ export const setUserId = (id) => ({
 
 export const resetTasks = () => ({
     type: RESET_TASKS,
+});
+
+export const setCurrentTasks = (tasks) => ({
+    type: SET_CURRENT_TASKS,
+    payload: tasks,
 });
 
 export const setTasksByDate = (date, tasks) => ({
