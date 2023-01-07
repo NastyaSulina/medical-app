@@ -8,12 +8,12 @@ export const sendNewMedicine = async (input) =>
             'Transfer-Encoding': 'chunked',
         },
         body: JSON.stringify({
-            name: input.title,
-            units: input.unit,
-            per_use: input.amount,
-            start_day: input.start_day,
-            time: input.time,
             duration: input.number_of_days,
+            name: input.title,
+            perUse: input.amount,
+            startDay: input.start_day,
+            time: input.time,
+            units: input.unit,
         }),
     })
         .then((result) => result.json())
@@ -29,11 +29,11 @@ export const sendNewCustomSymptom = async (input) =>
             'Transfer-Encoding': 'chunked',
         },
         body: JSON.stringify({
-            name: input.title,
-            is_default: false,
-            start_day: input.start_day,
-            time: input.time,
+            default: false,
             duration: input.number_of_days,
+            name: input.title,
+            startDay: input.start_day,
+            time: input.time,
         }),
     })
         .then((result) => result.json())
@@ -49,9 +49,9 @@ export const sendNewPressure = async (input) =>
             'Transfer-Encoding': 'chunked',
         },
         body: JSON.stringify({
-            start_day: input.start_day,
-            time: input.time,
             duration: input.number_of_days,
+            startDay: input.start_day,
+            time: input.time,
         }),
     })
         .then((result) => result.json())

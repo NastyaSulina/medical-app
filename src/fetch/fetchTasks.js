@@ -8,7 +8,7 @@ export const getTasksByDate = async (id, date) =>
 // Архив: запрос на получение Текущих задач
 
 export const getCurrentTasksByDate = async (id, date) =>
-    await fetch(`http://80.249.147.77/medicine/getByDate/${id}&${date}`)
+    await fetch(`http://80.249.147.77/medicine/getCurrent/${id}&${date}`)
         .then((result) => result.json())
         .catch((err) => console.log(err));
 

@@ -17,7 +17,10 @@ import TextCustom from '../../components/TextCustom/TextCustom';
 import { formatTasksByDate } from '../../transform/tasksFormatter';
 
 function Main() {
-    const { tasks, selectedDate, userId } = useSelector((state) => state.userReducer);
+    const { userId } = useSelector((state) => state.userReducer);
+    const { tasks } = useSelector((state) => state.taskReducer);
+    const { selectedDate } = useSelector((state) => state.commonReducer);
+
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const handleProfilePressed = () => {
@@ -35,9 +38,19 @@ function Main() {
 
             dispatch(setTasksByDate(selectedDate, formattedTasks));
         }
+
         fetchData().then(() => {});
 
     }, [selectedDate]);
+
+    setTimeout(async () => {
+        const response = await getTasksByDate(userId, selectedDate);
+        const formattedTasks = formatTasksByDate(response);
+
+        console.log("Случилось фоновое обновление")
+
+        dispatch(setTasksByDate(selectedDate, formattedTasks));
+    }, 60000);
 
     return (
         <SafeAreaView
