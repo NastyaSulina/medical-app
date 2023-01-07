@@ -8,6 +8,7 @@ import {
     SIGN_IN,
     RESET_TASKS,
     SET_CURRENT_TASKS,
+    SET_PREVIOUS_TASKS,
     ADD_IMAGE,
 } from './actions';
 import { getFormattedDate } from '../transform/dateFormatter';
@@ -107,6 +108,11 @@ function userReducer(state = initialState, action) {
         case SET_CURRENT_TASKS: {
             const newState = getNewState(state);
             newState.currentTasks = [...action.payload];
+            return newState;
+        }
+        case SET_PREVIOUS_TASKS: {
+            const newState = getNewState(state);
+            newState.previousTasks = [...action.payload];
             return newState;
         }
         case SET_TASKS_BY_DATE: {

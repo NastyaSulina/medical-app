@@ -7,6 +7,7 @@ export const SIGN_IN = 'SIGN_IN';
 export const SET_TASKS_BY_DATE = 'SET_TASKS_BY_DATE';
 export const RESET_TASKS = 'RESET_TASKS';
 export const SET_CURRENT_TASKS = 'SET_CURRENT_TASKS';
+export const SET_PREVIOUS_TASKS = 'SET_PREVIOUS_TASKS';
 export const ADD_IMAGE = 'ADD_IMAGE';
 
 export const changeStatus = (data) => ({
@@ -48,6 +49,11 @@ export const resetTasks = () => ({
 
 export const setCurrentTasks = (tasks) => ({
     type: SET_CURRENT_TASKS,
+    payload: tasks,
+});
+
+export const setPreviousTasks = (tasks) => ({
+    type: SET_PREVIOUS_TASKS,
     payload: tasks,
 });
 

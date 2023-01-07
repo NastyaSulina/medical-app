@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { ScrollView, View } from 'react-native';
@@ -26,17 +26,18 @@ function Main() {
 
     const [modalVisible, setModalVisible] = useState(false);
 
-    const getSelectedTasks = async () => {
-        if (tasks[selectedDate]) return tasks[selectedDate];
+    useEffect(() => {
+        async function fetchData() {
+            if (tasks[selectedDate]) return;
 
-        const response = await getTasksByDate(userId, selectedDate);
-        const formattedTasks = formatTasksByDate(response);
+            const response = await getTasksByDate(userId, selectedDate);
+            const formattedTasks = formatTasksByDate(response);
 
-        dispatch(setTasksByDate(selectedDate, formattedTasks));
-        return formattedTasks;
-    };
+            dispatch(setTasksByDate(selectedDate, formattedTasks));
+        }
+        fetchData().then(() => {});
 
-    getSelectedTasks();
+    }, [selectedDate]);
 
     return (
         <SafeAreaView
