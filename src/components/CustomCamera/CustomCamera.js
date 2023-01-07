@@ -6,7 +6,11 @@ import * as MediaLibrary from 'expo-media-library';
 import { Camera } from 'expo-camera';
 import styles from './CustomCamera-styles';
 import Button from '../Button/Button';
-import cameraIcon from '../../../assets/archive/camera.png';
+import photoIcon from '../../../assets/camera/photo.png';
+import crossIcon from '../../../assets/camera/cross.png';
+import flipIcon from '../../../assets/camera/flip.png';
+import backIcon from '../../../assets/camera/back.png';
+import saveIcon from '../../../assets/camera/save.png';
 import TextCustom from '../TextCustom/TextCustom';
 import { addImage } from '../../redux/actions';
 
@@ -15,6 +19,7 @@ function CustomCamera() {
     const dispatch = useDispatch();
 
     const [hasCameraPermission, setHasCameraPermission] = useState(null);
+    const [type, setType] = useState(Camera.Constants.Type.back);
     const [image, setImage] = useState(null);
     const cameraRef = useRef(null);
 
@@ -56,28 +61,47 @@ function CustomCamera() {
     }
     return !image ? (
         <Camera
-            type={Camera.Constants.Type.back}
+            type={type}
             style={[styles.camera, styles.cameraContainer]}
             ref={cameraRef}
             ratio="16:9"
         >
-            <Button
-                iconSource={cameraIcon}
-                iconStyles={{ width: 36, height: 36 }}
-                outerStyles={styles.photoButton}
-                onPress={handlePhotoPress}
-            />
+            <View style={[styles.blackBg, {top: 0, height: '10%'}]}/>
+            <View style={[styles.blackBg, {bottom: 0, height: '15%'}]}>
+                <Button
+                    iconSource={crossIcon}
+                    iconStyles={{ width: 50, height: 50 }}
+                    onPress={() => navigation.goBack()}
+                />
+                <Button
+                    iconSource={photoIcon}
+                    iconStyles={{ width: 90, height: 90 }}
+                    onPress={handlePhotoPress}
+                />
+                <Button
+                    iconSource={flipIcon}
+                    iconStyles={{ width: 50, height: 50 }}
+                    onPress={() => setType(
+                        type === Camera.Constants.Type.back
+                            ? Camera.Constants.Type.front
+                            : Camera.Constants.Type.back
+                    )}
+                />
+            </View>
         </Camera>
     ) : (
         <View style={[styles.cameraContainer, styles.camera]}>
             <Image source={{ uri: image }} style={styles.cameraContainer} />
-            <View style={{ position: 'absolute', bottom: 30, flexDirection: 'row' }}>
+            <View style={[styles.blackBg, {top: 0, height: '10%'}]}/>
+            <View style={[styles.blackBg, {bottom: 0, height: '15%'}]}>
                 <Button
-                    outerStyles={[styles.photoButton, { backgroundColor: 'red', marginRight: 20 }]}
+                    iconSource={backIcon}
+                    iconStyles={{ width: 50, height: 50 }}
                     onPress={() => setImage(null)}
                 />
                 <Button
-                    outerStyles={[styles.photoButton, { backgroundColor: 'green' }]}
+                    iconSource={saveIcon}
+                    iconStyles={{ width: 50, height: 50 }}
                     onPress={handleSavePhoto}
                 />
             </View>

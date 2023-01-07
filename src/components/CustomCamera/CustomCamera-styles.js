@@ -10,15 +10,13 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center',
     },
-    photoButton: {
-        width: 70,
-        height: 70,
-        backgroundColor: '#F5F5F5',
-        padding: 16,
-        borderRadius: 35,
-        justifyContent: 'center',
+    blackBg: {
+        position:'absolute',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        width: '100%',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        marginBottom: 30,
+        flexDirection: 'row'
     },
 });
 
