@@ -12,14 +12,15 @@ function InfoCardList({ listTitle, data }) {
                 text={listTitle}
                 outerStyles={[styles.listTitle, globalStyles[TEXT_FONT.semiBold]]}
             />
-            {data && data.map((card) => (
-                <InfoCard
-                    key={card.key}
-                    title={card.title}
-                    time={card.time}
-                    interval={card.interval}
-                />
-            ))}
+            {data &&
+                data.map((card) => (
+                    <InfoCard
+                        key={card.key}
+                        title={card.title}
+                        time={card.time}
+                        interval={card.interval}
+                    />
+                ))}
         </View>
     );
 }

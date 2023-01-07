@@ -8,12 +8,12 @@ export const formatTasksByDate = (data) => {
 
         this.time = time.slice(11, 16);
 
-        if (type === "medicine") {
+        if (type === 'medicine') {
             this.units = units;
             this.numberPerUse = numberPerUse;
         }
 
-        if (type === "symptom") {
+        if (type === 'symptom') {
             this.default = isDefault;
         }
 

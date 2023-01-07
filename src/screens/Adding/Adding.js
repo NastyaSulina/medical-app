@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import styles from './Adding-styles';
 import Button from '../../components/Button/Button';
@@ -12,9 +12,9 @@ import measureValues from './AddingConst';
 import TextCustom from '../../components/TextCustom/TextCustom';
 import AddingForm from './AddingForm';
 import StandardTrackers from '../../components/AddingTrackerPopup/StandardTrackers';
-import {sendNewCustomSymptom, sendNewMedicine, sendNewPressure} from '../../fetch';
-import {getFormattedDateFromDefault} from "../../transform/dateFormatter";
-import {resetTasks} from "../../redux/actions";
+import { sendNewCustomSymptom, sendNewMedicine, sendNewPressure } from '../../fetch';
+import { getFormattedDateFromDefault } from '../../transform/dateFormatter';
+import { resetTasks } from '../../redux/actions';
 
 export default function Adding({ route }) {
     const { type, name } = route.params;
@@ -80,11 +80,11 @@ export default function Adding({ route }) {
 
                                     let response;
 
-                                    if (type === "medicine") {
+                                    if (type === 'medicine') {
                                         response = await sendNewMedicine(data);
-                                    } else if (type === "customSymptom") {
+                                    } else if (type === 'customSymptom') {
                                         response = await sendNewCustomSymptom(data);
-                                    } else if (name === "Давление" && type === "standardSymptom") {
+                                    } else if (name === 'Давление' && type === 'standardSymptom') {
                                         response = await sendNewPressure(data);
                                     }
 

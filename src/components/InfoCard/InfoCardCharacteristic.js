@@ -7,7 +7,9 @@ function InfoCardCharacteristic({ InfoValue, isTimeInfo }) {
     return (
         <View style={styles.container}>
             {!isTimeInfo && <TextCustom outerStyles={styles.infoValue} text={InfoValue} />}
-            {isTimeInfo && <TextCustom outerStyles={[styles.time, styles.infoValue]} text={InfoValue} />}
+            {isTimeInfo && (
+                <TextCustom outerStyles={[styles.time, styles.infoValue]} text={InfoValue} />
+            )}
         </View>
     );
 }

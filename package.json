@@ -32,7 +32,9 @@
     "react-native-wheely": "^0.6.0",
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "expo-camera": "~12.4.0",
+    "expo-media-library": "~14.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
