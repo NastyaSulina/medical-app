@@ -40,9 +40,12 @@ export default function Registration() {
                 message: 'Пользователь с такой почтой уже зарегистрирован!',
             };
             setError('email', formError);
+        } else if (response.status) {
+            const formError = { type: 'server', message: 'Повторите попытку позже!' };
+            setError('password', formError);
+
         } else {
             navigation.navigate('Authentication');
-            console.log(response);
         }
     };
 
