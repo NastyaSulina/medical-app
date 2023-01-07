@@ -1,13 +1,13 @@
 import React from 'react';
 import { Modal, View, TouchableOpacity } from 'react-native';
+import {useDispatch} from "react-redux";
 import TextCustom from '../TextCustom/TextCustom';
 import Button from '../Button/Button';
 import CustomSlider from '../CustomSlider/CustomSlider';
 import CustomRadio from '../CustomRadio/CustomRadio';
 import CustomWheel from '../CustomWheel/CustomWheel';
 import styles from './Popup-styles';
-import { changeStatus } from '../../redux/actions';
-import { useDispatch } from 'react-redux';
+import { changeTaskStatus } from '../../redux/actions';
 
 function Popup(props) {
     const dispatch = useDispatch();
@@ -79,7 +79,7 @@ function Popup(props) {
                         onPress={() => {
                             console.log(value);
                             if (props.id)
-                                dispatch(changeStatus({ id: props.id, date: props.date }));
+                                dispatch(changeTaskStatus({ id: props.id, date: props.date }));
                             props.setModalVisible(!props.modalVisible);
                         }}
                     />

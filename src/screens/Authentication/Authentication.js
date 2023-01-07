@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../../components/Button/Button';
@@ -16,7 +16,6 @@ import { setUserName, setEmail, signIn, setUserId } from '../../redux/actions';
 export default function Authentication() {
     const navigation = useNavigation();
     const dispatch = useDispatch();
-    const { isSignedIn } = useSelector((state) => state.userReducer);
     const {
         control,
         handleSubmit,
@@ -33,8 +32,10 @@ export default function Authentication() {
         } else if (response.code === '12') {
             const formError = { type: 'server', message: 'Неправильный пароль!' };
             setError('password', formError);
+        } else if (response.status) {
+            const formError = { type: 'server', message: 'Повторите попытку позже!' };
+            setError('password', formError);
         } else {
-            console.log(response);
             dispatch(setUserName(response.name));
             dispatch(setEmail(response.email));
             dispatch(setUserId(response.id));

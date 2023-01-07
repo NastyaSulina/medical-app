@@ -13,7 +13,7 @@ import Adding from '../screens/Adding/Adding';
 
 function Navigation() {
     const Stack = createNativeStackNavigator();
-    const { isSignedIn } = useSelector((state) => state.userReducer);
+    const { isSignedIn } = useSelector((state) => state.commonReducer);
 
     return (
         <NavigationContainer>

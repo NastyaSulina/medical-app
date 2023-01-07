@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image, View } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { changeStatus } from '../../redux/actions';
+import { changeTaskStatus } from '../../redux/actions';
 import Button from '../Button/Button';
 import { TASK_TEXT, WHEEL_OPTIONS } from './Task-const';
 import ClockImage from '../../../assets/main-assets/clock.png';
@@ -61,7 +61,7 @@ function Task({
                     opacity={0.6}
                     onPress={() => {
                         if (type === 'medicine') {
-                            dispatch(changeStatus({ id, date }));
+                            dispatch(changeTaskStatus({ id, date }));
                         } else if (type === 'symptom' && isDefault && taskName === 'Настроение') {
                             setModalText('Как ваше настроение?');
                             setModalType('slider');

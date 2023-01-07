@@ -9,7 +9,7 @@ import { setSelectedDate } from '../../redux/actions';
 
 function CalendarFull() {
     const dispatch = useDispatch();
-    const { selectedDate } = useSelector((state) => state.userReducer);
+    const { selectedDate } = useSelector((state) => state.commonReducer);
 
     return (
         <Calendar

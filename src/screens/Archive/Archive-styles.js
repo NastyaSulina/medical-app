@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
         paddingBottom: 12,
     },
     content: {
+        minWidth: '80%',
         maxWidth: '80%',
         minHeight: '100%',
     },

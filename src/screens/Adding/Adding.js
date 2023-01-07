@@ -25,7 +25,9 @@ export default function Adding({ route }) {
             title: name,
         },
     });
-    const { userId, tasks } = useSelector((state) => state.userReducer);
+    const { userId } = useSelector((state) => state.userReducer);
+    const { tasks } = useSelector((state) => state.taskReducer);
+
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     const title = {

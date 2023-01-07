@@ -12,7 +12,7 @@ function InfoCardList({ listTitle, data }) {
                 text={listTitle}
                 outerStyles={[styles.listTitle, globalStyles[TEXT_FONT.semiBold]]}
             />
-            {data &&
+            {data.length > 0 &&
                 data.map((card) => (
                     <InfoCard
                         key={card.key}
@@ -21,6 +21,12 @@ function InfoCardList({ listTitle, data }) {
                         interval={card.interval}
                     />
                 ))}
+            {!(data.length > 0) && (
+                <TextCustom
+                    text={listTitle === "Архив" ? "В архиве нет назначений!" : "Нет текущих назначений!"}
+                    outerStyles={styles.listEmptyText}
+                />
+            )}
         </View>
     );
 }

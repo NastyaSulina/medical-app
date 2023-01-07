@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { ScrollView, View } from 'react-native';
@@ -17,7 +17,10 @@ import TextCustom from '../../components/TextCustom/TextCustom';
 import { formatTasksByDate } from '../../transform/tasksFormatter';
 
 function Main() {
-    const { tasks, selectedDate, userId } = useSelector((state) => state.userReducer);
+    const { userId } = useSelector((state) => state.userReducer);
+    const { tasks } = useSelector((state) => state.taskReducer);
+    const { selectedDate } = useSelector((state) => state.commonReducer);
+
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const handleProfilePressed = () => {
@@ -26,17 +29,28 @@ function Main() {
 
     const [modalVisible, setModalVisible] = useState(false);
 
-    const getSelectedTasks = async () => {
-        if (tasks[selectedDate]) return tasks[selectedDate];
+    useEffect(() => {
+        async function fetchData() {
+            if (tasks[selectedDate]) return;
 
+            const response = await getTasksByDate(userId, selectedDate);
+            const formattedTasks = formatTasksByDate(response);
+
+            dispatch(setTasksByDate(selectedDate, formattedTasks));
+        }
+
+        fetchData().then(() => {});
+
+    }, [selectedDate]);
+
+    setTimeout(async () => {
         const response = await getTasksByDate(userId, selectedDate);
         const formattedTasks = formatTasksByDate(response);
 
-        dispatch(setTasksByDate(selectedDate, formattedTasks));
-        return formattedTasks;
-    };
+        console.log("Случилось фоновое обновление")
 
-    getSelectedTasks();
+        dispatch(setTasksByDate(selectedDate, formattedTasks));
+    }, 60000);
 
     return (
         <SafeAreaView

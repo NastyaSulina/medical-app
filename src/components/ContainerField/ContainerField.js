@@ -10,7 +10,7 @@ import SmallArrowBottom from '../../../assets/profile-assets/SmallArrowBottom.pn
 import Button from '../Button/Button';
 import { COLORS } from '../../styles/globalStyles';
 import TextCustom from '../TextCustom/TextCustom';
-import { signIn } from '../../redux/actions';
+import { resetTasks, resetCommonInfo, resetUserInfo } from '../../redux/actions';
 
 function ContainerField({ type, name, property, outerStyles }) {
     const navigation = useNavigation();
@@ -33,7 +33,10 @@ function ContainerField({ type, name, property, outerStyles }) {
             {type === 'exit' && (
                 <Button
                     onPress={() => {
-                        dispatch(signIn(false));
+                        dispatch(resetTasks())
+                        dispatch(resetCommonInfo())
+                        dispatch(resetUserInfo())
+
                         navigation.navigate('Authentication');
                     }}
                     iconSource={Exit}

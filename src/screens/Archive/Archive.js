@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { COLORS, globalStyles } from '../../styles/globalStyles';
+import React, {useEffect, useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {Image, ScrollView, TouchableOpacity,View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {globalStyles} from '../../styles/globalStyles';
 import styles from './Archive-styles';
 import Menu from '../../components/Menu/Menu';
-import UpperMenu from '../../components/UpperMenu/UpperMenu';
 import InfoCardList from '../../components/InfoCardList/InfoCardList';
+import UpperMenu from '../../components/UpperMenu/UpperMenu';
 import ArchiveSwitcher from './ArchiveSwitcher';
 import AddingTrackerButton from '../../components/AddingTrackerButton/AddingTrackerButton';
 import AddingTrackerPopup from '../../components/AddingTrackerPopup/AddingTrackerPopup';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentTasksByDate } from '../../fetch';
-import { formatCurrentTasksByDate } from '../../transform/tasksFormatter';
-import { setCurrentTasks } from '../../redux/actions';
+import { getCurrentTasksByDate, getPreviousTasksByDate } from '../../fetch';
+import { formatArchiveTasksByDate } from '../../transform/tasksFormatter';
+import { setCurrentTasks, setPreviousTasks } from '../../redux/actions';
 import { getFormattedDate } from '../../transform/dateFormatter';
 import Button from '../../components/Button/Button';
 import Camera from '../../../assets/archive/camera.png';
@@ -29,38 +29,43 @@ function Archive() {
     const [photoVisible, setPhotoVisible] = useState(false);
     const [imageUri, setImageUri] = useState('');
 
-    const { currentTasks, userId, images } = useSelector((state) => state.userReducer);
+    const { userId } = useSelector((state) => state.userReducer);
+    const { currentTasks, previousTasks } = useSelector((state) => state.taskReducer);
+    const { images } = useSelector((state) => state.commonReducer);
+
     const dispatch = useDispatch();
 
-    const getCurrentTasks = async () => {
-        if (currentTasks.length > 0) return currentTasks;
+    useEffect(() => {
+        async function fetchData() {
+            const responseCurrent = await getCurrentTasksByDate(userId, getFormattedDate());
+            const responsePrevious = await getPreviousTasksByDate(userId, getFormattedDate());
 
-        const response = await getCurrentTasksByDate(userId, getFormattedDate());
-        const formattedTasks = formatCurrentTasksByDate(response);
-        console.log(formattedTasks);
+            const formattedCurrentTasks = formatArchiveTasksByDate(responseCurrent);
+            const formattedPreviousTasks = formatArchiveTasksByDate(responsePrevious);
 
-        dispatch(setCurrentTasks(formattedTasks));
-    };
+            dispatch(setCurrentTasks(formattedCurrentTasks));
+            dispatch(setPreviousTasks(formattedPreviousTasks));
+        }
 
-    getCurrentTasks();
+        fetchData().then(() => {
+        });
+    });
 
-    const mockPreviousTasks = [
-        { id: 137, title: 'Парацетамол', time: '12:40', interval: '2022-11-19 - 2022-12-01' },
-        { id: 137, title: 'Ибупрофен', time: '12:40', interval: '2022-12-01 - 2022-12-13' },
-        { id: 137, title: 'Витамин А', time: '12:40', interval: '2022-12-13 - 2022-12-14' },
-    ];
     return (
         <SafeAreaView
-            style={[globalStyles.root, { height: '100%' }]}
-            edges={['right', 'top', 'left']}
-        >
-            <UpperMenu text="Список лекарств" onButtonPress={handleProfilePressed} />
-            <ArchiveSwitcher pageActive={pageActive} onPress={setPageActive} />
+            style={[globalStyles.root, {height: '100%'}]}
+            edges={['right', 'top', 'left']}>
+            <UpperMenu text="Список лекарств" onButtonPress={handleProfilePressed}/>
+            <ArchiveSwitcher pageActive={pageActive} onPress={setPageActive}/>
             <ScrollView contentContainerStyle={styles.container}>
                 {pageActive === 'medicine' && (
                     <View style={styles.content}>
-                        <InfoCardList listTitle="Текущие" data={currentTasks} />
-                        <InfoCardList listTitle="Архив" data={mockPreviousTasks} />
+                        {currentTasks.length > 0 && (
+                        <InfoCardList listTitle="Текущие" data={currentTasks}/>
+                    )}
+                    {previousTasks.length > 0 && (
+                        <InfoCardList listTitle="Архив" data={previousTasks}/>
+                    )}
                     </View>
                 )}
                 {pageActive === 'photo' && (
@@ -96,9 +101,9 @@ function Archive() {
                     </View>
                 )}
             </ScrollView>
-            <AddingTrackerButton onPress={() => setModalVisible(!modalVisible)} />
-            <Menu screen="Архив" />
-            <AddingTrackerPopup modalVisible={modalVisible} setModalVisible={setModalVisible} />
+            <AddingTrackerButton onPress={() => setModalVisible(!modalVisible)}/>
+            <Menu screen="Архив"/>
+            <AddingTrackerPopup modalVisible={modalVisible} setModalVisible={setModalVisible}/>
         </SafeAreaView>
     );
 }
