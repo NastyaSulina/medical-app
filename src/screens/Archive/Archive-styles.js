@@ -27,6 +27,30 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         minWidth: '40%',
     },
+    takePictureButton: {
+        backgroundColor: 'rgba(159, 170, 187, 0.1)',
+        paddingVertical: 7,
+        paddingHorizontal: 75,
+        borderRadius: 16,
+        flexDirection: 'row',
+        marginTop: 40,
+    },
+    gallery: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        maxWidth: 300,
+    },
+    picture: {
+        backgroundColor: 'gray',
+        width: 100,
+        height: 100,
+        borderWidth: 1,
+        borderColor: '#F5F7FB',
+    },
+    centered: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
 
 export default styles;

@@ -7,6 +7,7 @@ export const SIGN_IN = 'SIGN_IN';
 export const SET_TASKS_BY_DATE = 'SET_TASKS_BY_DATE';
 export const RESET_TASKS = 'RESET_TASKS';
 export const SET_CURRENT_TASKS = 'SET_CURRENT_TASKS';
+export const ADD_IMAGE = 'ADD_IMAGE';
 
 export const changeStatus = (data) => ({
     type: CHANGE_TASK_STATUS,
@@ -56,4 +57,8 @@ export const setTasksByDate = (date, tasks) => ({
         date: date,
         tasks: tasks,
     },
+});
+export const addImage = (newImageURI) => ({
+    type: ADD_IMAGE,
+    payload: newImageURI,
 });

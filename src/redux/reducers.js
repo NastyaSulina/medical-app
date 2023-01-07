@@ -7,7 +7,8 @@ import {
     SET_USER_NAME,
     SIGN_IN,
     RESET_TASKS,
-    SET_CURRENT_TASKS
+    SET_CURRENT_TASKS,
+    ADD_IMAGE,
 } from './actions';
 import { getFormattedDate } from '../transform/dateFormatter';
 
@@ -59,6 +60,7 @@ const initialState = {
     },
     currentTasks: [],
     previousTasks: [],
+    images: [],
 };
 
 const getNewState = (state) => JSON.parse(JSON.stringify(state));
@@ -115,6 +117,11 @@ function userReducer(state = initialState, action) {
         case RESET_TASKS: {
             const newState = getNewState(state);
             newState.tasks = {};
+            return newState;
+        }
+        case ADD_IMAGE: {
+            const newState = getNewState(state);
+            newState.images.push(action.payload);
             return newState;
         }
 
