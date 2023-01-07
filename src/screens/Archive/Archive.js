@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Image, ScrollView, View } from 'react-native';
+import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS, globalStyles } from '../../styles/globalStyles';
 import styles from './Archive-styles';
@@ -17,6 +17,7 @@ import { setCurrentTasks } from '../../redux/actions';
 import { getFormattedDate } from '../../transform/dateFormatter';
 import Button from '../../components/Button/Button';
 import Camera from '../../../assets/archive/camera.png';
+import PhotoModal from '../../components/PhotoModal/PhotoModal';
 
 function Archive() {
     const navigation = useNavigation();
@@ -25,6 +26,8 @@ function Archive() {
     };
     const [pageActive, setPageActive] = useState('medicine');
     const [modalVisible, setModalVisible] = useState(false);
+    const [photoVisible, setPhotoVisible] = useState(false);
+    const [imageUri, setImageUri] = useState('');
 
     const { currentTasks, userId, images } = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
@@ -65,7 +68,14 @@ function Archive() {
                         <View style={styles.gallery}>
                             {Boolean(images) &&
                                 images.map((image) => (
-                                    <Image source={{ uri: image }} style={styles.picture} />
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            setImageUri(image);
+                                            setPhotoVisible(!photoVisible);
+                                        }}
+                                    >
+                                        <Image source={{ uri: image }} style={styles.picture} />
+                                    </TouchableOpacity>
                                 ))}
                         </View>
                         <Button
@@ -77,6 +87,11 @@ function Archive() {
                             type="large"
                             outerStyles={styles.takePictureButton}
                             onPress={() => navigation.navigate('Camera')}
+                        />
+                        <PhotoModal
+                            modalVisible={photoVisible}
+                            setModalVisible={setPhotoVisible}
+                            imageUri={imageUri}
                         />
                     </View>
                 )}

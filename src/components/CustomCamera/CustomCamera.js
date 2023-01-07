@@ -66,8 +66,8 @@ function CustomCamera() {
             ref={cameraRef}
             ratio="16:9"
         >
-            <View style={[styles.blackBg, {top: 0, height: '10%'}]}/>
-            <View style={[styles.blackBg, {bottom: 0, height: '15%'}]}>
+            <View style={[styles.blackBg, { top: 0, height: '10%' }]} />
+            <View style={[styles.blackBg, { bottom: 0, height: '15%' }]}>
                 <Button
                     iconSource={crossIcon}
                     iconStyles={{ width: 50, height: 50 }}
@@ -81,19 +81,21 @@ function CustomCamera() {
                 <Button
                     iconSource={flipIcon}
                     iconStyles={{ width: 50, height: 50 }}
-                    onPress={() => setType(
-                        type === Camera.Constants.Type.back
-                            ? Camera.Constants.Type.front
-                            : Camera.Constants.Type.back
-                    )}
+                    onPress={() =>
+                        setType(
+                            type === Camera.Constants.Type.back
+                                ? Camera.Constants.Type.front
+                                : Camera.Constants.Type.back
+                        )
+                    }
                 />
             </View>
         </Camera>
     ) : (
         <View style={[styles.cameraContainer, styles.camera]}>
             <Image source={{ uri: image }} style={styles.cameraContainer} />
-            <View style={[styles.blackBg, {top: 0, height: '10%'}]}/>
-            <View style={[styles.blackBg, {bottom: 0, height: '15%'}]}>
+            <View style={[styles.blackBg, { top: 0, height: '10%' }]} />
+            <View style={[styles.blackBg, { bottom: 0, height: '15%' }]}>
                 <Button
                     iconSource={backIcon}
                     iconStyles={{ width: 50, height: 50 }}

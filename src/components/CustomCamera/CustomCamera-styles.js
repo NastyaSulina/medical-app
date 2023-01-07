@@ -11,12 +11,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     blackBg: {
-        position:'absolute',
+        position: 'absolute',
         backgroundColor: 'rgba(0, 0, 0, 0.7)',
         width: '100%',
         justifyContent: 'space-around',
         alignItems: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
 });
 
