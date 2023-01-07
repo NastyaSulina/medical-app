@@ -12,7 +12,7 @@ import ArchiveSwitcher from './ArchiveSwitcher';
 import AddingTrackerButton from '../../components/AddingTrackerButton/AddingTrackerButton';
 import AddingTrackerPopup from '../../components/AddingTrackerPopup/AddingTrackerPopup';
 import { getCurrentTasksByDate, getPreviousTasksByDate } from '../../fetch';
-import { formatCurrentTasksByDate } from '../../transform/tasksFormatter';
+import { formatArchiveTasksByDate } from '../../transform/tasksFormatter';
 import { setCurrentTasks, setPreviousTasks } from '../../redux/actions';
 import { getFormattedDate } from '../../transform/dateFormatter';
 import Button from '../../components/Button/Button';
@@ -37,8 +37,8 @@ function Archive() {
             const responseCurrent = await getCurrentTasksByDate(userId, getFormattedDate());
             const responsePrevious = await getPreviousTasksByDate(userId, getFormattedDate());
 
-            const formattedCurrentTasks = formatCurrentTasksByDate(responseCurrent);
-            const formattedPreviousTasks = formatCurrentTasksByDate(responsePrevious);
+            const formattedCurrentTasks = formatArchiveTasksByDate(responseCurrent);
+            const formattedPreviousTasks = formatArchiveTasksByDate(responsePrevious);
 
             dispatch(setCurrentTasks(formattedCurrentTasks));
             dispatch(setPreviousTasks(formattedPreviousTasks));
