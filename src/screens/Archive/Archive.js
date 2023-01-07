@@ -29,7 +29,10 @@ function Archive() {
     const [photoVisible, setPhotoVisible] = useState(false);
     const [imageUri, setImageUri] = useState('');
 
-    const { currentTasks, userId, images, previousTasks } = useSelector((state) => state.userReducer);
+    const { userId } = useSelector((state) => state.userReducer);
+    const { currentTasks, previousTasks } = useSelector((state) => state.taskReducer);
+    const { images } = useSelector((state) => state.commonReducer);
+
     const dispatch = useDispatch();
 
     useEffect(() => {

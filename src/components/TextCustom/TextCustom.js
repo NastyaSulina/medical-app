@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 import { FONT_SIZES, globalStyles, TEXT_COLOR_STYLES, TEXT_FONT } from '../../styles/globalStyles';
 
 function TextCustom({ text, outerStyles }) {
-    const { fontSize } = useSelector((state) => state.userReducer);
+    const { fontSize } = useSelector((state) => state.commonReducer);
 
     return (
         <Text

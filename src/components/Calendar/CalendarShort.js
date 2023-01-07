@@ -9,7 +9,7 @@ import { globalStyles } from '../../styles/globalStyles';
 
 function CalendarShort() {
     const dispatch = useDispatch();
-    const { selectedDate } = useSelector((state) => state.userReducer);
+    const { selectedDate } = useSelector((state) => state.commonReducer);
     const weekDayNames = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
     function getSelectedWeek(date) {
