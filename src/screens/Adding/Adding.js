@@ -19,13 +19,8 @@ export default function Adding({ route }) {
     const { type, name } = route.params;
     const dispatch = useDispatch();
     const navigation = useNavigation();
-    const { control, handleSubmit } = useForm({
-        defaultValues: {
-            title: name,
-        },
-    });
+     const { control, handleSubmit } = useForm();
     const { userId } = useSelector((state) => state.userReducer);
-    const { tasks } = useSelector((state) => state.taskReducer);
     const { startTakingSelectedDate } = useSelector((state) => state.commonReducer);
 
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -84,7 +79,6 @@ export default function Adding({ route }) {
                                     data.amount = +data.amount;
                                     data.number_of_days = +data.number_of_days;
 
-                                    console.log(data);
 
                                     let response;
 
@@ -96,12 +90,7 @@ export default function Adding({ route }) {
                                         response = await sendNewPressure(data);
                                     }
 
-                                    console.log(response);
-
                                     dispatch(resetTasks());
-
-                                    console.log(tasks);
-
                                     navigation.goBack();
                                 })}
                             />
