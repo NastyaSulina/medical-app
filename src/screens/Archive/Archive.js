@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {Image, ScrollView, TouchableOpacity,View} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {globalStyles} from '../../styles/globalStyles';
+import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { globalStyles } from '../../styles/globalStyles';
 import styles from './Archive-styles';
 import Menu from '../../components/Menu/Menu';
 import InfoCardList from '../../components/InfoCardList/InfoCardList';
@@ -37,9 +37,12 @@ function Archive() {
 
     useEffect(() => {
         async function fetchData() {
-            console.log("Запрос на бэкенд в архиве");
+            console.log('Запрос на бэкенд в архиве');
             const responseCurrent = await getCurrentTasksByDate(userId, getDateDefaultFromJSDate());
-            const responsePrevious = await getPreviousTasksByDate(userId, getDateDefaultFromJSDate());
+            const responsePrevious = await getPreviousTasksByDate(
+                userId,
+                getDateDefaultFromJSDate()
+            );
 
             const formattedCurrentTasks = formatArchiveTasksByDate(responseCurrent);
             const formattedPreviousTasks = formatArchiveTasksByDate(responsePrevious);
@@ -48,25 +51,25 @@ function Archive() {
             dispatch(setPreviousTasks(formattedPreviousTasks));
         }
 
-        fetchData().then(() => {
-        });
+        fetchData().then(() => {});
     }, []);
 
     return (
         <SafeAreaView
-            style={[globalStyles.root, {height: '100%'}]}
-            edges={['right', 'top', 'left']}>
-            <UpperMenu text="Список лекарств" onButtonPress={handleProfilePressed}/>
-            <ArchiveSwitcher pageActive={pageActive} onPress={setPageActive}/>
+            style={[globalStyles.root, { height: '100%' }]}
+            edges={['right', 'top', 'left']}
+        >
+            <UpperMenu text="Список лекарств" onButtonPress={handleProfilePressed} />
+            <ArchiveSwitcher pageActive={pageActive} onPress={setPageActive} />
             <ScrollView contentContainerStyle={styles.container}>
                 {pageActive === 'medicine' && (
                     <View style={styles.content}>
                         {currentTasks.length > 0 && (
-                        <InfoCardList listTitle="Текущие" data={currentTasks}/>
-                    )}
-                    {previousTasks.length > 0 && (
-                        <InfoCardList listTitle="Архив" data={previousTasks}/>
-                    )}
+                            <InfoCardList listTitle="Текущие" data={currentTasks} />
+                        )}
+                        {previousTasks.length > 0 && (
+                            <InfoCardList listTitle="Архив" data={previousTasks} />
+                        )}
                     </View>
                 )}
                 {pageActive === 'photo' && (
@@ -102,9 +105,9 @@ function Archive() {
                     </View>
                 )}
             </ScrollView>
-            <AddingTrackerButton onPress={() => setModalVisible(!modalVisible)}/>
-            <Menu screen="Архив"/>
-            <AddingTrackerPopup modalVisible={modalVisible} setModalVisible={setModalVisible}/>
+            <AddingTrackerButton onPress={() => setModalVisible(!modalVisible)} />
+            <Menu screen="Архив" />
+            <AddingTrackerPopup modalVisible={modalVisible} setModalVisible={setModalVisible} />
         </SafeAreaView>
     );
 }

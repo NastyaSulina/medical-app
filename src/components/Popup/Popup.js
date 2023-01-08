@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, View, TouchableOpacity } from 'react-native';
-import {useDispatch} from "react-redux";
+import { useDispatch } from 'react-redux';
 import TextCustom from '../TextCustom/TextCustom';
 import Button from '../Button/Button';
 import CustomSlider from '../CustomSlider/CustomSlider';

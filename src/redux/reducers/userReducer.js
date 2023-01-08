@@ -12,26 +12,26 @@ const initialState = {
 function userReducer(state = initialState, action) {
     switch (action.type) {
         case SET_USER_EMAIL: {
-            const newState = {...state};
+            const newState = { ...state };
 
             newState.email = action.payload;
             return newState;
         }
 
         case SET_USER_NAME: {
-            const newState = {...state};
+            const newState = { ...state };
             newState.userName = action.payload;
             return newState;
         }
 
         case SET_USER_ID: {
-            const newState = {...state};
+            const newState = { ...state };
             newState.userId = action.payload;
             return newState;
         }
 
         case RESET_USER_INFO: {
-            return {...initialState};
+            return { ...initialState };
         }
 
         default:

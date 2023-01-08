@@ -1,4 +1,10 @@
-import {CHANGE_TASK_STATUS, RESET_TASKS, SET_CURRENT_TASKS, SET_PREVIOUS_TASKS, SET_TASKS_BY_DATE} from '../actions';
+import {
+    CHANGE_TASK_STATUS,
+    RESET_TASKS,
+    SET_CURRENT_TASKS,
+    SET_PREVIOUS_TASKS,
+    SET_TASKS_BY_DATE,
+} from '../actions';
 
 const initialState = {
     tasks: {},
@@ -41,7 +47,7 @@ function taskReducer(state = initialState, action) {
         }
 
         case RESET_TASKS: {
-            return {...initialState};
+            return { ...initialState };
         }
 
         default:

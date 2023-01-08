@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../../components/Button/Button';
@@ -38,7 +38,7 @@ export default function Authentication() {
             setError('password', formError);
         } else {
             dispatch(setUserName(response.name));
-            console.log(userId)
+            console.log(userId);
             dispatch(setEmail(response.email));
             dispatch(setUserId(response.id));
             dispatch(signIn(true));

@@ -43,7 +43,6 @@ export default function Registration() {
         } else if (response.status) {
             const formError = { type: 'server', message: 'Повторите попытку позже!' };
             setError('password', formError);
-
         } else {
             navigation.navigate('Authentication');
         }

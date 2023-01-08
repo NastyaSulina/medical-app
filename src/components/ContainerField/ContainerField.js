@@ -33,9 +33,9 @@ function ContainerField({ type, name, property, outerStyles }) {
             {type === 'exit' && (
                 <Button
                     onPress={() => {
-                        dispatch(resetTasks())
-                        dispatch(resetCommonInfo())
-                        dispatch(resetUserInfo())
+                        dispatch(resetTasks());
+                        dispatch(resetCommonInfo());
+                        dispatch(resetUserInfo());
 
                         navigation.navigate('Authentication');
                     }}

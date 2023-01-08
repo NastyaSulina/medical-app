@@ -23,7 +23,11 @@ function InfoCardList({ listTitle, data }) {
                 ))}
             {!(data.length > 0) && (
                 <TextCustom
-                    text={listTitle === "Архив" ? "В архиве нет назначений!" : "Нет текущих назначений!"}
+                    text={
+                        listTitle === 'Архив'
+                            ? 'В архиве нет назначений!'
+                            : 'Нет текущих назначений!'
+                    }
                     outerStyles={styles.listEmptyText}
                 />
             )}
