@@ -5,7 +5,7 @@ const initialState = {
     userName: '',
     email: '',
     userId: 0,
-    fontSize: 'normal',
+    fontSize: 'normal'
 };
 
 // eslint-disable-next-line default-param-last

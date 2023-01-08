@@ -6,5 +6,5 @@ import commonReducer from './commonReducer';
 export default combineReducers({
     userReducer,
     taskReducer,
-    commonReducer,
+    commonReducer
 });

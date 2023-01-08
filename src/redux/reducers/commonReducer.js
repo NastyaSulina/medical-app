@@ -3,7 +3,7 @@ import {
     SET_START_TAKING_SELECTED_DATE,
     SIGN_IN,
     RESET_COMMON_INFO,
-    ADD_IMAGE,
+    ADD_IMAGE
 } from '../actions';
 import { getDateDefaultFromJSDate } from '../../transform/dateFormatter';
 
@@ -12,7 +12,7 @@ const initialState = {
     selectedDate: getDateDefaultFromJSDate(),
     startTakingSelectedDate: getDateDefaultFromJSDate(),
     fontSize: 'normal',
-    images: [],
+    images: []
 };
 
 const getNewState = (state) => JSON.parse(JSON.stringify(state));

@@ -5,7 +5,7 @@ import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import { globalStyles } from '../../styles/globalStyles';
 import styles from './Adding-styles';
-import measureValues from './AddingConst';
+import {measureValues, timeArray} from './AddingConst';
 import PlusIcon from '../../../assets/adding-assets/PlusCircle.png';
 import MinusIcon from '../../../assets/adding-assets/MinusCircle.png';
 import Popup from '../../components/Popup/Popup';
@@ -13,9 +13,14 @@ import PopupCalendar from '../../components/Popup/PopupCalendar';
 import { getDateDefaultFromYYYYMMDD } from '../../transform/dateFormatter';
 
 export default function AddingForm({ type, name, control, selectedIndex, setSelectedIndex }) {
-    const [popupVisible, setPopupVisible] = useState(false);
+    const [measurePopupVisible, setMeasurePopupVisible] = useState(false);
+    const [timePopupVisible, setTimePopupVisible] = useState(false);
+
     const [calendarVisible, setCalendarVisible] = useState(false);
     const { startTakingSelectedDate } = useSelector((state) => state.commonReducer);
+
+    const [selectedHourIndex, setSelectedHourIndex] = useState(12);
+    const [selectedMinuteIndex, setSelectedMinuteIndex] = useState(30);
 
     return (
         <View style={[styles.addingForm, globalStyles.shadow]}>
@@ -36,6 +41,10 @@ export default function AddingForm({ type, name, control, selectedIndex, setSele
             />
 
             <View style={styles.additionalInputs}>
+                <TouchableOpacity
+                    activeOpacity={1}
+                    onPress={() => setTimePopupVisible(!timePopupVisible)}
+                >
                 <Input
                     name="time"
                     label="Время"
@@ -48,7 +57,21 @@ export default function AddingForm({ type, name, control, selectedIndex, setSele
                             message: 'Формат!',
                         },
                     }}
+                    editable={false}
                     placeholderText="12:30"
+                    defaultValue={`${selectedHourIndex}:${selectedMinuteIndex}`}
+                />
+                </TouchableOpacity>
+                <Popup
+                    type="wheel"
+                    text="Время"
+                    wheelOptions={timeArray}
+                    selectedIndex={selectedHourIndex}
+                    selectedIndex2={selectedMinuteIndex}
+                    setSelectedIndex={setSelectedHourIndex}
+                    setSelectedIndex2={setSelectedMinuteIndex}
+                    modalVisible={timePopupVisible}
+                    setModalVisible={setTimePopupVisible}
                 />
                 {type === 'medicine' && (
                     <>
@@ -68,7 +91,7 @@ export default function AddingForm({ type, name, control, selectedIndex, setSele
                         />
                         <TouchableOpacity
                             activeOpacity={1}
-                            onPress={() => setPopupVisible(!popupVisible)}
+                            onPress={() => setMeasurePopupVisible(!measurePopupVisible)}
                         >
                             <Input
                                 name="unit"
@@ -86,8 +109,8 @@ export default function AddingForm({ type, name, control, selectedIndex, setSele
                             wheelOptions={measureValues}
                             selectedIndex={selectedIndex}
                             setSelectedIndex={setSelectedIndex}
-                            modalVisible={popupVisible}
-                            setModalVisible={setPopupVisible}
+                            modalVisible={measurePopupVisible}
+                            setModalVisible={setMeasurePopupVisible}
                         />
                     </>
                 )}

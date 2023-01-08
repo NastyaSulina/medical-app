@@ -3,13 +3,13 @@ import {
     RESET_TASKS,
     SET_CURRENT_TASKS,
     SET_PREVIOUS_TASKS,
-    SET_TASKS_BY_DATE,
+    SET_TASKS_BY_DATE
 } from '../actions';
 
 const initialState = {
     tasks: {},
     currentTasks: [],
-    previousTasks: [],
+    previousTasks: []
 };
 
 const getNewState = (state) => JSON.parse(JSON.stringify(state));
