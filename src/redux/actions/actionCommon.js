@@ -3,6 +3,7 @@ export const SET_SELECTED_DATE = 'SET_SELECTED_DATE';
 export const SET_START_TAKING_SELECTED_DATE = 'SET_START_TAKING_SELECTED_DATE';
 export const RESET_COMMON_INFO = 'RESET_COMMON_INFO';
 export const ADD_IMAGE = 'ADD_IMAGE';
+export const DELETE_IMAGE = 'DELETE_IMAGE';
 
 export const signIn = (isSignedIn) => ({
     type: SIGN_IN,
@@ -26,4 +27,9 @@ export const resetCommonInfo = () => ({
 export const addImage = (newImageURI) => ({
     type: ADD_IMAGE,
     payload: newImageURI,
+});
+
+export const deleteImage = (imageURI) => ({
+   type: DELETE_IMAGE,
+   payload:  imageURI
 });

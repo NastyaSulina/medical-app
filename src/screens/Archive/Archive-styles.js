@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     gallery: {
         flexDirection: 'row',
         flexWrap: 'wrap',
+        minWidth: 300,
         maxWidth: 300,
     },
     picture: {

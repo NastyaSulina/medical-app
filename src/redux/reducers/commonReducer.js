@@ -3,7 +3,8 @@ import {
     SET_START_TAKING_SELECTED_DATE,
     SIGN_IN,
     RESET_COMMON_INFO,
-    ADD_IMAGE
+    ADD_IMAGE,
+    DELETE_IMAGE
 } from '../actions';
 import { getDateDefaultFromJSDate } from '../../transform/dateFormatter';
 
@@ -45,6 +46,12 @@ function commonReducer(state = initialState, action) {
         case ADD_IMAGE: {
             const newState = getNewState(state);
             newState.images.push(action.payload);
+            return newState;
+        }
+
+        case DELETE_IMAGE: {
+            const newState = getNewState(state);
+            newState.images.splice(state.images.indexOf(action.payload), 1);
             return newState;
         }
 
