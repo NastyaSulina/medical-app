@@ -13,7 +13,7 @@ import TextCustom from '../../components/TextCustom/TextCustom';
 import AddingForm from './AddingForm';
 import StandardTrackers from '../../components/AddingTrackerPopup/StandardTrackers';
 import { sendNewCustomSymptom, sendNewMedicine, sendNewPressure } from '../../fetch';
-import { getFormattedDateFromDefault } from '../../transform/dateFormatter';
+import { getDateDefaultFromDDMMYYYY } from '../../transform/dateFormatter';
 import { resetTasks } from '../../redux/actions';
 
 export default function Adding({ route }) {
@@ -74,7 +74,7 @@ export default function Adding({ route }) {
                                     data.unit = measureValues[0][selectedIndex];
                                     let tmp = data.start_day;
 
-                                    data.start_day = getFormattedDateFromDefault(tmp);
+                                    data.start_day = getDateDefaultFromDDMMYYYY(tmp);
                                     data.amount = +data.amount;
                                     data.number_of_days = +data.number_of_days;
 

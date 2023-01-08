@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { styles } from './Calendar-styles';
 import { setSelectedDate } from '../../redux/actions';
 import Button from '../Button/Button';
-import { getFormattedDate, getLocalDay } from '../../transform/dateFormatter';
+import { getDateDefaultFromJSDate, getLocalDay } from '../../transform/dateFormatter';
 import { globalStyles } from '../../styles/globalStyles';
 
 function CalendarShort() {
@@ -16,7 +16,7 @@ function CalendarShort() {
         return Array(7)
             .fill(new Date(date))
             .map((x, index) => {
-                const tmp = getFormattedDate(
+                const tmp = getDateDefaultFromJSDate(
                     new Date(x.setDate(x.getDate() - getLocalDay(x) + index + 1))
                 );
                 return {
@@ -52,7 +52,7 @@ function CalendarShort() {
                         textOuterStyles={[
                             styles.day,
                             !day.isSelectedMonth && styles.otherMonthDay,
-                            day.dayFull === getFormattedDate() && styles.today,
+                            day.dayFull === getDateDefaultFromJSDate() && styles.today,
                             day.dayFull === selectedDate && styles.selectedDayText,
                         ]}
                     />

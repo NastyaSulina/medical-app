@@ -1,9 +1,9 @@
 import {SET_SELECTED_DATE, SIGN_IN, RESET_COMMON_INFO, ADD_IMAGE} from '../actions';
-import {getFormattedDate} from '../../transform/dateFormatter';
+import {getDateDefaultFromJSDate} from '../../transform/dateFormatter';
 
 const initialState = {
     isSignedIn: false,
-    selectedDate: getFormattedDate(),
+    selectedDate: getDateDefaultFromJSDate(),
     fontSize: 'normal',
     images: [],
 };

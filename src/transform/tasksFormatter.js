@@ -1,3 +1,5 @@
+import { getDateReadableFromDefault } from './dateFormatter';
+
 export const formatTasksByDate = (data) => {
     const arr = [];
 
@@ -44,7 +46,9 @@ export const formatArchiveTasksByDate = (data) => {
         this.id = id;
         this.title = name;
         this.time = time.slice(11, 16);
-        this.interval = `${firstDay} - ${lastDay}`;
+        this.interval = `${getDateReadableFromDefault(firstDay)} — ${getDateReadableFromDefault(
+            lastDay
+        )}`;
     }
 
     for (const task of data) {

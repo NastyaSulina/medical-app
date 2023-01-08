@@ -14,7 +14,7 @@ import AddingTrackerPopup from '../../components/AddingTrackerPopup/AddingTracke
 import { getCurrentTasksByDate, getPreviousTasksByDate } from '../../fetch';
 import { formatArchiveTasksByDate } from '../../transform/tasksFormatter';
 import { setCurrentTasks, setPreviousTasks } from '../../redux/actions';
-import { getFormattedDate } from '../../transform/dateFormatter';
+import { getDateDefaultFromJSDate } from '../../transform/dateFormatter';
 import Button from '../../components/Button/Button';
 import Camera from '../../../assets/archive/camera.png';
 import PhotoModal from '../../components/PhotoModal/PhotoModal';
@@ -38,8 +38,8 @@ function Archive() {
     useEffect(() => {
         async function fetchData() {
             console.log("Запрос на бэкенд в архиве");
-            const responseCurrent = await getCurrentTasksByDate(userId, getFormattedDate());
-            const responsePrevious = await getPreviousTasksByDate(userId, getFormattedDate());
+            const responseCurrent = await getCurrentTasksByDate(userId, getDateDefaultFromJSDate());
+            const responsePrevious = await getPreviousTasksByDate(userId, getDateDefaultFromJSDate());
 
             const formattedCurrentTasks = formatArchiveTasksByDate(responseCurrent);
             const formattedPreviousTasks = formatArchiveTasksByDate(responsePrevious);
