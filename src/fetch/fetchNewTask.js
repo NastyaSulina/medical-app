@@ -49,7 +49,9 @@ export const sendNewPressure = async (input) =>
             'Transfer-Encoding': 'chunked',
         },
         body: JSON.stringify({
+            default: true,
             duration: input.number_of_days,
+            name: "Давление",
             startDay: input.start_day,
             time: input.time,
         }),
