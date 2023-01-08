@@ -31,6 +31,7 @@ function Main() {
 
     useEffect(() => {
         async function fetchData() {
+            console.log("Запрос на бэкенд из-за смены даты");
             if (tasks[selectedDate]) return;
 
             const response = await getTasksByDate(userId, selectedDate);
@@ -50,7 +51,7 @@ function Main() {
         console.log("Случилось фоновое обновление")
 
         dispatch(setTasksByDate(selectedDate, formattedTasks));
-    }, 60000);
+    }, 120000);
 
     return (
         <SafeAreaView

@@ -20,7 +20,7 @@ export const formatTasksByDate = (data) => {
         this.status = false;
     }
 
-    data.forEach((task) => {
+    for (const task of data) {
         arr.push(
             new Task(
                 task.id,
@@ -32,7 +32,7 @@ export const formatTasksByDate = (data) => {
                 task.default
             )
         );
-    })
+    }
 
     return arr;
 };
@@ -47,7 +47,7 @@ export const formatArchiveTasksByDate = (data) => {
         this.interval = `${firstDay} - ${lastDay}`;
     }
 
-    data.forEach((task) => {
+    for (const task of data) {
         arr.push(
             new Task(
                 task.id,
@@ -57,7 +57,7 @@ export const formatArchiveTasksByDate = (data) => {
                 task.name
             )
         );
-    })
+    }
 
     return arr;
 };

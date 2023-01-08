@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { Image, KeyboardAvoidingView, Platform, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from '../../components/Button/Button';
@@ -15,6 +15,7 @@ import { setUserName, setEmail, signIn, setUserId } from '../../redux/actions';
 
 export default function Authentication() {
     const navigation = useNavigation();
+    const { userId } = useSelector((state) => state.userReducer);
     const dispatch = useDispatch();
     const {
         control,
@@ -37,6 +38,7 @@ export default function Authentication() {
             setError('password', formError);
         } else {
             dispatch(setUserName(response.name));
+            console.log(userId)
             dispatch(setEmail(response.email));
             dispatch(setUserId(response.id));
             dispatch(signIn(true));

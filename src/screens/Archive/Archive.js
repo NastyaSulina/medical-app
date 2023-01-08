@@ -37,6 +37,7 @@ function Archive() {
 
     useEffect(() => {
         async function fetchData() {
+            console.log("Запрос на бэкенд в архиве");
             const responseCurrent = await getCurrentTasksByDate(userId, getFormattedDate());
             const responsePrevious = await getPreviousTasksByDate(userId, getFormattedDate());
 
@@ -49,7 +50,7 @@ function Archive() {
 
         fetchData().then(() => {
         });
-    });
+    }, []);
 
     return (
         <SafeAreaView

@@ -1,4 +1,4 @@
-import {SET_SELECTED_DATE, SIGN_IN, RESET_COMMON_INFO, ADD_IMAGE,} from '../actions';
+import {SET_SELECTED_DATE, SIGN_IN, RESET_COMMON_INFO, ADD_IMAGE} from '../actions';
 import {getFormattedDate} from '../../transform/dateFormatter';
 
 const initialState = {

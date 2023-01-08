@@ -1,10 +1,8 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import userReducer from './reducers/userReducer';
-import taskReducer from './reducers/taskReducer';
-import commonReducer from './reducers/commonReducer';
+import combinedReducer from './reducers';
 
-const rootReducer = combineReducers({ userReducer, taskReducer, commonReducer });
+const rootReducer = combinedReducer;
 
 const Store = createStore(rootReducer, applyMiddleware(thunk));
 
