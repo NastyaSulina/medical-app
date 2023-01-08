@@ -40,17 +40,34 @@ function Main() {
             dispatch(setTasksByDate(selectedDate, formattedTasks));
         }
 
-        fetchData().then(() => {});
-    }, [selectedDate]);
+        fetchData().then(() => {})
+    }, [selectedDate])
 
-    setTimeout(async () => {
-        const response = await getTasksByDate(userId, selectedDate);
-        const formattedTasks = formatTasksByDate(response);
 
-        console.log('Случилось фоновое обновление');
+    useEffect(() => {
+        const timer = setInterval(() => {
+            const data = [];
+            for (const date in tasks) {
+                data.push(new Promise(async (success) => {
+                    const response = await getTasksByDate(userId, date);
+                    const formattedTasks = formatTasksByDate(response);
+                    success([date, formattedTasks]);
+                }))
+            }
 
-        dispatch(setTasksByDate(selectedDate, formattedTasks));
-    }, 120000);
+            Promise.all(data)
+                .then(responses => {
+                    for (const tmp of responses) {
+                        dispatch(setTasksByDate(tmp[0], tmp[1]));
+                    }})
+                .then(() => console.log("Случилось фоновое обновление"))
+                .catch((err) => console.log(err));
+
+        }, 60000);
+
+        return () => clearInterval(timer);
+    }, []);
+
 
     return (
         <SafeAreaView
@@ -61,7 +78,7 @@ function Main() {
             <CalendarContainer />
             <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.content}>
-                    {Boolean(tasks[selectedDate] && tasks[selectedDate].length === 0) && (
+                    {Boolean(!tasks[selectedDate] || (tasks[selectedDate] && tasks[selectedDate].length === 0)) && (
                         <TextCustom
                             text="На этот день вы ничего не назначили! :)"
                             outerStyles={styles.textEmpty}

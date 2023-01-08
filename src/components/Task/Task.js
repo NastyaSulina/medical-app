@@ -9,6 +9,7 @@ import styles from './Task-styles';
 import TextCustom from '../TextCustom/TextCustom';
 import { globalStyles } from '../../styles/globalStyles';
 import Popup from '../Popup/Popup';
+import {sendMedicineStatusChange} from "../../fetch/fetchTasks";
 
 function Task({
     date,
@@ -32,7 +33,6 @@ function Task({
     const [selectedIndex3, setSelectedIndex3] = useState(0);
 
     const [sliderValue, setSliderValue] = useState(5);
-
     const [radioOption, setRadioOption] = useState(false);
 
     const dispatch = useDispatch();
@@ -61,6 +61,7 @@ function Task({
                     opacity={0.6}
                     onPress={() => {
                         if (type === 'medicine') {
+                            sendMedicineStatusChange(id, date).then(() => {})
                             dispatch(changeTaskStatus({ id, date }));
                         } else if (type === 'symptom' && isDefault && taskName === 'Настроение') {
                             setModalText('Как ваше настроение?');
