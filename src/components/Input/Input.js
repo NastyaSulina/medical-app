@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
-import { Controller } from 'react-hook-form';
+import {Controller, useForm} from 'react-hook-form';
 import { COLORS, FONT_SIZES } from '../../styles/globalStyles';
 import styles from './Input-styles';
 import EyeImageClosed from '../../../assets/auth-assets/eye_closed.png';

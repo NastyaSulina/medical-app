@@ -8,12 +8,11 @@ import styles from './Adding-styles';
 import Button from '../../components/Button/Button';
 import Arrow from '../../../assets/profile-assets/arrow-left.png';
 import { globalStyles } from '../../styles/globalStyles';
-import measureValues from './AddingConst';
+import {measureValues} from './AddingConst';
 import TextCustom from '../../components/TextCustom/TextCustom';
 import AddingForm from './AddingForm';
 import StandardTrackers from '../../components/AddingTrackerPopup/StandardTrackers';
 import { sendNewCustomSymptom, sendNewMedicine, sendNewPressure } from '../../fetch';
-import { getDateDefaultFromDDMMYYYY } from '../../transform/dateFormatter';
 import { resetTasks } from '../../redux/actions';
 
 export default function Adding({ route }) {
@@ -27,8 +26,12 @@ export default function Adding({ route }) {
     });
     const { userId } = useSelector((state) => state.userReducer);
     const { tasks } = useSelector((state) => state.taskReducer);
+    const { startTakingSelectedDate } = useSelector((state) => state.commonReducer);
 
     const [selectedIndex, setSelectedIndex] = useState(0);
+
+    const [selectedHourIndex, setSelectedHourIndex] = useState(12);
+    const [selectedMinuteIndex, setSelectedMinuteIndex] = useState(30);
 
     const title = {
         customSymptom: 'Симптом',
@@ -59,6 +62,10 @@ export default function Adding({ route }) {
                                 control={control}
                                 selectedIndex={selectedIndex}
                                 setSelectedIndex={setSelectedIndex}
+                                selectedHourIndex={selectedHourIndex}
+                                setSelectedHourIndex={setSelectedHourIndex}
+                                selectedMinuteIndex={selectedMinuteIndex}
+                                setSelectedMinuteIndex={setSelectedMinuteIndex}
                             />
                         )}
 
@@ -72,9 +79,8 @@ export default function Adding({ route }) {
                                 onPress={handleSubmit(async (data) => {
                                     data.id = userId;
                                     data.unit = measureValues[0][selectedIndex];
-                                    let tmp = data.start_day;
-
-                                    data.start_day = getDateDefaultFromDDMMYYYY(tmp);
+                                    data.time = `${selectedHourIndex}:${selectedMinuteIndex}`;
+                                    data.start_day = startTakingSelectedDate;
                                     data.amount = +data.amount;
                                     data.number_of_days = +data.number_of_days;
 

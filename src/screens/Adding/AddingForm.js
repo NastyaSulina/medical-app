@@ -12,15 +12,24 @@ import Popup from '../../components/Popup/Popup';
 import PopupCalendar from '../../components/Popup/PopupCalendar';
 import { getDateDefaultFromYYYYMMDD } from '../../transform/dateFormatter';
 
-export default function AddingForm({ type, name, control, selectedIndex, setSelectedIndex }) {
+export default function AddingForm(
+    {
+       type,
+       name,
+       control,
+       selectedIndex,
+       setSelectedIndex,
+       selectedHourIndex,
+       setSelectedHourIndex,
+       selectedMinuteIndex,
+       setSelectedMinuteIndex
+
+}) {
     const [measurePopupVisible, setMeasurePopupVisible] = useState(false);
     const [timePopupVisible, setTimePopupVisible] = useState(false);
 
     const [calendarVisible, setCalendarVisible] = useState(false);
     const { startTakingSelectedDate } = useSelector((state) => state.commonReducer);
-
-    const [selectedHourIndex, setSelectedHourIndex] = useState(12);
-    const [selectedMinuteIndex, setSelectedMinuteIndex] = useState(30);
 
     return (
         <View style={[styles.addingForm, globalStyles.shadow]}>
@@ -50,13 +59,6 @@ export default function AddingForm({ type, name, control, selectedIndex, setSele
                     label="Время"
                     outerStyles={styles.additionalInput}
                     control={control}
-                    rules={{
-                        required: 'Заполните!',
-                        pattern: {
-                            value: /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/,
-                            message: 'Формат!',
-                        },
-                    }}
                     editable={false}
                     placeholderText="12:30"
                     defaultValue={`${selectedHourIndex}:${selectedMinuteIndex}`}
@@ -137,13 +139,6 @@ export default function AddingForm({ type, name, control, selectedIndex, setSele
                     }
                     outerStyles={styles.input}
                     control={control}
-                    rules={{
-                        required: 'Это поле обязательно для заполнения!',
-                        pattern: {
-                            value: /(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\d\d)/,
-                            message: 'Неправильный формат даты',
-                        },
-                    }}
                     editable={false}
                     placeholderText="17.12.2022"
                     defaultValue={getDateDefaultFromYYYYMMDD(startTakingSelectedDate)}
