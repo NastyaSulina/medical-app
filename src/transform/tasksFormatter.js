@@ -3,7 +3,7 @@ import { getDateReadableFromDefault } from './dateFormatter';
 export const formatTasksByDate = (data) => {
     const arr = [];
 
-    function Task(id, time, type, name, units, numberPerUse, isDefault) {
+    function Task(id, time, type, name, units, numberPerUse, isDefault, isChecked) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -19,7 +19,7 @@ export const formatTasksByDate = (data) => {
             this.default = isDefault;
         }
 
-        this.status = false;
+        this.status = isChecked;
     }
 
     for (const task of data) {
@@ -31,7 +31,8 @@ export const formatTasksByDate = (data) => {
                 task.name,
                 task.units,
                 task.numberPerUse,
-                task.default
+                task.default,
+                task.checked
             )
         );
     }
