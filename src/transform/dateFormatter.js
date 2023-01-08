@@ -10,6 +10,12 @@ export const getDateDefaultFromDDMMYYYY = (dayString) =>
         .replace('m', dayString.slice(3, 5))
         .replace('d', dayString.slice(0, 2));
 
+export const getDateDefaultFromYYYYMMDD = (dayString) =>
+    'd.m.y'
+        .replace('d', dayString.slice(8, 10))
+        .replace('m', dayString.slice(5, 7))
+        .replace('y', dayString.slice(0, 4));
+
 const monthNamesShort = [
     'янв.',
     'февр.',

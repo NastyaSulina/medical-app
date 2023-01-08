@@ -1,11 +1,18 @@
-import {SET_SELECTED_DATE, SIGN_IN, RESET_COMMON_INFO, ADD_IMAGE} from '../actions';
-import {getDateDefaultFromJSDate} from '../../transform/dateFormatter';
+import {
+    SET_SELECTED_DATE,
+    SET_START_TAKING_SELECTED_DATE,
+    SIGN_IN,
+    RESET_COMMON_INFO,
+    ADD_IMAGE
+} from '../actions';
+import { getDateDefaultFromJSDate } from '../../transform/dateFormatter';
 
 const initialState = {
     isSignedIn: false,
     selectedDate: getDateDefaultFromJSDate(),
+    startTakingSelectedDate: getDateDefaultFromJSDate(),
     fontSize: 'normal',
-    images: [],
+    images: []
 };
 
 const getNewState = (state) => JSON.parse(JSON.stringify(state));
@@ -19,6 +26,12 @@ function commonReducer(state = initialState, action) {
             return newState;
         }
 
+        case SET_START_TAKING_SELECTED_DATE: {
+            const newState = getNewState(state);
+            newState.startTakingSelectedDate = action.payload;
+            return newState;
+        }
+
         case SIGN_IN: {
             const newState = getNewState(state);
             newState.isSignedIn = action.payload;
@@ -26,7 +39,7 @@ function commonReducer(state = initialState, action) {
         }
 
         case RESET_COMMON_INFO: {
-            return {...initialState};
+            return { ...initialState };
         }
 
         case ADD_IMAGE: {

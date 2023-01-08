@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { ScrollView, View } from 'react-native';
@@ -31,7 +31,7 @@ function Main() {
 
     useEffect(() => {
         async function fetchData() {
-            console.log("Запрос на бэкенд из-за смены даты");
+            console.log('Запрос на бэкенд из-за смены даты');
             if (tasks[selectedDate]) return;
 
             const response = await getTasksByDate(userId, selectedDate);
@@ -41,14 +41,13 @@ function Main() {
         }
 
         fetchData().then(() => {});
-
     }, [selectedDate]);
 
     setTimeout(async () => {
         const response = await getTasksByDate(userId, selectedDate);
         const formattedTasks = formatTasksByDate(response);
 
-        console.log("Случилось фоновое обновление")
+        console.log('Случилось фоновое обновление');
 
         dispatch(setTasksByDate(selectedDate, formattedTasks));
     }, 120000);

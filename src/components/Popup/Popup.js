@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, View, TouchableOpacity } from 'react-native';
-import {useDispatch} from "react-redux";
+import { useDispatch } from 'react-redux';
 import TextCustom from '../TextCustom/TextCustom';
 import Button from '../Button/Button';
 import CustomSlider from '../CustomSlider/CustomSlider';
@@ -17,13 +17,20 @@ function Popup(props) {
             value = props.sliderValue;
             break;
         case 'wheel':
-            props.wheelOptions.length > 1
-                ? (value = [
-                      props.wheelOptions[0][props.selectedIndex],
-                      props.wheelOptions[1][props.selectedIndex],
-                      props.wheelOptions[2][props.selectedIndex],
-                  ])
-                : (value = props.wheelOptions[0][props.selectedIndex]);
+            if (props.wheelOptions.length > 2) {
+                value = [
+                    props.wheelOptions[0][props.selectedIndex],
+                    props.wheelOptions[1][props.selectedIndex],
+                    props.wheelOptions[2][props.selectedIndex],
+                ]
+            } else if (props.wheelOptions.length > 1) {
+                value = [
+                    props.wheelOptions[0][props.selectedIndex],
+                    props.wheelOptions[1][props.selectedIndex],
+                ]
+            } else {
+                value = props.wheelOptions[0][props.selectedIndex]
+            }
             break;
         case 'radio':
             value = props.chosenOption;
