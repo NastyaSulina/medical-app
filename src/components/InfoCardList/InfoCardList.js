@@ -15,7 +15,7 @@ function InfoCardList({ listTitle, data }) {
             {data.length > 0 &&
                 data.map((card) => (
                     <InfoCard
-                        key={card.key}
+                        key={card.id}
                         title={card.title}
                         time={card.time}
                         interval={card.interval}

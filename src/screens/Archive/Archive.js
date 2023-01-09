@@ -76,8 +76,9 @@ function Archive() {
                     <View style={styles.centered}>
                         <View style={styles.gallery}>
                             {Boolean(images) &&
-                                images.map((image) => (
+                                images.map((image, inx) => (
                                     <TouchableOpacity
+                                        key={inx}
                                         onPress={() => {
                                             setImageUri(image);
                                             setPhotoVisible(!photoVisible);

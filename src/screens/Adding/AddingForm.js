@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { TouchableOpacity, View } from 'react-native';
+import {Image, TouchableOpacity, View} from 'react-native';
 import Input from '../../components/Input/Input';
 import { globalStyles } from '../../styles/globalStyles';
 import styles from './Adding-styles';
@@ -8,6 +8,7 @@ import {measureValues, timeArray} from './AddingConst';
 import Popup from '../../components/Popup/Popup';
 import PopupCalendar from '../../components/Popup/PopupCalendar';
 import { getDateDefaultFromYYYYMMDD } from '../../transform/dateFormatter';
+import Calendar from '../../../assets/adding-assets/calendar.png'
 
 export default function AddingForm(
     {
@@ -50,6 +51,7 @@ export default function AddingForm(
                 <TouchableOpacity
                     activeOpacity={1}
                     onPress={() => setTimePopupVisible(!timePopupVisible)}
+                    style={{zIndex: 1}}
                 >
                 <Input
                     name="time"
@@ -91,6 +93,7 @@ export default function AddingForm(
                         <TouchableOpacity
                             activeOpacity={1}
                             onPress={() => setMeasurePopupVisible(!measurePopupVisible)}
+                            style={{zIndex: 1}}
                         >
                             <Input
                                 name="unit"
@@ -117,6 +120,7 @@ export default function AddingForm(
             <TouchableOpacity
                 activeOpacity={1}
                 onPress={() => setCalendarVisible(!calendarVisible)}
+                style={{zIndex: 1}}
             >
                 <Input
                     name="start_day"
@@ -130,6 +134,10 @@ export default function AddingForm(
                     editable={false}
                     placeholderText="17.12.2022"
                     defaultValue={getDateDefaultFromYYYYMMDD(startTakingSelectedDate)}
+                />
+                <Image
+                    source={Calendar}
+                    style={styles.calendarIcon}
                 />
             </TouchableOpacity>
             <PopupCalendar modalVisible={calendarVisible} setModalVisible={setCalendarVisible} />
