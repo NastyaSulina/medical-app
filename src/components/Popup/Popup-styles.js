@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginTop: 8,
     },
+    confirmButton: {
+        width: 133,
+        borderRadius: 30,
+        borderWidth: 1,
+        borderColor: COLORS.green
+    }
 });
 
 export default styles;
