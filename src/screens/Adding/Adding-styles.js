@@ -33,18 +33,6 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
     },
-    plusButton: {
-        paddingVertical: 7,
-        paddingHorisontal: 14,
-        borderWidth: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        maxWidth: 193,
-        marginTop: 16,
-        borderColor: COLORS.green,
-        borderRadius: 20,
-    },
     submitButton: {
         minWidth: 200,
         alignSelf: 'center',

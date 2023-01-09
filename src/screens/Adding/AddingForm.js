@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TouchableOpacity, View } from 'react-native';
-import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import { globalStyles } from '../../styles/globalStyles';
 import styles from './Adding-styles';
 import {measureValues, timeArray} from './AddingConst';
-import PlusIcon from '../../../assets/adding-assets/PlusCircle.png';
-import MinusIcon from '../../../assets/adding-assets/MinusCircle.png';
 import Popup from '../../components/Popup/Popup';
 import PopupCalendar from '../../components/Popup/PopupCalendar';
 import { getDateDefaultFromYYYYMMDD } from '../../transform/dateFormatter';
@@ -116,16 +113,7 @@ export default function AddingForm(
                         />
                     </>
                 )}
-                <Button iconSource={MinusIcon} iconStyles={[styles.icon, { top: 12.5 }]} />
             </View>
-
-            <Button
-                text="Добавить время"
-                textFont="semiBold"
-                outerStyles={styles.plusButton}
-                iconSource={PlusIcon}
-                iconStyles={styles.icon}
-            />
             <TouchableOpacity
                 activeOpacity={1}
                 onPress={() => setCalendarVisible(!calendarVisible)}
