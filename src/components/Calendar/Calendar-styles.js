@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
         color: COLORS.black,
     },
     selectedDay: {
-        backgroundColor: '#1CBE8E1F',
+        backgroundColor: 'rgba(28, 190, 142, 0.12)',
         borderRadius: 12,
     },
     selectedDayText: {

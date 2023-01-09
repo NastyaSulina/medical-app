@@ -13,6 +13,7 @@ function CustomWheel(props) {
     ];
     const renderWheel = (options, inx) => (
         <WheelPicker
+            key={inx}
             options={options}
             visibleRest={3}
             selectedIndex={selectedIndexes[inx]}

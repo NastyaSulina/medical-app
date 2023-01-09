@@ -60,7 +60,7 @@ export default function AddingForm(
                     control={control}
                     editable={false}
                     placeholderText="12:30"
-                    defaultValue={`${selectedHourIndex}:${selectedMinuteIndex}`}
+                    defaultValue={`${timeArray[0][selectedHourIndex]}:${timeArray[1][selectedMinuteIndex]}`}
                 />
                 </TouchableOpacity>
                 <Popup

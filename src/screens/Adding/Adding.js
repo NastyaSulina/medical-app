@@ -8,7 +8,7 @@ import styles from './Adding-styles';
 import Button from '../../components/Button/Button';
 import Arrow from '../../../assets/profile-assets/arrow-left.png';
 import {globalStyles} from '../../styles/globalStyles';
-import {measureValues} from './AddingConst';
+import {measureValues, timeArray} from './AddingConst';
 import TextCustom from '../../components/TextCustom/TextCustom';
 import AddingForm from './AddingForm';
 import StandardTrackers from '../../components/AddingTrackerPopup/StandardTrackers';
@@ -77,7 +77,7 @@ export default function Adding({route}) {
                                 onPress={handleSubmit(async (data) => {
                                     const formattedInputData = getFormattedAddingInputData(userId,
                                         measureValues[0][selectedIndex],
-                                        `${selectedHourIndex}:${selectedMinuteIndex}`,
+                                        `${timeArray[0][selectedHourIndex]}:${timeArray[1][selectedMinuteIndex]}`,
                                         startTakingSelectedDate,
                                         data.amount,
                                         data.number_of_days,
