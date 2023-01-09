@@ -60,6 +60,13 @@ const styles = StyleSheet.create({
     additionalInput: {
         width: 80,
     },
+    calendarIcon: {
+        width: 24,
+        height: 24,
+        position: 'absolute',
+        right: 16,
+        top: '60%'
+    }
 });
 
 export default styles;

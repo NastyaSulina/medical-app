@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
     logo: {
         width: 110,
         height: 34,
@@ -11,6 +16,7 @@ const styles = StyleSheet.create({
         width: 305,
         height: 191,
         marginBottom: 47,
+        marginTop: 60
     },
     text: {
         fontFamily: 'interMedium',
