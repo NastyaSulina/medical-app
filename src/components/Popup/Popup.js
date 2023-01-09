@@ -8,6 +8,7 @@ import CustomRadio from '../CustomRadio/CustomRadio';
 import CustomWheel from '../CustomWheel/CustomWheel';
 import styles from './Popup-styles';
 import { changeTaskStatus } from '../../redux/actions';
+import {sendMoodValue, sendPressureValue, sendTemperatureValue} from "../../fetch/fetchTasks";
 
 function Popup(props) {
     const dispatch = useDispatch();
@@ -76,6 +77,17 @@ function Popup(props) {
                             setChosenOption={props.setChosenOption}
                         />
                     )}
+                    {props.isChecked && (<Button
+                            text="Сбросить принятое!"
+                            type="checked"
+                            size="M"
+                            textFont="semiBold"
+                            outerStyles={styles.button}
+                            onPress={() => {
+                                props.setModalVisible(!props.modalVisible);
+                            }}
+                        />)
+                    }
                     <Button
                         text="Готово!"
                         type="primary"
@@ -85,8 +97,22 @@ function Popup(props) {
                         outerStyles={styles.button}
                         onPress={() => {
                             console.log(value);
-                            if (props.id)
+
+                            if (props.taskName === "Давление") {
+                                sendPressureValue(props.id, props.date, value[0], value[1], value[2], props.time).then((res) => console.log(res))
                                 dispatch(changeTaskStatus({ id: props.id, date: props.date }));
+
+                            } else if (props.taskName === "Настроение") {
+                                console.log(props.id, props.date, value[0], props.time)
+                                sendMoodValue(props.id, props.date, value[0], props.time).then((res) => console.log(res))
+                                dispatch(changeTaskStatus({ id: props.id, date: props.date }));
+                            } else if (props.taskName === "Температура") {
+                                const arr = value[0].toString().split(".");
+
+                                console.log(props.id, props.date, arr[0], arr[1], props.time)
+                                sendTemperatureValue(props.id, props.date, arr[0], arr[1], props.time).then((res) => console.log(res))
+                                dispatch(changeTaskStatus({ id: props.id, date: props.date }));
+                            }
                             props.setModalVisible(!props.modalVisible);
                         }}
                     />

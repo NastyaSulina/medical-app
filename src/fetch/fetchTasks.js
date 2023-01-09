@@ -19,23 +19,60 @@ export const sendMedicineStatusChange = async (medicineId, date) =>
 
 //   Главная: установить значение для давления
 
-// export const sendPressureValue = async (input) =>
-//     await fetch(`http://80.249.147.77/value/pressure/add/${input.pressureId}`, {
-//         method: 'PUT',
-//         headers: {
-//             'Content-type': 'application/json',
-//             'Transfer-Encoding': 'chunked',
-//         },
-//         body: JSON.stringify({
-//             date: input.date,
-//             highPressure: 0,
-//             lowPressure: 0,
-//             pulse: 0,
-//             time: input.time
-//         }),
-//     })
-//         .then((result) => result.json())
-//         .catch((err) => console.log(err));
+export const sendPressureValue = async (pressureId, date, highPressure, lowPressure, pulse, time) =>
+    await fetch(`http://80.249.147.77/value/pressure/add/${pressureId}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Transfer-Encoding': 'chunked',
+        },
+        body: JSON.stringify({
+            date: date,
+            highPressure: highPressure,
+            lowPressure: lowPressure,
+            pulse: pulse,
+            time: time
+        }),
+    })
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+
+//   Главная: установить значение для настроения
+
+export const sendMoodValue = async (moodId, date, score, time) =>
+    await fetch(`http://80.249.147.77/value/mood/add/${moodId}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Transfer-Encoding': 'chunked',
+        },
+        body: JSON.stringify({
+            date: date,
+            score: score,
+            time: time
+        }),
+    })
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+
+//   Главная: установить значение для температуры
+
+export const sendTemperatureValue = async (temperatureId, date, intPart, fracPart, time) =>
+    await fetch(`http://80.249.147.77/value/temperature/add/${temperatureId}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Transfer-Encoding': 'chunked',
+        },
+        body: JSON.stringify({
+            date: date,
+            fracPart: fracPart,
+            intPart: intPart,
+            time: time
+        }),
+    })
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
 
 // Архив: запрос на получение Текущих задач
 

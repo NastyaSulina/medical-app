@@ -103,6 +103,9 @@ function Task({
                 setModalVisible={setModalVisible}
                 id={id}
                 date={date}
+                taskName={taskName}
+                time={time}
+                isChecked={isChecked}
             />
         </>
     );
