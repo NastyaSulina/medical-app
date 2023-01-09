@@ -10,6 +10,7 @@ import ProfileEdition from '../screens/ProfileEdition/ProfileEdition';
 import Archive from '../screens/Archive/Archive';
 import Camera from '../screens/Archive/Camera';
 import Adding from '../screens/Adding/Adding';
+import InDevelopment from "../screens/InDevelopment/InDevelopment";
 
 function Navigation() {
     const Stack = createNativeStackNavigator();
@@ -26,6 +27,7 @@ function Navigation() {
                         <Stack.Screen name="Archive" component={Archive} />
                         <Stack.Screen name="Camera" component={Camera} />
                         <Stack.Screen name="Adding" component={Adding} />
+                        <Stack.Screen name="InDevelopment" component={InDevelopment} />
                     </>
                 ) : (
                     <>

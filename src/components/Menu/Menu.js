@@ -37,6 +37,7 @@ function Menu({ screen }) {
             <Button
                 iconSource={screen === 'Отчет' ? ReportImageGreen : ReportImageGray}
                 iconStyles={styles.icon}
+                onPress={() => navigation.navigate('InDevelopment')}
                 text="Отчет"
                 outerStyles={styles.button}
                 textColor={screen === 'Отчет' ? 'green' : 'gray'}
