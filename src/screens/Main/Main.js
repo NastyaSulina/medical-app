@@ -63,7 +63,7 @@ function Main() {
                 .then(() => console.log("Случилось фоновое обновление"))
                 .catch((err) => console.log(err));
 
-        }, 60000);
+        }, 30000);
 
         return () => clearInterval(timer);
     }, []);

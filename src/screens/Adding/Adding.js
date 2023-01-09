@@ -1,27 +1,30 @@
-import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
+import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {KeyboardAvoidingView, Platform, ScrollView, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {useForm} from 'react-hook-form';
 import styles from './Adding-styles';
 import Button from '../../components/Button/Button';
 import Arrow from '../../../assets/profile-assets/arrow-left.png';
-import { globalStyles } from '../../styles/globalStyles';
+import {globalStyles} from '../../styles/globalStyles';
 import {measureValues} from './AddingConst';
 import TextCustom from '../../components/TextCustom/TextCustom';
 import AddingForm from './AddingForm';
 import StandardTrackers from '../../components/AddingTrackerPopup/StandardTrackers';
-import { sendNewCustomSymptom, sendNewMedicine, sendNewPressure } from '../../fetch';
-import { resetTasks } from '../../redux/actions';
+import {getTasksByDate, sendNewCustomSymptom, sendNewMedicine, sendNewPressure} from '../../fetch';
+import {sendNewMood, sendNewTemperature} from "../../fetch/fetchNewTask";
+import getFormattedAddingInputData from "../../transform/inputFormatter";
+import {resetTasks, setTasksByDate} from "../../redux/actions";
+import {formatTasksByDate} from "../../transform/tasksFormatter";
 
-export default function Adding({ route }) {
-    const { type, name } = route.params;
+export default function Adding({route}) {
+    const {type, name} = route.params;
     const dispatch = useDispatch();
     const navigation = useNavigation();
-     const { control, handleSubmit } = useForm();
-    const { userId } = useSelector((state) => state.userReducer);
-    const { startTakingSelectedDate } = useSelector((state) => state.commonReducer);
+    const {control, handleSubmit} = useForm();
+    const {userId} = useSelector((state) => state.userReducer);
+    const {startTakingSelectedDate, selectedDate} = useSelector((state) => state.commonReducer);
 
     const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -72,25 +75,50 @@ export default function Adding({ route }) {
                                 size="M"
                                 outerStyles={styles.submitButton}
                                 onPress={handleSubmit(async (data) => {
-                                    data.id = userId;
-                                    data.unit = measureValues[0][selectedIndex];
-                                    data.time = `${selectedHourIndex}:${selectedMinuteIndex}`;
-                                    data.start_day = startTakingSelectedDate;
-                                    data.amount = +data.amount;
-                                    data.number_of_days = +data.number_of_days;
-
+                                    const formattedInputData = getFormattedAddingInputData(userId,
+                                        measureValues[0][selectedIndex],
+                                        `${selectedHourIndex}:${selectedMinuteIndex}`,
+                                        startTakingSelectedDate,
+                                        data.amount,
+                                        data.number_of_days,
+                                        data.title
+                                    );
 
                                     let response;
 
                                     if (type === 'medicine') {
-                                        response = await sendNewMedicine(data);
+                                        console.log("КАКОГО БЛЯТЬ ХУЯ")
+                                        response = await sendNewMedicine(formattedInputData);
+                                        console.log(response);
                                     } else if (type === 'customSymptom') {
-                                        response = await sendNewCustomSymptom(data);
+                                        console.log("Кастомный симтом")
+                                        response = await sendNewCustomSymptom(formattedInputData);
+                                        console.log(response);
                                     } else if (name === 'Давление' && type === 'standardSymptom') {
-                                        response = await sendNewPressure(data);
+                                        console.log("DAVLENIE")
+                                        response = await sendNewPressure(formattedInputData);
+                                        console.log(response);
+                                    } else if (name === 'Настроение' && type === 'standardSymptom') {
+                                        console.log("Настроение")
+                                        response = await sendNewMood(formattedInputData);
+                                        console.log(response);
+                                    } else if (name === 'Температура' && type === 'standardSymptom') {
+                                        console.log("Температура")
+                                        response = await sendNewTemperature(formattedInputData);
+                                        console.log(response);
                                     }
 
                                     dispatch(resetTasks());
+
+                                    async function fetchData() {
+                                        const tasksByDay = await getTasksByDate(userId, selectedDate);
+                                        console.log(tasksByDay);
+                                        const formattedTasks = formatTasksByDate(tasksByDay);
+                                        dispatch(setTasksByDate(selectedDate, formattedTasks));
+                                    }
+
+                                    fetchData().then(() => {})
+
                                     navigation.goBack();
                                 })}
                             />
