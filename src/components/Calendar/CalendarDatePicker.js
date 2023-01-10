@@ -20,6 +20,7 @@ function CalendarDatePicker(props) {
             }}
             minDate="2022-05-30"
             maxDate="2024-05-30"
+            markedDates={{[startTakingSelectedDate]: {selected: true}}}
             firstDay={1}
             renderArrow={(direction) => (
                 <Image

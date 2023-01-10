@@ -78,7 +78,7 @@ function Main() {
             <CalendarContainer />
             <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.content}>
-                    {Boolean(!tasks[selectedDate] || (tasks[selectedDate] && tasks[selectedDate].length === 0)) && (
+                    {Boolean(tasks[selectedDate] && tasks[selectedDate].length === 0) && (
                         <TextCustom
                             text="На этот день вы ничего не назначили! :)"
                             outerStyles={styles.textEmpty}

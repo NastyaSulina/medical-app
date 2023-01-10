@@ -14,6 +14,7 @@ function CustomRadio(props) {
                 radio_props={options}
                 buttonColor={COLORS.green}
                 buttonSize={10}
+                initial={true}
                 buttonOuterSize={22}
                 selectedButtonColor={COLORS.green}
                 labelStyle={{ fontFamily: 'interRegular', fontSize: 16, color: COLORS.black }}

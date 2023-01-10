@@ -27,11 +27,11 @@ export const sendPressureValue = async (pressureId, date, highPressure, lowPress
             'Transfer-Encoding': 'chunked',
         },
         body: JSON.stringify({
-            date: date,
-            highPressure: highPressure,
-            lowPressure: lowPressure,
-            pulse: pulse,
-            time: time
+            date,
+            highPressure,
+            lowPressure,
+            pulse,
+            time
         }),
     })
         .then((result) => result.json())
@@ -47,9 +47,9 @@ export const sendMoodValue = async (moodId, date, score, time) =>
             'Transfer-Encoding': 'chunked',
         },
         body: JSON.stringify({
-            date: date,
-            score: score,
-            time: time
+            date,
+            score,
+            time
         }),
     })
         .then((result) => result.json())
@@ -65,14 +65,45 @@ export const sendTemperatureValue = async (temperatureId, date, intPart, fracPar
             'Transfer-Encoding': 'chunked',
         },
         body: JSON.stringify({
-            date: date,
-            fracPart: fracPart,
-            intPart: intPart,
-            time: time
+            date,
+            fracPart,
+            intPart,
+            time
         }),
     })
         .then((result) => result.json())
         .catch((err) => console.log(err));
+
+//   Главная: установить значение для кастомных симптомов
+
+export const sendCustomValue = async (paramId, date, value, time) =>
+    await fetch(`http://80.249.147.77/value/custom/add/${paramId}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Transfer-Encoding': 'chunked',
+        },
+        body: JSON.stringify({
+            date,
+            time,
+            value
+        }),
+    })
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+
+//   Главная: сбросить значение параметров
+
+export const sendParamIsUnchecked = async (paramId, date) =>
+    await fetch(`http://80.249.147.77/parameter/uncheck/${paramId}&${date}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Transfer-Encoding': 'chunked',
+        },
+        body: JSON.stringify({})})
+        .catch((err) => console.log(err));
+
 
 // Архив: запрос на получение Текущих задач
 
@@ -87,3 +118,32 @@ export const getPreviousTasksByDate = async (id, date) =>
     await fetch(`http://80.249.147.77/medicine/getArchive/${id}&${date}`)
         .then((result) => result.json())
         .catch((err) => console.log(err));
+
+// Запрос на получение значения давления
+
+export const getPressureValue = async (parameterId, date, time) =>
+    await fetch(`http://80.249.147.77/value/pressure/getByDate/${parameterId}&${date}&${time}`)
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+
+// Запрос на получение значения температуры
+
+export const getTemperatureValue = async (parameterId, date, time) =>
+    await fetch(`http://80.249.147.77/value/temperature/getByDate/${parameterId}&${date}&${time}`)
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+
+// Запрос на получение значения настроение
+
+export const getMoodValue = async (parameterId, date, time) =>
+    await fetch(`http://80.249.147.77/value/mood/getByDate/${parameterId}&${date}&${time}`)
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+
+// Запрос на получение значения кастомного симптома
+
+export const getCustomValue = async (parameterId, date, time) =>
+    await fetch(`http://80.249.147.77/value/custom/getByDate/${parameterId}&${date}&${time}`)
+        .then((result) => result.json())
+        .catch((err) => console.log(err));
+

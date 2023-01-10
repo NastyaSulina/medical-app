@@ -19,6 +19,8 @@ function CalendarFull() {
             }}
             minDate="2022-05-30"
             maxDate="2024-05-30"
+            selected={selectedDate}
+            markedDates={{[selectedDate]: {selected: true}}}
             firstDay={1}
             renderArrow={(direction) => (
                 <Image

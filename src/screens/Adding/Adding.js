@@ -74,7 +74,7 @@ export default function Adding({route}) {
                                 textFont="semiBold"
                                 size="M"
                                 outerStyles={styles.submitButton}
-                                onPress={handleSubmit(async (data) => {
+                                onPress={handleSubmit((data) => {
                                     const formattedInputData = getFormattedAddingInputData(userId,
                                         measureValues[0][selectedIndex],
                                         `${timeArray[0][selectedHourIndex]}:${timeArray[1][selectedMinuteIndex]}`,
@@ -84,41 +84,28 @@ export default function Adding({route}) {
                                         data.title
                                     );
 
-                                    let response;
-
                                     if (type === 'medicine') {
-                                        console.log("КАКОГО БЛЯТЬ ХУЯ")
-                                        response = await sendNewMedicine(formattedInputData);
-                                        console.log(response);
+                                        sendNewMedicine(formattedInputData).then(console.log);
                                     } else if (type === 'customSymptom') {
-                                        console.log("Кастомный симтом")
-                                        response = await sendNewCustomSymptom(formattedInputData);
-                                        console.log(response);
+                                        sendNewCustomSymptom(formattedInputData).then(console.log);
                                     } else if (name === 'Давление' && type === 'standardSymptom') {
-                                        console.log("DAVLENIE")
-                                        response = await sendNewPressure(formattedInputData);
-                                        console.log(response);
+                                        sendNewPressure(formattedInputData).then(console.log);
                                     } else if (name === 'Настроение' && type === 'standardSymptom') {
-                                        console.log("Настроение")
-                                        response = await sendNewMood(formattedInputData);
-                                        console.log(response);
+                                        sendNewMood(formattedInputData).then(console.log);
                                     } else if (name === 'Температура' && type === 'standardSymptom') {
-                                        console.log("Температура")
-                                        response = await sendNewTemperature(formattedInputData);
-                                        console.log(response);
+                                        sendNewTemperature(formattedInputData).then(console.log);
                                     }
 
                                     dispatch(resetTasks());
 
                                     async function fetchData() {
                                         const tasksByDay = await getTasksByDate(userId, selectedDate);
-                                        console.log(tasksByDay);
                                         const formattedTasks = formatTasksByDate(tasksByDay);
+
                                         dispatch(setTasksByDate(selectedDate, formattedTasks));
                                     }
 
                                     fetchData().then(() => {})
-
                                     navigation.goBack();
                                 })}
                             />

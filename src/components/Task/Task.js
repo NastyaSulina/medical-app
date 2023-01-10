@@ -9,7 +9,13 @@ import styles from './Task-styles';
 import TextCustom from '../TextCustom/TextCustom';
 import { globalStyles } from '../../styles/globalStyles';
 import Popup from '../Popup/Popup';
-import {sendMedicineStatusChange} from "../../fetch/fetchTasks";
+import {
+    getCustomValue,
+    getMoodValue,
+    getPressureValue,
+    getTemperatureValue,
+    sendMedicineStatusChange
+} from "../../fetch/fetchTasks";
 
 function Task({
     date,
@@ -32,10 +38,53 @@ function Task({
     const [selectedIndex2, setSelectedIndex2] = useState(0);
     const [selectedIndex3, setSelectedIndex3] = useState(0);
 
-    const [sliderValue, setSliderValue] = useState(5);
+    const [sliderValue, setSliderValue] = useState(0.5);
     const [radioOption, setRadioOption] = useState(false);
 
     const dispatch = useDispatch();
+
+    const taskNameLookup = {
+        'Настроение': async () => {
+            setModalText('Как ваше настроение?');
+            setModalType('slider');
+            setModalVisible(!modalVisible);
+
+            if (isChecked) {
+                const response = await getMoodValue(id, date, time).then((res) => res);
+                setSelectedIndex(Math.floor(response.score * 10)/10);
+            } else setSelectedIndex(0.5);
+        },
+        'Давление': async () => {
+            setModalText('Введите ваше давление');
+            setModalType('wheel');
+            setModalOptions(WHEEL_OPTIONS.pressure);
+            setModalVisible(!modalVisible);
+
+            if (isChecked) {
+                const response = await getPressureValue(id, date, time).then((res) => res);
+                setSelectedIndex(response.systolicValue - 60);
+                setSelectedIndex2(response.diastolicValue - 10);
+                setSelectedIndex3(response.pulseValue - 40);
+            } else {
+                setSelectedIndex(0);
+                setSelectedIndex2(0);
+                setSelectedIndex3(0);
+            }
+        },
+        'Температура': async () => {
+            setModalText('Введите вашу температуру');
+            setModalType('wheel');
+            setModalOptions(WHEEL_OPTIONS.temperature);
+            setModalVisible(!modalVisible);
+
+            if (isChecked) {
+                const response = await getTemperatureValue(id, date, time).then((res) => res);
+                const tmp = [response.integerPart, response.fractionalPart].join(".");
+
+                setSelectedIndex(Math.floor((+tmp - 32.0) * 100)/10);
+            } else setSelectedIndex(0);
+        },
+    };
 
     return (
         <>
@@ -59,29 +108,29 @@ function Task({
                     size="M"
                     textFont="semiBold"
                     opacity={0.6}
-                    onPress={() => {
+                    onPress={async () => {
                         if (type === 'medicine') {
                             sendMedicineStatusChange(id, date).then(() => {})
                             dispatch(changeTaskStatus({ id, date }));
-                        } else if (type === 'symptom' && isDefault && taskName === 'Настроение') {
-                            setModalText('Как ваше настроение?');
-                            setModalType('slider');
-                            setModalVisible(!modalVisible);
-                        } else if (type === 'symptom' && isDefault && taskName === 'Давление') {
-                            setModalText('Введите ваше давление');
-                            setModalType('wheel');
-                            setModalOptions(WHEEL_OPTIONS.pressure);
-                            setModalVisible(!modalVisible);
-                        } else if (type === 'symptom' && isDefault && taskName === 'Температура') {
-                            setModalText('Введите вашу температуру');
-                            setModalType('wheel');
-                            setModalOptions(WHEEL_OPTIONS.temperature);
-                            setModalVisible(!modalVisible);
-                        } else if (type === 'symptom' && !isDefault) {
+                            return;
+                        }
+
+                        if (type === 'symptom' && !isDefault) {
                             setModalText(`${taskName}!`);
                             setModalType('radio');
-                            setModalVisible(!modalVisible);
+                            if (isChecked) {
+                                console.log("кастомный")
+                                console.log(id, date, time);
+                                const response = await getCustomValue(id, date, time).then((res) => res);
+                                console.log(response);
+                            }
+                        } else if (type === 'symptom') {
+                            console.log("дефолтный")
+                            await taskNameLookup[taskName]();
                         }
+
+                        setModalVisible(!modalVisible);
+
                     }}
                 />
             </View>
@@ -97,8 +146,10 @@ function Task({
                 setSelectedIndex3={setSelectedIndex3}
                 sliderValue={sliderValue}
                 setSliderValue={setSliderValue}
+
                 chosenOption={radioOption}
                 setChosenOption={setRadioOption}
+
                 modalVisible={modalVisible}
                 setModalVisible={setModalVisible}
                 id={id}
