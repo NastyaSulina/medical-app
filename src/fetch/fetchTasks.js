@@ -105,6 +105,20 @@ export const sendParamIsUnchecked = async (paramId, date) =>
         .catch((err) => console.log(err));
 
 
+//   Главная: сбросить значение параметров
+
+export const sendParamIsChecked = async (paramId, date) =>
+    await fetch(`http://80.249.147.77/parameter/check/${paramId}&${date}`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Transfer-Encoding': 'chunked',
+        },
+        body: JSON.stringify({})})
+        .catch((err) => console.log(err));
+
+
+
 // Архив: запрос на получение Текущих задач
 
 export const getCurrentTasksByDate = async (id, date) =>

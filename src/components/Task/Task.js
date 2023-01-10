@@ -49,10 +49,10 @@ function Task({
             setModalType('slider');
             setModalVisible(!modalVisible);
 
-            if (isChecked) {
-                const response = await getMoodValue(id, date, time).then((res) => res);
-                setSelectedIndex(Math.floor(response.score * 10)/10);
-            } else setSelectedIndex(0.5);
+            // if (isChecked) {
+            //     const response = await getMoodValue(id, date, time).then((res) => res);
+            //     setSelectedIndex(Math.floor(response.score * 10)/10);
+            // } else setSelectedIndex(0.5);
         },
         'Давление': async () => {
             setModalText('Введите ваше давление');
@@ -60,16 +60,16 @@ function Task({
             setModalOptions(WHEEL_OPTIONS.pressure);
             setModalVisible(!modalVisible);
 
-            if (isChecked) {
-                const response = await getPressureValue(id, date, time).then((res) => res);
-                setSelectedIndex(response.systolicValue - 60);
-                setSelectedIndex2(response.diastolicValue - 10);
-                setSelectedIndex3(response.pulseValue - 40);
-            } else {
-                setSelectedIndex(0);
-                setSelectedIndex2(0);
-                setSelectedIndex3(0);
-            }
+            // if (isChecked) {
+            //     const response = await getPressureValue(id, date, time).then((res) => res);
+            //     setSelectedIndex(response.systolicValue - 60);
+            //     setSelectedIndex2(response.diastolicValue - 10);
+            //     setSelectedIndex3(response.pulseValue - 40);
+            // } else {
+            //     setSelectedIndex(0);
+            //     setSelectedIndex2(0);
+            //     setSelectedIndex3(0);
+            // }
         },
         'Температура': async () => {
             setModalText('Введите вашу температуру');
@@ -119,18 +119,14 @@ function Task({
                             setModalText(`${taskName}!`);
                             setModalType('radio');
                             if (isChecked) {
-                                console.log("кастомный")
                                 console.log(id, date, time);
-                                const response = await getCustomValue(id, date, time).then((res) => res);
-                                console.log(response);
+                                // const response = await getCustomValue(id, date, time).then((res) => res);
                             }
                         } else if (type === 'symptom') {
-                            console.log("дефолтный")
                             await taskNameLookup[taskName]();
                         }
 
                         setModalVisible(!modalVisible);
-
                     }}
                 />
             </View>
