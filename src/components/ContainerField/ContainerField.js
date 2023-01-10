@@ -8,9 +8,9 @@ import SmallArrow from '../../../assets/profile-assets/smallArrow.png';
 import SmallArrowTop from '../../../assets/profile-assets/SmallArrowTop.png';
 import SmallArrowBottom from '../../../assets/profile-assets/SmallArrowBottom.png';
 import Button from '../Button/Button';
-import { COLORS } from '../../styles/globalStyles';
 import TextCustom from '../TextCustom/TextCustom';
 import { resetTasks, resetCommonInfo, resetUserInfo } from '../../redux/actions';
+import CustomSwitcher from "../CustomSwitcher/CustomSwitcher";
 
 function ContainerField({ type, name, property, outerStyles }) {
     const navigation = useNavigation();
@@ -56,13 +56,9 @@ function ContainerField({ type, name, property, outerStyles }) {
                 <TextCustom text={property} outerStyles={styles.dropDown} />
             )}
             {type === 'switcher' && (
-                <Switch
-                    value={isEnabled}
-                    onValueChange={toggleSwitch}
-                    thumbColor={COLORS.white}
-                    trackColor={{ false: COLORS.gray, true: COLORS.green }}
-                    ios_backgroundColor={COLORS.gray}
-                    style={styles.switcher}
+                <CustomSwitcher
+                    isOn = {isEnabled}
+                    setIsOn = {toggleSwitch}
                 />
             )}
         </View>
