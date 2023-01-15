@@ -60,6 +60,10 @@ function Task({
             setModalOptions(WHEEL_OPTIONS.pressure);
             setModalVisible(!modalVisible);
 
+            setSelectedIndex(120 - WHEEL_OPTIONS.pressure[0][0]);
+            setSelectedIndex2(80 - WHEEL_OPTIONS.pressure[1][0]);
+            setSelectedIndex3(70 - WHEEL_OPTIONS.pressure[2][0]);
+
             // if (isChecked) {
             //     const response = await getPressureValue(id, date, time).then((res) => res);
             //     setSelectedIndex(response.systolicValue - 60);
@@ -82,7 +86,7 @@ function Task({
                 const tmp = [response.integerPart, response.fractionalPart].join(".");
 
                 setSelectedIndex(Math.floor((+tmp - 32.0) * 100)/10);
-            } else setSelectedIndex(0);
+            } else setSelectedIndex(366 - Math.floor(WHEEL_OPTIONS.temperature[0][0] * 10));
         },
     };
 
