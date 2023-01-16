@@ -12,7 +12,6 @@ import Popup from '../Popup/Popup';
 import {
     getCustomValue,
     getMoodValue,
-    getPressureValue,
     getTemperatureValue,
     sendMedicineStatusChange
 } from "../../fetch/fetchTasks";
@@ -49,10 +48,10 @@ function Task({
             setModalType('slider');
             setModalVisible(!modalVisible);
 
-            // if (isChecked) {
-            //     const response = await getMoodValue(id, date, time).then((res) => res);
-            //     setSelectedIndex(Math.floor(response.score * 10)/10);
-            // } else setSelectedIndex(0.5);
+            if (isChecked) {
+                const response = await getMoodValue(id, date, time).then((res) => res);
+                setSliderValue(Math.floor(response.score * 10)/10);
+            } else setSliderValue(0.5);
         },
         'Давление': async () => {
             setModalText('Введите ваше давление');
@@ -64,16 +63,7 @@ function Task({
             setSelectedIndex2(80 - WHEEL_OPTIONS.pressure[1][0]);
             setSelectedIndex3(70 - WHEEL_OPTIONS.pressure[2][0]);
 
-            // if (isChecked) {
-            //     const response = await getPressureValue(id, date, time).then((res) => res);
-            //     setSelectedIndex(response.systolicValue - 60);
-            //     setSelectedIndex2(response.diastolicValue - 10);
-            //     setSelectedIndex3(response.pulseValue - 40);
-            // } else {
-            //     setSelectedIndex(0);
-            //     setSelectedIndex2(0);
-            //     setSelectedIndex3(0);
-            // }
+            // TODO: реализовать получение значения для давления
         },
         'Температура': async () => {
             setModalText('Введите вашу температуру');
@@ -84,9 +74,8 @@ function Task({
             if (isChecked) {
                 const response = await getTemperatureValue(id, date, time).then((res) => res);
                 const tmp = [response.integerPart, response.fractionalPart].join(".");
-
                 setSelectedIndex(Math.floor((+tmp - 32.0) * 100)/10);
-            } else setSelectedIndex(366 - Math.floor(WHEEL_OPTIONS.temperature[0][0] * 10));
+            } else setSelectedIndex(46);
         },
     };
 
@@ -122,15 +111,16 @@ function Task({
                         if (type === 'symptom' && !isDefault) {
                             setModalText(`${taskName}!`);
                             setModalType('radio');
+                            setModalVisible(!modalVisible);
                             if (isChecked) {
-                                console.log(id, date, time);
-                                // const response = await getCustomValue(id, date, time).then((res) => res);
-                            }
+                                const response = await getCustomValue(id, date, time).then((res) => res);
+                                // TODO: установка значения для radio
+                                setRadioOption(response);
+                            } else setRadioOption(true)
+
                         } else if (type === 'symptom') {
                             await taskNameLookup[taskName]();
                         }
-
-                        setModalVisible(!modalVisible);
                     }}
                 />
             </View>
@@ -146,10 +136,8 @@ function Task({
                 setSelectedIndex3={setSelectedIndex3}
                 sliderValue={sliderValue}
                 setSliderValue={setSliderValue}
-
                 chosenOption={radioOption}
                 setChosenOption={setRadioOption}
-
                 modalVisible={modalVisible}
                 setModalVisible={setModalVisible}
                 id={id}

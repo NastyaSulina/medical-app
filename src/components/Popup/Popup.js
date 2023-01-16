@@ -10,7 +10,7 @@ import styles from './Popup-styles';
 import { changeTaskStatus } from '../../redux/actions';
 import {
     sendCustomValue,
-    sendMoodValue, sendParamIsChecked,
+    sendMoodValue,
     sendParamIsUnchecked,
     sendPressureValue,
     sendTemperatureValue
@@ -107,8 +107,7 @@ function Popup(props) {
                             textFont="semiBold"
                             outerStyles={styles.button}
                             onPress={() => {
-                                console.log(value);
-
+                                // TODO: проверять, что введенные значения изменились (?)
                                 if (props.id) {
                                     if (props.type !== 'radio') {
                                         switch (props.taskName) {
@@ -123,11 +122,12 @@ function Popup(props) {
                                                 sendTemperatureValue(props.id, props.date, arr[0], arr[1], props.time).then(console.log)
                                                 break
                                             default:
-                                                // sendCustomValue(props.id, props.date, Boolean(value), props.time).then(console.log)
-                                                sendParamIsChecked(props.id, props.date).then(console.log)
                                                 break
                                         }
+                                    } else {
+                                        sendCustomValue(props.id, props.date, value, props.time).then(console.log)
                                     }
+
                                     if (!props.isChecked) dispatch(changeTaskStatus({ id: props.id, date: props.date }));
                                 }
 

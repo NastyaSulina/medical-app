@@ -16,6 +16,9 @@
         "react/jsx-filename-extension": [0],
         "no-console": "off",
         "global-require": "off",
-        "no-return-await": "off"
+        "no-return-await": "off",
+        "no-restricted-syntax": "off",
+        "guard-for-in":  "off",
+        "no-case-declarations": "off"
     }
 }

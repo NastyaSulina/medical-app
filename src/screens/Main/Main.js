@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { ScrollView, View } from 'react-native';
@@ -23,21 +23,32 @@ function Main() {
 
     const dispatch = useDispatch();
     const navigation = useNavigation();
+    const savedParams = useRef();
+
     const handleProfilePressed = () => {
         navigation.navigate('Profile');
     };
 
     const [modalVisible, setModalVisible] = useState(false);
 
+    function setter(date, dateTasks) {
+        dispatch(setTasksByDate(date, dateTasks));
+    }
+
+    useEffect(() => {
+        savedParams.currentSetter = setter;
+        savedParams.currentTasks = tasks;
+    });
+
     useEffect(() => {
         async function fetchData() {
-            console.log('Запрос на бэкенд из-за смены даты');
             if (tasks[selectedDate]) return;
+            console.log('Запрос на бэкенд из-за смены даты');
 
             const response = await getTasksByDate(userId, selectedDate);
             const formattedTasks = formatTasksByDate(response);
 
-            dispatch(setTasksByDate(selectedDate, formattedTasks));
+            setter(selectedDate, formattedTasks);
         }
 
         fetchData().then(() => {})
@@ -47,23 +58,25 @@ function Main() {
     useEffect(() => {
         const timer = setInterval(() => {
             const data = [];
-            for (const date in tasks) {
-                data.push(new Promise(async (success) => {
+
+            for (const date in savedParams.currentTasks) {
+                data.push((async () => {
                     const response = await getTasksByDate(userId, date);
                     const formattedTasks = formatTasksByDate(response);
-                    success([date, formattedTasks]);
-                }))
+
+                    return [date, formattedTasks];
+                })())
             }
 
             Promise.all(data)
                 .then(responses => {
-                    for (const tmp of responses) {
-                        dispatch(setTasksByDate(tmp[0], tmp[1]));
+                    for (const res of responses) {
+                        savedParams.currentSetter(res[0], res[1])
                     }})
                 .then(() => console.log("Случилось фоновое обновление"))
                 .catch((err) => console.log(err));
 
-        }, 30000);
+        }, 10000);
 
         return () => clearInterval(timer);
     }, []);

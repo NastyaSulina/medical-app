@@ -5,8 +5,8 @@ import { COLORS } from '../../styles/globalStyles';
 
 function CustomRadio(props) {
     const options = [
-        { label: 'Есть', value: 'true' },
-        { label: 'Нет', value: 'false' },
+        { label: 'Есть', value: true },
+        { label: 'Нет', value: false },
     ];
     return (
         <View style={{ paddingRight: 160 }}>
